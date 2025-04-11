@@ -650,8 +650,8 @@
       <i class="bi bi-x"></i>
     </button>
     <div class="text-center mb-4">
-      <img src="../assets/images/default-profile.jpg" alt="Profil" class="profile-pic mb-2" id="userImage">
-      <h5 id="userName">Nom d'utilisateur</h5>
+      <img src="" alt="Profil" class="profile-pic mb-2" id="userImage">
+      <h5 id="userName"></h5>
       <p id="userInfo" class="mb-1 small text-muted"></p>
       <a href="settings.html" class="btn btn-modern-primary btn-sm">Paramètres</a>
     </div>
@@ -1034,6 +1034,15 @@
   </div>
 
   <script>
+    
+    const userString = sessionStorage.getItem('user');
+    const user = JSON.parse(userString);
+    const userInfo = JSON.parse(user);
+    console.log(userInfo.firstName + ' ' + userInfo.photo);
+
+    // Afficher la valeur de 'user' dans un élément HTML
+    document.getElementById('userName').innerText = `${userInfo.firstName} ${userInfo.lastName}`;
+    document.getElementById('userImage').src = `http://217.154.7.154:4000/photo/${userInfo.photo}`;
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
