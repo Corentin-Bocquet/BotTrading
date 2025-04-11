@@ -7,7 +7,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <style>
     body {
       padding-bottom: 70px;
@@ -67,18 +66,18 @@
     }
 
     .bottom-nav a.active {
-      color: #007BFF; /* Couleur vive pour l'élément actif */
-      font-weight: bold; /* Texte en gras */
+      color: #007BFF;
+      font-weight: bold;
     }
 
     .bottom-nav a.active i {
-      font-size: 1.5rem; /* Icône légèrement plus grande */
-      color: #007BFF; /* Couleur vive pour l'icône */
-      filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5)); /* Lueur derrière l'icône */
+      font-size: 1.5rem;
+      color: #007BFF;
+      filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5));
     }
 
     .bottom-nav a.active small {
-      font-weight: bold; /* Texte "Bot" en gras */
+      font-weight: bold;
     }
 
     .bottom-nav a:hover {
@@ -92,7 +91,7 @@
       height: 60px;
       object-fit: cover;
       border-radius: 50%;
-      border: 2px solid #007BFF;
+      border: 2px solid rgb(255, 255, 255, 0.5);
       box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
     }
 
@@ -144,13 +143,13 @@
     }
 
     .btn-modern-primary {
-      background-color: #007BFF;
+      background-color: white;
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
       border: 2px solid #000;
     }
 
     .btn-modern-primary:hover {
-      background-color: #0056b3;
+      background-color: white;
       box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
     }
 
@@ -168,14 +167,13 @@
     }
 
     .sidebar-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  color: #6C757D;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      color: #6C757D;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
     .sidebar-item:hover {
       color: #2C3E50;
@@ -187,7 +185,6 @@
       text-align: center;
       color: #6C757D;
       transition: color 0.3s ease;
-      margin-right: 0px;
     }
 
     .sidebar-item:hover i {
@@ -195,14 +192,15 @@
     }
 
     .sidebar-item span {
-  font-size: 0.9rem;
-  color: inherit;
-}
+      flex-grow: 1;
+      margin-left: 10px;
+      font-size: 0.9rem;
+    }
 
-.sidebar-item .arrow {
-  color: #6C757D;
-  margin-left: auto; /* pas obligatoire si justify-content: space-between est utilisé */
-}
+    .sidebar-item .arrow {
+      font-size: 0.9rem;
+      color: #6C757D;
+    }
 
     .btn-icon-modern {
       background: none;
@@ -220,8 +218,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color:white;
-      
+      background-color: #fff;
       border-radius: 12px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       z-index: 1060;
@@ -231,7 +228,6 @@
       max-width: 1100px;
       height: 90vh;
       max-height: 700px;
-      
     }
 
     .modal.active { display: block; }
@@ -334,7 +330,6 @@
     .trade-table .buy { font-weight: bold; color: #28A745; }
     .trade-table .sell { font-weight: bold; color: #E74C3C; }
 
-    /* Nouveau style pour la page Bot */
     .container-fluid {
       max-width: 1400px;
       margin: 0 auto;
@@ -367,7 +362,6 @@
     .left-section { margin-right: 10px; }
     .right-section { margin-left: 10px; }
 
-    /* Style général pour tous les boutons hors navbar et menu */
     button:not(.btn-icon-modern):not(.modal-close):not(.close-btn) {
       color: #61677C;
       font-weight: bold;
@@ -393,8 +387,6 @@
       box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
     }
 
-    /* Boutons spécifiques dans .bot-controls */
-
     .bot-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -407,9 +399,12 @@
 }
 
 .bot-controls .btn {
+    cursor: pointer;
   width: 100%;
   height: 100%;
 }
+
+
 
     .bot-controls #chooseBotBtn {
       color: #3951a7; /* Bleu pour "Choisir le bot" */
@@ -433,14 +428,6 @@
       color: #61677C; /* Rouge foncé pour "Stopper le bot" */
       grid-column: 2;
   grid-row: 2;
-    }
-
-    .bot-stats {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .bot-description {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .bot-stats h3, .bot-description h3, .bot-history h3 {
@@ -490,10 +477,6 @@
       height: 200px;
     }
 
-    .bot-description {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
     .bot-description p {
       color: #34495E;
       font-size: 0.95rem;
@@ -537,6 +520,91 @@
     .trade-history-table tr:nth-child(even) { background-color: #F9FAFB; }
     .trade-history-table tr:hover { background-color: #ECF0F1; }
 
+    #statsModal .modal-body {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 60px);
+      gap: 20px;
+      padding: 0;
+    }
+
+    .stats-upper {
+      display: flex;
+      flex-direction: row;
+      height: 60%;
+      gap: 20px;
+      padding: 15px;
+    }
+
+    .stats-lower {
+      height: 40%;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .stats-left, .stats-right {
+      flex: 1;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .stats-left h6 {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #2C3E50;
+      margin-bottom: 15px;
+    }
+
+    .stats-left .gain-value {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: bold;
+      color: #28A745;
+    }
+
+    .chart-container {
+      position: relative;
+      height: clamp(80px, 15vw, 100px);
+      width: clamp(80px, 15vw, 100px);
+      margin: 10px auto;
+    }
+
+    .stats-info {
+      margin-top: 10px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .stats-info p {
+      display: flex;
+      align-items: center;
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      color: #34495E;
+      margin: 6px 0;
+    }
+
+    .stats-info i {
+      margin-right: 8px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .stats-right canvas {
+      max-height: clamp(120px, 25vh, 160px);
+      width: 100%;
+    }
+
+    .stats-lower canvas {
+      max-height: 100%;
+      width: clamp(60%, 80vw, 80%);
+    }
+
     @media (max-width: 768px) {
       .sidebar { width: 100%; left: -100%; }
       .modal { width: 95vw; height: 95vh; padding: 15px; }
@@ -553,6 +621,11 @@
       .chart-wrapper {
         height: 150px;
       }
+      .stats-upper { flex-direction: column; height: auto; }
+      .stats-left, .stats-right { width: 100%; }
+      .stats-lower { margin-bottom: 15px; }
+      .chart-container { height: 80px; width: 80px; }
+      .stats-right canvas { max-height: 120px; }
     }
 
     @media (max-width: 480px) {
@@ -561,6 +634,8 @@
       .sidebar-item span { font-size: 0.8rem; }
       .sidebar-item i { font-size: 1rem; }
       button:not(.btn-icon-modern):not(.modal-close):not(.close-btn) { font-size: 0.75rem; padding: 6px 12px; }
+      .stats-info p { font-size: 0.7rem; }
+      .stats-info i { font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -582,14 +657,14 @@
     </div>
     <hr>
     <ul class="list-unstyled">
-      <li><a href="#" onclick="toggleTradeModal()" class="sidebar-item"><i class="bi bi-clock-history"></i><span>Historique des trades</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="#" onclick="toggleStatsModal()" class="sidebar-item"><i class="bi bi-bar-chart-line"></i><span>Statistiques pertes/gains</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="#" onclick="toggleProfileModal()" class="sidebar-item"><i class="bi bi-gear"></i><span>Paramètres du profil</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="#" onclick="toggleAboutModal()" class="sidebar-item"><i class="bi bi-info-circle"></i><span>À propos</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="https://www.trustpilot.com/review/votre-domaine.com" target="_blank" class="sidebar-item"><i class="bi bi-star"></i><span>Évaluer</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="#" onclick="toggleSecurityModal()" class="sidebar-item"><i class="bi bi-lock"></i><span>Sécurité</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="#" onclick="toggleHelpModal()" class="sidebar-item"><i class="bi bi-question-circle"></i><span>Aide</span><i class='bx bx-chevron-right arrow'></i></a></li>
-      <li><a href="#" onclick="logout()" class="sidebar-item"><i class="bi bi-box-arrow-right"></i><span>Déconnexion</span><i class='bx bx-chevron-right arrow'></i></a></li>
+      <li><a href="#" onclick="toggleTradeModal()" class="sidebar-item"><i class="bi bi-clock-history"></i><span>Historique des trades</span><span class="arrow">></span></a></li>
+      <li><a href="#" onclick="toggleStatsModal()" class="sidebar-item"><i class="bi bi-bar-chart-line"></i><span>Statistiques pertes/gains</span><span class="arrow">></span></a></li>
+      <li><a href="#" onclick="toggleProfileModal()" class="sidebar-item"><i class="bi bi-gear"></i><span>Paramètres du profil</span><span class="arrow">></span></a></li>
+      <li><a href="#" onclick="toggleAboutModal()" class="sidebar-item"><i class="bi bi-info-circle"></i><span>À propos</span><span class="arrow">></span></a></li>
+      <li><a href="https://www.trustpilot.com/review/votre-domaine.com" target="_blank" class="sidebar-item"><i class="bi bi-star"></i><span>Évaluer</span><span class="arrow">></span></a></li>
+      <li><a href="#" onclick="toggleSecurityModal()" class="sidebar-item"><i class="bi bi-lock"></i><span>Sécurité</span><span class="arrow">></span></a></li>
+      <li><a href="#" onclick="toggleHelpModal()" class="sidebar-item"><i class="bi bi-question-circle"></i><span>Aide</span><span class="arrow">></span></a></li>
+      <li><a href="#" onclick="logout()" class="sidebar-item"><i class="bi bi-box-arrow-right"></i><span>Déconnexion</span><span class="arrow">></span></a></li>
     </ul>
     <hr>
     <div class="text-center small text-muted">
@@ -605,16 +680,12 @@
 
   <div class="overlay" onclick="toggleSidebar()" id="overlay"></div>
 
-  <!-- Logo en haut à droite -->
   <img src="../assets/images/logo.png" alt="BullSter Logo" class="logo">
 
-  <!-- Contenu principal -->
   <div class="container-fluid">
-    
+   
 
-    <!-- Partie supérieure -->
     <div class="upper-section">
-      <!-- Partie supérieure gauche : Contrôles du bot -->
       <div class="left-section bot-controls">
         <button id="chooseBotBtn">Choisir le bot</button>
         <button id="startBotBtn">Lancer le bot</button>
@@ -622,7 +693,6 @@
         <button id="configBotBtn">Configuration</button>
       </div>
 
-      <!-- Partie supérieure droite : Statistiques du bot -->
       <div class="right-section bot-stats">
         <h3>Statistiques du bot</h3>
         <div class="stats-grid">
@@ -665,9 +735,7 @@
       </div>
     </div>
 
-    <!-- Partie inférieure -->
     <div class="lower-section">
-      <!-- Partie inférieure gauche : Description du bot -->
       <div class="left-section bot-description">
         <h3>Description du bot</h3>
         <p>
@@ -680,7 +748,6 @@
         </ul>
       </div>
 
-      <!-- Partie inférieure droite : Historique des trades -->
       <div class="right-section bot-history">
         <h3>Historique des trades</h3>
         <table class="trade-history-table">
@@ -696,14 +763,12 @@
             </tr>
           </thead>
           <tbody id="tradeHistoryBody">
-            <!-- Les lignes seront ajoutées dynamiquement ici -->
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- Modales existantes -->
   <div class="modal" id="profileModal">
     <div class="modal-header">
       <h5>Paramètres du profil</h5>
@@ -781,12 +846,12 @@
           </tr>
         </thead>
         <tbody id="tradeTableBody">
-          <!-- Les lignes seront ajoutées dynamiquement ici -->
         </tbody>
       </table>
     </div>
   </div>
 
+  <!-- Modal pour Statistiques Pertes/Gains restauré de l'ancien code -->
   <div class="modal" id="statsModal">
     <div class="modal-header">
       <h5>Statistiques Pertes/Gains</h5>
@@ -1175,114 +1240,33 @@
       });
     }
 
-    // Données pour l'historique des trades du bot
-    let botTradeHistory = [
-      { date: '2025-04-10 09:15', asset: 'BTC/USD', type: 'Buy', size: '0.02', entry: '58,230 $', exit: '58,500 $', pl: '+54 $' },
-      { date: '2025-04-10 10:30', asset: 'ETH/USD', type: 'Sell', size: '0.5', entry: '2,950 $', exit: '2,920 $', pl: '-15 $' },
-      { date: '2025-04-10 12:45', asset: 'XRP/USD', type: 'Buy', size: '100', entry: '0.62 $', exit: '0.65 $', pl: '+3 $' }
-    ];
-
-    function updateBotTradeHistory() {
-      const tbody = document.getElementById('tradeHistoryBody');
-      tbody.innerHTML = '';
-      botTradeHistory.forEach(trade => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${trade.date}</td>
-          <td>${trade.asset}</td>
-          <td>${trade.type}</td>
-          <td>${trade.size}</td>
-          <td>${trade.entry}</td>
-          <td>${trade.exit}</td>
-          <td style="color: ${trade.pl.startsWith('+') ? '#28A745' : '#E74C3C'}">${trade.pl}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
     function loadBotCharts() {
-      const pnlChart = new Chart(document.getElementById('pnlChart').getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels: ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5'],
-          datasets: [{
-            label: 'PNL ($)',
-            data: [120, -50, 300, 450, 250],
-            backgroundColor: data => data.raw >= 0 ? '#28A745' : '#E74C3C',
-            borderRadius: 5
-          }]
-        },
-        options: {
-          scales: { y: { beginAtZero: true } },
-          plugins: { legend: { display: false } },
-          maintainAspectRatio: false
-        }
+      const pnlCtx = document.getElementById('pnlChart').getContext('2d');
+      new Chart(pnlCtx, {
+        type: 'line',
+        data: { labels: ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5'], datasets: [{ label: 'PNL ($)', data: [100, 500, 1200, 2000, 3250], borderColor: '#28A745', fill: false, tension: 0.4 }] },
+        options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false }, title: { display: true, text: 'Évolution PNL', color: '#2C3E50' } }, maintainAspectRatio: false }
       });
 
-      const successRateChart = new Chart(document.getElementById('successRateChart').getContext('2d'), {
-        type: 'pie',
-        data: {
-          labels: ['Gagnants', 'Perdants'],
-          datasets: [{
-            data: [68, 32],
-            backgroundColor: ['#28A745', '#E74C3C'],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          plugins: { legend: { position: 'bottom' } },
-          maintainAspectRatio: false
-        }
+      const successRateCtx = document.getElementById('successRateChart').getContext('2d');
+      new Chart(successRateCtx, {
+        type: 'doughnut',
+        data: { labels: ['Réussite', 'Échec'], datasets: [{ data: [68, 32], backgroundColor: ['#28A745', '#E74C3C'], borderWidth: 0 }] },
+        options: { cutout: '70%', plugins: { legend: { display: false }, title: { display: true, text: 'Taux de Réussite', color: '#2C3E50' } }, maintainAspectRatio: false }
       });
 
-      const tradeVolumeChart = new Chart(document.getElementById('tradeVolumeChart').getContext('2d'), {
+      const tradeVolumeCtx = document.getElementById('tradeVolumeChart').getContext('2d');
+      new Chart(tradeVolumeCtx, {
         type: 'bar',
-        data: {
-          labels: ['BTC', 'ETH', 'XRP', 'BNB'],
-          datasets: [{
-            label: 'Nombre de trades',
-            data: [15, 12, 8, 7],
-            backgroundColor: '#007BFF',
-            borderRadius: 5
-          }]
-        },
-        options: {
-          scales: { y: { beginAtZero: true } },
-          plugins: { legend: { display: false } },
-          maintainAspectRatio: false
-        }
+        data: { labels: ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5'], datasets: [{ label: 'Volume', data: [5, 8, 10, 12, 7], backgroundColor: '#007BFF' }] },
+        options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false }, title: { display: true, text: 'Volume des Trades', color: '#2C3E50' } }, maintainAspectRatio: false }
       });
     }
 
     loadUser();
     updateTradeTable();
-    updateBotTradeHistory();
     loadBotCharts();
-    setTimeout(() => {
-      botTradeHistory.push({
-        date: new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }),
-        asset: 'SOL/USD',
-        type: 'Buy',
-        size: '5',
-        entry: '150 $',
-        exit: '155 $',
-        pl: '+25 $'
-      });
-      updateBotTradeHistory();
-    }, 3000);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const currentPage = window.location.pathname.split('/').pop() || 'bot.html'; // Récupère le nom de la page actuelle
-      const navLinks = document.querySelectorAll('.bottom-nav a');
-      navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    });
+    setTimeout(simulateNewTrade, 3000);
   </script>
 </body>
 </html>
