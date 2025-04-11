@@ -637,6 +637,46 @@
       .stats-info p { font-size: 0.7rem; }
       .stats-info i { font-size: 0.8rem; }
     }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      width: 1000px;
+      justify-content: space-between;
+      margin: 20px;
+      padding: 20px 0;
+    }
+
+    .container .card {
+      position: relative;
+      height: 250px;
+      width: 45%;
+      margin: 30px 0;
+      border-radius: 20px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .container .card .imgBx {
+      position: absolute;
+      top: 10PX;
+      left: 10px;
+      background: rgba(255, 0, 0, 0.1);
+      backdrop-filter: blur(20px);
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.5s ease-in-out;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
   </style>
 </head>
 <body>
@@ -685,88 +725,48 @@
   <div class="container-fluid">
    
 
-    <div class="upper-section">
-      <div class="left-section bot-controls">
-        <button id="chooseBotBtn">Choisir le bot</button>
-        <button id="startBotBtn">Lancer le bot</button>
-        <button id="stopBotBtn">Stopper le bot</button>
-        <button id="configBotBtn">Configuration</button>
-      </div>
+    <div class="container">
+        <div class="card">
+            <div class="imgBx">
+                <img src="design.png" alt="LongTerm Image">
+            </div>
+            <div class="content">
+                <div>
+                    <h3>Design</h3>
+                    <p>Le trading Long Terme conçu pour maximiser les profits sur le long terme. Il utilise des algorithmes avancés pour analyser les tendances du marché et prendre des décisions éclairées.</p>
+                    <a href="L-AMP.html" >Choisir</a>
+                </div>
+            </div>
+        </div>
 
-      <div class="right-section bot-stats">
-        <h3>Statistiques du bot</h3>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <label>PNL</label>
-            <span class="positive">+3,250 $</span>
-          </div>
-          <div class="stat-item">
-            <label>ROI</label>
-            <span class="positive">+15.7%</span>
-          </div>
-          <div class="stat-item">
-            <label>Gains du jour</label>
-            <span class="positive">+450 $</span>
-          </div>
-          <div class="stat-item">
-            <label>Pertes du jour</label>
-            <span class="negative">-120 $</span>
-          </div>
-          <div class="stat-item">
-            <label>Taux de réussite</label>
-            <span>68%</span>
-          </div>
-          <div class="stat-item">
-            <label>Nombre de trades</label>
-            <span>42</span>
-          </div>
+        <div class="card">
+            <div class="imgBx">
+                <img src="code.png" alt="MiddleTerm Image">
+            </div>
+            <div class="content">
+                <div>
+                    <h3>Code</h3>
+                    <p>Le trading Long Terme conçu pour maximiser les profits sur le long terme. Il utilise des algorithmes avancés pour analyser les tendances du marché et prendre des décisions éclairées.</p>
+                    <a href="L-AMP.html" >Choisir</a>
+                </div>
+            </div>
         </div>
-        <div class="charts-container">
-          <div class="chart-wrapper">
-            <canvas id="pnlChart"></canvas>
-          </div>
-          <div class="chart-wrapper">
-            <canvas id="successRateChart"></canvas>
-          </div>
-          <div class="chart-wrapper">
-            <canvas id="tradeVolumeChart"></canvas>
-          </div>
+
+        <div class="card">
+            <div class="imgBx">
+                <img src="Launch.png" alt="LongTerm Image">
+            </div>
+            <div class="content">
+                <div>
+                    <h3>Launch</h3>
+                    <p>Le trading Long Terme conçu pour maximiser les profits sur le long terme. Il utilise des algorithmes avancés pour analyser les tendances du marché et prendre des décisions éclairées.</p>
+                    <a href="L-AMP.html" >Choisir</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="lower-section">
-      <div class="left-section bot-description">
-        <h3>Description du bot</h3>
-        <p>
-          Le <strong>Bot Alpha</strong> est un bot de trading automatisé conçu pour maximiser les profits sur les marchés volatils. Il utilise une combinaison d’analyse technique et d’intelligence artificielle pour identifier les opportunités de trading à court terme. Idéal pour les traders cherchant à automatiser leurs stratégies tout en conservant un contrôle total.
-        </p>
-        <ul>
-          <li><i class="bi bi-gear"></i> <strong>Indicateurs utilisés :</strong> RSI, Moyennes Mobiles (50, 200), Bandes de Bollinger</li>
-          <li><i class="bi bi-bar-chart"></i> <strong>Taille des positions :</strong> 0.1% à 1% du capital par trade</li>
-          <li><i class="bi bi-clock"></i> <strong>Fréquence des analyses :</strong> Toutes les 15 minutes</li>
-        </ul>
-      </div>
-
-      <div class="right-section bot-history">
-        <h3>Historique des trades</h3>
-        <table class="trade-history-table">
-          <thead>
-            <tr>
-              <th>Date & Heure</th>
-              <th>Actif</th>
-              <th>Type</th>
-              <th>Taille</th>
-              <th>Prix d'entrée</th>
-              <th>Prix de sortie</th>
-              <th>Profit/Perte</th>
-            </tr>
-          </thead>
-          <tbody id="tradeHistoryBody">
-          </tbody>
-        </table>
-      </div>
-    </div>
+    
   </div>
 
   <div class="modal" id="profileModal">
