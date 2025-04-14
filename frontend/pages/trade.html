@@ -438,6 +438,375 @@
       width: 100px;
       height: auto;
     }
+
+    .trade-container {
+  padding-bottom: 80px; /* Éviter chevauchement avec bottom-nav */
+}
+
+.trade-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: #2C3E50;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trade-title .highlight {
+  color: #007BFF;
+  font-style: italic;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.glass-input {
+  background: transparent;
+  border: none;
+  color: #2C3E50;
+  font-size: 1rem;
+}
+
+.glass-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-bar {
+  padding: 10px;
+  position: relative;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  right: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  display: none;
+  margin-top: 5px;
+}
+
+.suggestions-list.active {
+  display: block;
+}
+
+.suggestion-item {
+  padding: 12px;
+  color: #2C3E50;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+  background: rgba(0, 123, 255, 0.2);
+  color: white;
+}
+
+.content-below-search {
+  transition: margin-top 0.3s ease;
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 10px 20px;
+  color: #2C3E50;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-glass.active {
+  background: #007BFF;
+  color: white;
+  border-color: #007BFF;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+.btn-glass.active.crypto {
+  background: #FFD700;
+  color: #2C3E50;
+  border-color: #FFD700;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+.suggestion-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-suggestion {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(0, 123, 255, 0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 8px 15px;
+  color: #2C3E50;
+  font-size: 0.9rem;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-suggestion.crypto {
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.btn-suggestion::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 24px;
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.2), rgba(255, 255, 255, 0.2));
+  z-index: -1;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.btn-suggestion.crypto::before {
+  background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 255, 255, 0.2));
+}
+
+.btn-suggestion:hover {
+  background: #007BFF;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-suggestion.crypto:hover {
+  background: #FFD700;
+  color: #2C3E50;
+}
+
+.btn-suggestion:hover::before {
+  opacity: 1;
+}
+
+.chart-container {
+  padding: 15px;
+  height: 400px;
+  width: 100%;
+}
+
+.price-info {
+  padding: 15px;
+}
+
+.price-info h5 {
+  font-size: 1.3rem;
+  color: #2C3E50;
+  margin-bottom: 8px;
+}
+
+.price-info p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+
+.health-container {
+  padding: 15px;
+  position: sticky;
+  top: 20px;
+}
+
+.health-title {
+  font-size: 1.4rem;
+  color: #2C3E50;
+}
+
+.indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.indicator-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.indicator-card h6 {
+  font-size: 0.95rem;
+  color: #2C3E50;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.indicator-card p {
+  font-size: 0.85rem;
+  color: #34495E;
+  margin: 6px 0;
+}
+
+.large-pie {
+  width: 80px;
+  height: 80px;
+}
+
+.xlarge-pie {
+  width: 100px;
+  height: 100px;
+}
+
+.overall-score {
+  padding: 15px;
+}
+
+.overall-score h6 {
+  font-size: 1.2rem;
+  color: #2C3E50;
+  margin-bottom: 12px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.score-text {
+  font-size: 0.95rem;
+  color: #2C3E50;
+  margin: 0;
+  flex: 1;
+}
+
+.score-value {
+  font-size: 0.95rem;
+  margin: 0 10px;
+}
+
+.explanations {
+  padding: 15px;
+}
+
+.explanations h6 {
+  font-size: 1.2rem;
+  color: #2C3E50;
+  margin-bottom: 12px;
+}
+
+.explanations p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+  .trade-left, .trade-right {
+    width: 100%;
+  }
+  .trade-right {
+    margin-top: 20px;
+    position: static;
+  }
+  .indicators-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .trade-title {
+    font-size: 1.5rem;
+  }
+  .btn-glass {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+  .btn-suggestion {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  .chart-container {
+    height: 300px;
+  }
+  .large-pie {
+    width: 60px;
+    height: 60px;
+  }
+  .xlarge-pie {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.score-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.score-title-row h6 {
+  margin: 0;
+  flex: 1;
+}
+
+.score-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score-text {
+  font-size: 0.95rem;
+  color: #2C3E50;
+  margin: 0;
+  flex: 1;
+}
+
+.score-value {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.xlarge-pie {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 576px) {
+  .xlarge-pie {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.Trade-Logo {
+  
+  width: 6%;
+  height: auto;
+}
   </style>
 </head>
 <body>
@@ -776,8 +1145,66 @@
     </div>
   </div>
 
-  <div class="container mt-4">
-    <h2>Trade</h2>
+  <div class="container mt-4 trade-container">
+    <h2 class="trade-title mb-4"><img src="TradeLogo.png" class=" Trade-Logo me-2">Trade <span class="highlight"></span></h2>
+    <div class="row">
+      <!-- Partie gauche : Recherche, filtres, graphique -->
+      <div class="col-lg-8 trade-left">
+        <div class="search-bar glass-effect mb-4">
+          <input type="text" id="tickerInput" class="form-control glass-input" placeholder="Entrez un ticker (ex. NVDA, BTC)">
+          <div class="suggestions-list glass-effect" id="suggestionsList"></div>
+        </div>
+        <div class="content-below-search" id="contentBelowSearch">
+          <div class="d-flex mb-4">
+            <button class="btn-glass btn-filter active" onclick="switchContent('action')"><i class="bi bi-bar-chart-fill me-2"></i><span class="fw-bold">Action</span> 📈</button>
+            <button class="btn-glass btn-filter" onclick="switchContent('crypto')"><i class="bi bi-currency-bitcoin me-2"></i><span class="fw-bold">Crypto</span> 🪙</button>
+          </div>
+          <div class="suggestion-buttons mb-4" id="suggestionButtons"></div>
+          <div class="price-info glass-effect mb-4">
+            <h5 id="assetName" class="fw-bold"><i class="bi bi-building me-2"></i>NVIDIA (NVDA)</h5>
+            <p id="assetPrice" class="text-primary fs-5">$135.72</p>
+            <p id="assetChange" class="text-success"><i class="bi bi-arrow-up-circle me-1"></i>+0.45$ (+0.33%)</p>
+          </div>
+          <div class="chart-container glass-effect">
+            <canvas id="assetChart"></canvas>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Partie droite : Santé financière / Indicateurs -->
+      <div class="col-lg-4 trade-right">
+        <div class="health-container glass-effect">
+          <h5 class="health-title mb-3"><i class="bi bi-heart-pulse-fill me-2 text-danger"></i><span class="fw-bold">Santé Financière</span></h5>
+          <div class="d-flex mb-3">
+            <button class="btn-glass btn-health active" onclick="switchHealth('actions')"><i class="bi bi-bar-chart-fill me-2"></i><span class="fw-bold">Actions</span> 📊</button>
+            <button class="btn-glass btn-health" onclick="switchHealth('cryptos')"><i class="bi bi-currency-bitcoin me-2"></i><span class="fw-bold">Cryptos</span> 💸</button>
+          </div>
+          <div class="indicators-grid" id="indicatorsGrid"></div>
+          <div class="overall-score glass-effect mt-4">
+            <div class="score-title-row">
+              <h6 class="fw-bold"><i class="bi bi-star-fill me-2 text-warning"></i>Note Globale</h6>
+              <div class="chart-container xlarge-pie">
+                <canvas id="overallScoreChart"></canvas>
+              </div>
+            </div>
+            <div class="score-details mt-3">
+              <div class="score-row">
+                <p id="score20Text" class="score-text"><span class="fst-italic">Score sur 20 de</span> <span class="fw-bold">NVIDIA</span></p>
+                <p id="score20Value" class="score-value text-primary fw-bold">17/20</p>
+              </div>
+              <div class="score-row">
+                <p id="score100Text" class="score-text"><span class="fst-italic">Score sur 100 de</span> <span class="fw-bold">NVIDIA</span></p>
+                <p id="score100Value" class="score-value text-primary fw-bold">85/100</p>
+              </div>
+            </div>
+          </div>
+          <div class="explanations glass-effect mt-4">
+            <h6 class="fw-bold"><i class="bi bi-info-circle-fill me-2 text-info"></i>Explications</h6>
+            <p id="explanationText" class="text-muted"></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="bottom-nav">
@@ -1016,6 +1443,906 @@
     }
   });
 });
+
+
+// Données pour actions et cryptos
+const assetsData = {
+  action: {
+    default: { 
+      ticker: "NVDA", 
+      name: "NVIDIA", 
+      price: 135.72, 
+      change: 0.45, 
+      changePercent: 0.33, 
+      chartData: [130, 132, 134, 133, 135.72], 
+      indicators: [
+        { name: "ROE", value: "28.5%", note: 4, maxNote: 5 },
+        { name: "Debt-to-Equity", value: "0.22", note: 3, maxNote: 5 },
+        { name: "Marge brute", value: "75.3%", note: 5, maxNote: 5 },
+        { name: "Marge opérationnelle", value: "32.1%", note: 4, maxNote: 5 },
+        { name: "Current Ratio", value: "3.52", note: 4, maxNote: 5 },
+        { name: "Quick Ratio", value: "2.89", note: 4, maxNote: 5 },
+        { name: "Payout Ratio", value: "1.2%", note: 3, maxNote: 5 }
+      ], 
+      overallScore: 85, 
+      explanation: "<span class='fw-bold'>NVIDIA</span> affiche une <span class='text-success'>santé financière robuste</span> avec un <span class='fst-italic'>ROE élevé</span> et des marges impressionnantes, soutenues par sa domination dans l'<span class='text-primary'>IA</span> et les <span class='text-primary'>GPU</span>. Cependant, le Debt-to-Equity modeste indique une gestion prudente mais pourrait limiter l'expansion agressive. Le Payout Ratio faible reflète une stratégie de <span class='fw-bold'>réinvestissement</span>."
+    },
+    suggestions: [
+      { ticker: "NVDA", name: "NVIDIA" },
+      { ticker: "AAPL", name: "Apple" },
+      { ticker: "MSFT", name: "Microsoft" },
+      { ticker: "AMZN", name: "Amazon" }
+    ],
+    searchList: [
+      // Liste complète S&P 500 (503 entreprises, octobre 2023)
+      { ticker: "MMM", name: "3M", type: "SP500" },
+      { ticker: "AOS", name: "A.O. Smith", type: "SP500" },
+      { ticker: "ABT", name: "Abbott Laboratories", type: "SP500" },
+      { ticker: "ABBV", name: "AbbVie", type: "SP500" },
+      { ticker: "ACN", name: "Accenture", type: "SP500" },
+      { ticker: "ATVI", name: "Activision Blizzard", type: "SP500" },
+      { ticker: "ADM", name: "Archer-Daniels-Midland", type: "SP500" },
+      { ticker: "ADBE", name: "Adobe", type: "SP500" },
+      { ticker: "ADP", name: "Automatic Data Processing", type: "SP500" },
+      { ticker: "AES", name: "AES Corporation", type: "SP500" },
+      { ticker: "AFL", name: "Aflac", type: "SP500" },
+      { ticker: "A", name: "Agilent Technologies", type: "SP500" },
+      { ticker: "APD", name: "Air Products and Chemicals", type: "SP500" },
+      { ticker: "AKAM", name: "Akamai Technologies", type: "SP500" },
+      { ticker: "ALK", name: "Alaska Air Group", type: "SP500" },
+      { ticker: "ALB", name: "Albemarle Corporation", type: "SP500" },
+      { ticker: "ARE", name: "Alexandria Real Estate Equities", type: "SP500" },
+      { ticker: "ALGN", name: "Align Technology", type: "SP500" },
+      { ticker: "ALLE", name: "Allegion", type: "SP500" },
+      { ticker: "LNT", name: "Alliant Energy", type: "SP500" },
+      { ticker: "ALL", name: "Allstate", type: "SP500" },
+      { ticker: "GOOGL", name: "Alphabet Inc. (Class A)", type: "SP500" },
+      { ticker: "GOOG", name: "Alphabet Inc. (Class C)", type: "SP500" },
+      { ticker: "MO", name: "Altria Group", type: "SP500" },
+      { ticker: "AMZN", name: "Amazon", type: "SP500" },
+      { ticker: "AMCR", name: "Amcor", type: "SP500" },
+      { ticker: "AMD", name: "Advanced Micro Devices", type: "SP500" },
+      { ticker: "AEE", name: "Ameren", type: "SP500" },
+      { ticker: "AAL", name: "American Airlines Group", type: "SP500" },
+      { ticker: "AEP", name: "American Electric Power", type: "SP500" },
+      { ticker: "AXP", name: "American Express", type: "SP500" },
+      { ticker: "AIG", name: "American International Group", type: "SP500" },
+      { ticker: "AMT", name: "American Tower", type: "SP500" },
+      { ticker: "AWK", name: "American Water Works", type: "SP500" },
+      { ticker: "AMP", name: "Ameriprise Financial", type: "SP500" },
+      { ticker: "ABC", name: "AmerisourceBergen", type: "SP500" },
+      { ticker: "AME", name: "AMETEK", type: "SP500" },
+      { ticker: "AMGN", name: "Amgen", type: "SP500" },
+      { ticker: "APH", name: "Amphenol", type: "SP500" },
+      { ticker: "ADI", name: "Analog Devices", type: "SP500" },
+      { ticker: "ANSS", name: "ANSYS", type: "SP500" },
+      { ticker: "AON", name: "Aon", type: "SP500" },
+      { ticker: "APA", name: "APA Corporation", type: "SP500" },
+      { ticker: "AAPL", name: "Apple", type: "SP500" },
+      { ticker: "AMAT", name: "Applied Materials", type: "SP500" },
+      { ticker: "APTV", name: "Aptiv", type: "SP500" },
+      { ticker: "ANET", name: "Arista Networks", type: "SP500" },
+      { ticker: "AJG", name: "Arthur J. Gallagher & Co.", type: "SP500" },
+      { ticker: "AIZ", name: "Assurant", type: "SP500" },
+      { ticker: "T", name: "AT&T", type: "SP500" },
+      { ticker: "ATO", name: "Atmos Energy", type: "SP500" },
+      { ticker: "ADSK", name: "Autodesk", type: "SP500" },
+      { ticker: "AZO", name: "AutoZone", type: "SP500" },
+      { ticker: "AVB", name: "AvalonBay Communities", type: "SP500" },
+      { ticker: "AVY", name: "Avery Dennison", type: "SP500" },
+      { ticker: "BKR", name: "Baker Hughes", type: "SP500" },
+      { ticker: "BALL", name: "Ball Corporation", type: "SP500" },
+      { ticker: "BAC", name: "Bank of America", type: "SP500" },
+      { ticker: "BBWI", name: "Bath & Body Works", type: "SP500" },
+      { ticker: "BAX", name: "Baxter International", type: "SP500" },
+      { ticker: "BDX", name: "Becton Dickinson", type: "SP500" },
+      { ticker: "WRB", name: "Berkley (W.R.) Corporation", type: "SP500" },
+      { ticker: "BRK.B", name: "Berkshire Hathaway", type: "SP500" },
+      { ticker: "BBY", name: "Best Buy", type: "SP500" },
+      { ticker: "BIO", name: "Bio-Rad Laboratories", type: "SP500" },
+      { ticker: "TECH", name: "Bio-Techne", type: "SP500" },
+      { ticker: "BIIB", name: "Biogen", type: "SP500" },
+      { ticker: "BLK", name: "BlackRock", type: "SP500" },
+      { ticker: "BK", name: "Bank of New York Mellon", type: "SP500" },
+      { ticker: "BA", name: "Boeing", type: "SP500" },
+      { ticker: "BKNG", name: "Booking Holdings", type: "SP500" },
+      { ticker: "BWA", name: "BorgWarner", type: "SP500" },
+      { ticker: "BXP", name: "Boston Properties", type: "SP500" },
+      { ticker: "BSX", name: "Boston Scientific", type: "SP500" },
+      { ticker: "BMY", name: "Bristol-Myers Squibb", type: "SP500" },
+      { ticker: "AVGO", name: "Broadcom", type: "SP500" },
+      { ticker: "BR", name: "Broadridge Financial Solutions", type: "SP500" },
+      { ticker: "BRO", name: "Brown & Brown", type: "SP500" },
+      { ticker: "BF.B", name: "Brown-Forman", type: "SP500" },
+      { ticker: "CHRW", name: "C.H. Robinson Worldwide", type: "SP500" },
+      { ticker: "CDNS", name: "Cadence Design Systems", type: "SP500" },
+      { ticker: "CZR", name: "Caesars Entertainment", type: "SP500" },
+      { ticker: "CPT", name: "Camden Property Trust", type: "SP500" },
+      { ticker: "CPB", name: "Campbell Soup", type: "SP500" },
+      { ticker: "COF", name: "Capital One Financial", type: "SP500" },
+      { ticker: "CAH", name: "Cardinal Health", type: "SP500" },
+      { ticker: "KMX", name: "CarMax", type: "SP500" },
+      { ticker: "CCL", name: "Carnival Corporation", type: "SP500" },
+      { ticker: "CARR", name: "Carrier Global", type: "SP500" },
+      { ticker: "CTLT", name: "Catalent", type: "SP500" },
+      { ticker: "CAT", name: "Caterpillar", type: "SP500" },
+      { ticker: "CBOE", name: "Cboe Global Markets", type: "SP500" },
+      { ticker: "CBRE", name: "CBRE Group", type: "SP500" },
+      { ticker: "CDW", name: "CDW Corporation", type: "SP500" },
+      { ticker: "CE", name: "Celanese", type: "SP500" },
+      { ticker: "CNC", name: "Centene", type: "SP500" },
+      { ticker: "CNP", name: "CenterPoint Energy", type: "SP500" },
+      { ticker: "CDAY", name: "Ceridian HCM Holding", type: "SP500" },
+      { ticker: "CF", name: "CF Industries", type: "SP500" },
+      { ticker: "CRL", name: "Charles River Laboratories", type: "SP500" },
+      { ticker: "SCHW", name: "Charles Schwab", type: "SP500" },
+      { ticker: "CHTR", name: "Charter Communications", type: "SP500" },
+      { ticker: "CVX", name: "Chevron", type: "SP500" },
+      { ticker: "CMG", name: "Chipotle Mexican Grill", type: "SP500" },
+      { ticker: "CB", name: "Chubb", type: "SP500" },
+      { ticker: "CHD", name: "Church & Dwight", type: "SP500" },
+      { ticker: "CI", name: "Cigna", type: "SP500" },
+      { ticker: "CINF", name: "Cincinnati Financial", type: "SP500" },
+      { ticker: "CTAS", name: "Cintas", type: "SP500" },
+      { ticker: "CSCO", name: "Cisco Systems", type: "SP500" },
+      { ticker: "C", name: "Citigroup", type: "SP500" },
+      { ticker: "CFG", name: "Citizens Financial Group", type: "SP500" },
+      { ticker: "CLX", name: "Clorox", type: "SP500" },
+      { ticker: "CME", name: "CME Group", type: "SP500" },
+      { ticker: "CMS", name: "CMS Energy", type: "SP500" },
+      { ticker: "KO", name: "Coca-Cola", type: "SP500" },
+      { ticker: "CTSH", name: "Cognizant Technology Solutions", type: "SP500" },
+      { ticker: "CL", name: "Colgate-Palmolive", type: "SP500" },
+      { ticker: "CMCSA", name: "Comcast", type: "SP500" },
+      { ticker: "CMA", name: "Comerica", type: "SP500" },
+      { ticker: "CAG", name: "Conagra Brands", type: "SP500" },
+      { ticker: "COP", name: "ConocoPhillips", type: "SP500" },
+      { ticker: "ED", name: "Consolidated Edison", type: "SP500" },
+      { ticker: "STZ", name: "Constellation Brands", type: "SP500" },
+      { ticker: "CEG", name: "Constellation Energy", type: "SP500" },
+      { ticker: "COO", name: "Cooper Companies", type: "SP500" },
+      { ticker: "CPRT", name: "Copart", type: "SP500" },
+      { ticker: "GLW", name: "Corning", type: "SP500" },
+      { ticker: "CTVA", name: "Corteva", type: "SP500" },
+      { ticker: "CSGP", name: "CoStar Group", type: "SP500" },
+      { ticker: "COST", name: "Costco Wholesale", type: "SP500" },
+      { ticker: "CTRA", name: "Coterra Energy", type: "SP500" },
+      { ticker: "CCI", name: "Crown Castle", type: "SP500" },
+      { ticker: "CSX", name: "CSX Corporation", type: "SP500" },
+      { ticker: "CMI", name: "Cummins", type: "SP500" },
+      { ticker: "CVS", name: "CVS Health", type: "SP500" },
+      { ticker: "DHI", name: "D.R. Horton", type: "SP500" },
+      { ticker: "DHR", name: "Danaher", type: "SP500" },
+      { ticker: "DRI", name: "Darden Restaurants", type: "SP500" },
+      { ticker: "DVA", name: "DaVita", type: "SP500" },
+      { ticker: "DE", name: "Deere & Company", type: "SP500" },
+      { ticker: "DAL", name: "Delta Air Lines", type: "SP500" },
+      { ticker: "XRAY", name: "Dentsply Sirona", type: "SP500" },
+      { ticker: "DVN", name: "Devon Energy", type: "SP500" },
+      { ticker: "DXCM", name: "DexCom", type: "SP500" },
+      { ticker: "FANG", name: "Diamondback Energy", type: "SP500" },
+      { ticker: "DLR", name: "Digital Realty Trust", type: "SP500" },
+      { ticker: "DFS", name: "Discover Financial Services", type: "SP500" },
+      { ticker: "DIS", name: "Disney (Walt)", type: "SP500" },
+      { ticker: "DG", name: "Dollar General", type: "SP500" },
+      { ticker: "DLTR", name: "Dollar Tree", type: "SP500" },
+      { ticker: "D", name: "Dominion Energy", type: "SP500" },
+      { ticker: "DPZ", name: "Domino's Pizza", type: "SP500" },
+      { ticker: "DOV", name: "Dover Corporation", type: "SP500" },
+      { ticker: "DOW", name: "Dow Inc.", type: "SP500" },
+      { ticker: "DTE", name: "DTE Energy", type: "SP500" },
+      { ticker: "DUK", name: "Duke Energy", type: "SP500" },
+      { ticker: "DD", name: "DuPont de Nemours", type: "SP500" },
+      { ticker: "DXC", name: "DXC Technology", type: "SP500" },
+      { ticker: "EMN", name: "Eastman Chemical", type: "SP500" },
+      { ticker: "ETN", name: "Eaton Corporation", type: "SP500" },
+      { ticker: "EBAY", name: "eBay", type: "SP500" },
+      { ticker: "ECL", name: "Ecolab", type: "SP500" },
+      { ticker: "EIX", name: "Edison International", type: "SP500" },
+      { ticker: "EW", name: "Edwards Lifesciences", type: "SP500" },
+      { ticker: "EA", name: "Electronic Arts", type: "SP500" },
+      { ticker: "ELV", name: "Elevance Health", type: "SP500" },
+      { ticker: "LLY", name: "Eli Lilly", type: "SP500" },
+      { ticker: "EMR", name: "Emerson Electric", type: "SP500" },
+      { ticker: "ENPH", name: "Enphase Energy", type: "SP500" },
+      { ticker: "ETR", name: "Entergy", type: "SP500" },
+      { ticker: "EOG", name: "EOG Resources", type: "SP500" },
+      { ticker: "EPAM", name: "EPAM Systems", type: "SP500" },
+      { ticker: "EQT", name: "EQT Corporation", type: "SP500" },
+      { ticker: "EFX", name: "Equifax", type: "SP500" },
+      { ticker: "EQIX", name: "Equinix", type: "SP500" },
+      { ticker: "EQR", name: "Equity Residential", type: "SP500" },
+      { ticker: "ESS", name: "Essex Property Trust", type: "SP500" },
+      { ticker: "EL", name: "Estée Lauder Companies", type: "SP500" },
+      { ticker: "ETSY", name: "Etsy", type: "SP500" },
+      { ticker: "RE", name: "Everest Re Group", type: "SP500" },
+      { ticker: "EVRG", name: "Evergy", type: "SP500" },
+      { ticker: "ES", name: "Eversource Energy", type: "SP500" },
+      { ticker: "EXC", name: "Exelon", type: "SP500" },
+      { ticker: "EXPE", name: "Expedia Group", type: "SP500" },
+      { ticker: "EXPD", name: "Expeditors International", type: "SP500" },
+      { ticker: "EXR", name: "Extra Space Storage", type: "SP500" },
+      { ticker: "XOM", name: "Exxon Mobil", type: "SP500" },
+      { ticker: "FFIV", name: "F5, Inc.", type: "SP500" },
+      { ticker: "FDS", name: "FactSet Research Systems", type: "SP500" },
+      { ticker: "FAST", name: "Fastenal", type: "SP500" },
+      { ticker: "FRT", name: "Federal Realty Investment Trust", type: "SP500" },
+      { ticker: "FDX", name: "FedEx", type: "SP500" },
+      { ticker: "FITB", name: "Fifth Third Bancorp", type: "SP500" },
+      { ticker: "FRC", name: "First Republic Bank", type: "SP500" },
+      { ticker: "FE", name: "FirstEnergy", type: "SP500" },
+      { ticker: "FIS", name: "Fidelity National Information Services", type: "SP500" },
+      { ticker: "FISV", name: "Fiserv", type: "SP500" },
+      { ticker: "FLT", name: "FleetCor Technologies", type: "SP500" },
+      { ticker: "FMC", name: "FMC Corporation", type: "SP500" },
+      { ticker: "F", name: "Ford Motor", type: "SP500" },
+      { ticker: "FTNT", name: "Fortinet", type: "SP500" },
+      { ticker: "FTV", name: "Fortive", type: "SP500" },
+      { ticker: "FOXA", name: "Fox Corporation (Class A)", type: "SP500" },
+      { ticker: "FOX", name: "Fox Corporation (Class B)", type: "SP500" },
+      { ticker: "BEN", name: "Franklin Resources", type: "SP500" },
+      { ticker: "FCX", name: "Freeport-McMoRan", type: "SP500" },
+      { ticker: "GRMN", name: "Garmin", type: "SP500" },
+      { ticker: "IT", name: "Gartner", type: "SP500" },
+      { ticker: "GE", name: "General Electric", type: "SP500" },
+      { ticker: "GNRC", name: "Generac Holdings", type: "SP500" },
+      { ticker: "GD", name: "General Dynamics", type: "SP500" },
+      { ticker: "GIS", name: "General Mills", type: "SP500" },
+      { ticker: "GM", name: "General Motors", type: "SP500" },
+      { ticker: "GPC", name: "Genuine Parts", type: "SP500" },
+      { ticker: "GILD", name: "Gilead Sciences", type: "SP500" },
+      { ticker: "GL", name: "Globe Life", type: "SP500" },
+      { ticker: "GPN", name: "Global Payments", type: "SP500" },
+      { ticker: "GS", name: "Goldman Sachs", type: "SP500" },
+      { ticker: "HAL", name: "Halliburton", type: "SP500" },
+      { ticker: "HIG", name: "Hartford Financial Services", type: "SP500" },
+      { ticker: "HAS", name: "Hasbro", type: "SP500" },
+      { ticker: "HCA", name: "HCA Healthcare", type: "SP500" },
+      { ticker: "PEAK", name: "Healthpeak Properties", type: "SP500" },
+      { ticker: "HSIC", name: "Henry Schein", type: "SP500" },
+      { ticker: "HSY", name: "Hershey", type: "SP500" },
+      { ticker: "HES", name: "Hess Corporation", type: "SP500" },
+      { ticker: "HPE", name: "Hewlett Packard Enterprise", type: "SP500" },
+      { ticker: "HLT", name: "Hilton Worldwide", type: "SP500" },
+      { ticker: "HOLX", name: "Hologic", type: "SP500" },
+      { ticker: "HD", name: "Home Depot", type: "SP500" },
+      { ticker: "HON", name: "Honeywell International", type: "SP500" },
+      { ticker: "HRL", name: "Hormel Foods", type: "SP500" },
+      { ticker: "HST", name: "Host Hotels & Resorts", type: "SP500" },
+      { ticker: "HWM", name: "Howmet Aerospace", type: "SP500" },
+      { ticker: "HPQ", name: "HP Inc.", type: "SP500" },
+      { ticker: "HUM", name: "Humana", type: "SP500" },
+      { ticker: "HBAN", name: "Huntington Bancshares", type: "SP500" },
+      { ticker: "HII", name: "Huntington Ingalls Industries", type: "SP500" },
+      { ticker: "IBM", name: "IBM", type: "SP500" },
+      { ticker: "IEX", name: "IDEX Corporation", type: "SP500" },
+      { ticker: "IDXX", name: "IDEXX Laboratories", type: "SP500" },
+      { ticker: "ITW", name: "Illinois Tool Works", type: "SP500" },
+      { ticker: "ILMN", name: "Illumina", type: "SP500" },
+      { ticker: "INCY", name: "Incyte", type: "SP500" },
+      { ticker: "IR", name: "Ingersoll Rand", type: "SP500" },
+      { ticker: "PODD", name: "Insulet", type: "SP500" },
+      { ticker: "INTC", name: "Intel", type: "SP500" },
+      { ticker: "ICE", name: "Intercontinental Exchange", type: "SP500" },
+      { ticker: "IP", name: "International Paper", type: "SP500" },
+      { ticker: "IPG", name: "Interpublic Group", type: "SP500" },
+      { ticker: "IFF", name: "International Flavors & Fragrances", type: "SP500" },
+      { ticker: "INTU", name: "Intuit", type: "SP500" },
+      { ticker: "ISRG", name: "Intuitive Surgical", type: "SP500" },
+      { ticker: "IVZ", name: "Invesco", type: "SP500" },
+      { ticker: "IQV", name: "IQVIA Holdings", type: "SP500" },
+      { ticker: "IRM", name: "Iron Mountain", type: "SP500" },
+      { ticker: "JBHT", name: "J.B. Hunt Transport Services", type: "SP500" },
+      { ticker: "JKHY", name: "Jack Henry & Associates", type: "SP500" },
+      { ticker: "J", name: "Jacobs Solutions", type: "SP500" },
+      { ticker: "JNJ", name: "Johnson & Johnson", type: "SP500" },
+      { ticker: "JCI", name: "Johnson Controls International", type: "SP500" },
+      { ticker: "JPM", name: "JPMorgan Chase", type: "SP500" },
+      { ticker: "JNPR", name: "Juniper Networks", type: "SP500" },
+      { ticker: "K", name: "Kellogg", type: "SP500" },
+      { ticker: "KDP", name: "Keurig Dr Pepper", type: "SP500" },
+      { ticker: "KEY", name: "KeyCorp", type: "SP500" },
+      { ticker: "KEYS", name: "Keysight Technologies", type: "SP500" },
+      { ticker: "KMB", name: "Kimberly-Clark", type: "SP500" },
+      { ticker: "KIM", name: "Kimco Realty", type: "SP500" },
+      { ticker: "KMI", name: "Kinder Morgan", type: "SP500" },
+      { ticker: "KLAC", name: "KLA Corporation", type: "SP500" },
+      { ticker: "KHC", name: "Kraft Heinz", type: "SP500" },
+      { ticker: "KR", name: "Kroger", type: "SP500" },
+      { ticker: "LHX", name: "L3Harris Technologies", type: "SP500" },
+      { ticker: "LH", name: "Laboratory Corporation of America", type: "SP500" },
+      { ticker: "LRCX", name: "Lam Research", type: "SP500" },
+      { ticker: "LW", name: "Lamb Weston", type: "SP500" },
+      { ticker: "LVS", name: "Las Vegas Sands", type: "SP500" },
+      { ticker: "LDOS", name: "Leidos Holdings", type: "SP500" },
+      { ticker: "LEN", name: "Lennar Corporation", type: "SP500" },
+      { ticker: "LNC", name: "Lincoln National", type: "SP500" },
+      { ticker: "LIN", name: "Linde", type: "SP500" },
+      { ticker: "LYV", name: "Live Nation Entertainment", type: "SP500" },
+      { ticker: "LKQ", name: "LKQ Corporation", type: "SP500" },
+      { ticker: "LMT", name: "Lockheed Martin", type: "SP500" },
+      { ticker: "L", name: "Loews Corporation", type: "SP500" },
+      { ticker: "LOW", name: "Lowe's", type: "SP500" },
+      { ticker: "LUMN", name: "Lumen Technologies", type: "SP500" },
+      { ticker: "LYB", name: "LyondellBasell Industries", type: "SP500" },
+      { ticker: "MTB", name: "M&T Bank", type: "SP500" },
+      { ticker: "MRO", name: "Marathon Oil", type: "SP500" },
+      { ticker: "MPC", name: "Marathon Petroleum", type: "SP500" },
+      { ticker: "MKTX", name: "MarketAxess Holdings", type: "SP500" },
+      { ticker: "MAR", name: "Marriott International", type: "SP500" },
+      { ticker: "MMC", name: "Marsh & McLennan", type: "SP500" },
+      { ticker: "MLM", name: "Martin Marietta Materials", type: "SP500" },
+      { ticker: "MAS", name: "Masco", type: "SP500" },
+      { ticker: "MA", name: "Mastercard", type: "SP500" },
+      { ticker: "MTCH", name: "Match Group", type: "SP500" },
+      { ticker: "MKC", name: "McCormick & Company", type: "SP500" },
+      { ticker: "MCD", name: "McDonald's", type: "SP500" },
+      { ticker: "MCK", name: "McKesson", type: "SP500" },
+      { ticker: "MDT", name: "Medtronic", type: "SP500" },
+      { ticker: "MRK", name: "Merck & Co.", type: "SP500" },
+      { ticker: "META", name: "Meta Platforms", type: "SP500" },
+      { ticker: "MET", name: "MetLife", type: "SP500" },
+      { ticker: "MTD", name: "Mettler Toledo", type: "SP500" },
+      { ticker: "MGM", name: "MGM Resorts International", type: "SP500" },
+      { ticker: "MCHP", name: "Microchip Technology", type: "SP500" },
+      { ticker: "MU", name: "Micron Technology", type: "SP500" },
+      { ticker: "MSFT", name: "Microsoft", type: "SP500" },
+      { ticker: "MAA", name: "Mid-America Apartment Communities", type: "SP500" },
+      { ticker: "MRNA", name: "Moderna", type: "SP500" },
+      { ticker: "MHK", name: "Mohawk Industries", type: "SP500" },
+      { ticker: "MOH", name: "Molina Healthcare", type: "SP500" },
+      { ticker: "TAP", name: "Molson Coors Beverage", type: "SP500" },
+      { ticker: "MDLZ", name: "Mondelez International", type: "SP500" },
+      { ticker: "MPWR", name: "Monolithic Power Systems", type: "SP500" },
+      { ticker: "MNST", name: "Monster Beverage", type: "SP500" },
+      { ticker: "MCO", name: "Moody's", type: "SP500" },
+      { ticker: "MS", name: "Morgan Stanley", type: "SP500" },
+      { ticker: "MOS", name: "Mosaic Company", type: "SP500" },
+      { ticker: "MSI", name: "Motorola Solutions", type: "SP500" },
+      { ticker: "MSCI", name: "MSCI Inc.", type: "SP500" },
+      { ticker: "NDAQ", name: "Nasdaq, Inc.", type: "SP500" },
+      { ticker: "NTAP", name: "NetApp", type: "SP500" },
+      { ticker: "NFLX", name: "Netflix", type: "SP500" },
+      { ticker: "NWL", name: "Newell Brands", type: "SP500" },
+      { ticker: "NEM", name: "Newmont Corporation", type: "SP500" },
+      { ticker: "NWSA", name: "News Corporation (Class A)", type: "SP500" },
+      { ticker: "NWS", name: "News Corporation (Class B)", type: "SP500" },
+      { ticker: "NEE", name: "NextEra Energy", type: "SP500" },
+      { ticker: "NKE", name: "Nike", type: "SP500" },
+      { ticker: "NI", name: "NiSource", type: "SP500" },
+      { ticker: "NDSN", name: "Nordson Corporation", type: "SP500" },
+      { ticker: "NSC", name: "Norfolk Southern", type: "SP500" },
+      { ticker: "NTRS", name: "Northern Trust", type: "SP500" },
+      { ticker: "NOC", name: "Northrop Grumman", type: "SP500" },
+      { ticker: "NCLH", name: "Norwegian Cruise Line Holdings", type: "SP500" },
+      { ticker: "NRG", name: "NRG Energy", type: "SP500" },
+      { ticker: "NUE", name: "Nucor", type: "SP500" },
+      { ticker: "NVDA", name: "NVIDIA", type: "SP500" },
+      { ticker: "NVR", name: "NVR, Inc.", type: "SP500" },
+      { ticker: "NXPI", name: "NXP Semiconductors", type: "SP500" },
+      { ticker: "ORLY", name: "O'Reilly Automotive", type: "SP500" },
+      { ticker: "OXY", name: "Occidental Petroleum", type: "SP500" },
+      { ticker: "ODFL", name: "Old Dominion Freight Line", type: "SP500" },
+      { ticker: "OMC", name: "Omnicom Group", type: "SP500" },
+      { ticker: "ON", name: "ON Semiconductor", type: "SP500" },
+      { ticker: "OKE", name: "ONEOK", type: "SP500" },
+      { ticker: "ORCL", name: "Oracle", type: "SP500" },
+      { ticker: "OGN", name: "Organon & Co.", type: "SP500" },
+      { ticker: "OTIS", name: "Otis Worldwide", type: "SP500" },
+      { ticker: "PCAR", name: "PACCAR", type: "SP500" },
+      { ticker: "PKG", name: "Packaging Corporation of America", type: "SP500" },
+      { ticker: "PARA", name: "Paramount Global", type: "SP500" },
+      { ticker: "PH", name: "Parker-Hannifin", type: "SP500" },
+      { ticker: "PAYX", name: "Paychex", type: "SP500" },
+      { ticker: "PAYC", name: "Paycom Software", type: "SP500" },
+      { ticker: "PYPL", name: "PayPal", type: "SP500" },
+      { ticker: "PNR", name: "Pentair", type: "SP500" },
+      { ticker: "PEP", name: "PepsiCo", type: "SP500" },
+      { ticker: "PKI", name: "PerkinElmer", type: "SP500" },
+      { ticker: "PFE", name: "Pfizer", type: "SP500" },
+      { ticker: "PCG", name: "PG&E Corporation", type: "SP500" },
+      { ticker: "PM", name: "Philip Morris International", type: "SP500" },
+      { ticker: "PSX", name: "Phillips 66", type: "SP500" },
+      { ticker: "PNW", name: "Pinnacle West Capital", type: "SP500" },
+      { ticker: "PXD", name: "Pioneer Natural Resources", type: "SP500" },
+      { ticker: "PNC", name: "PNC Financial Services", type: "SP500" },
+      { ticker: "POOL", name: "Pool Corporation", type: "SP500" },
+      { ticker: "PPG", name: "PPG Industries", type: "SP500" },
+      { ticker: "PPL", name: "PPL Corporation", type: "SP500" },
+      { ticker: "PFG", name: "Principal Financial Group", type: "SP500" },
+      { ticker: "PG", name: "Procter & Gamble", type: "SP500" },
+      { ticker: "PGR", name: "Progressive Corporation", type: "SP500" },
+      { ticker: "PLD", name: "Prologis", type: "SP500" },
+      { ticker: "PRU", name: "Prudential Financial", type: "SP500" },
+      { ticker: "PEG", name: "Public Service Enterprise Group", type: "SP500" },
+      { ticker: "PTC", name: "PTC Inc.", type: "SP500" },
+      { ticker: "PSA", name: "Public Storage", type: "SP500" },
+      { ticker: "PHM", name: "PulteGroup", type: "SP500" },
+      { ticker: "QRVO", name: "Qorvo", type: "SP500" },
+      { ticker: "PWR", name: "Quanta Services", type: "SP500" },
+      { ticker: "QCOM", name: "Qualcomm", type: "SP500" },
+      { ticker: "DGX", name: "Quest Diagnostics", type: "SP500" },
+      { ticker: "RL", name: "Ralph Lauren", type: "SP500" },
+      { ticker: "RJF", name: "Raymond James Financial", type: "SP500" },
+      { ticker: "RTX", name: "Raytheon Technologies", type: "SP500" },
+      { ticker: "O", name: "Realty Income", type: "SP500" },
+      { ticker: "REG", name: "Regency Centers", type: "SP500" },
+      { ticker: "REGN", name: "Regeneron Pharmaceuticals", type: "SP500" },
+      { ticker: "RF", name: "Regions Financial", type: "SP500" },
+      { ticker: "RSG", name: "Republic Services", type: "SP500" },
+      { ticker: "RMD", name: "ResMed", type: "SP500" },
+      { ticker: "RHI", name: "Robert Half International", type: "SP500" },
+      { ticker: "ROK", name: "Rockwell Automation", type: "SP500" },
+      { ticker: "ROL", name: "Rollins, Inc.", type: "SP500" },
+      { ticker: "ROP", name: "Roper Technologies", type: "SP500" },
+      { ticker: "ROST", name: "Ross Stores", type: "SP500" },
+      { ticker: "RCL", name: "Royal Caribbean Cruises", type: "SP500" },
+      { ticker: "SPGI", name: "S&P Global", type: "SP500" },
+      { ticker: "CRM", name: "Salesforce", type: "SP500" },
+      { ticker: "SBAC", name: "SBA Communications", type: "SP500" },
+      { ticker: "SLB", name: "Schlumberger", type: "SP500" },
+      { ticker: "STX", name: "Seagate Technology", type: "SP500" },
+      { ticker: "SEE", name: "Sealed Air", type: "SP500" },
+      { ticker: "SRE", name: "Sempra Energy", type: "SP500" },
+      { ticker: "NOW", name: "ServiceNow", type: "SP500" },
+      { ticker: "SHW", name: "Sherwin-Williams", type: "SP500" },
+      { ticker: "SBNY", name: "Signature Bank", type: "SP500" },
+      { ticker: "SPG", name: "Simon Property Group", type: "SP500" },
+      { ticker: "SJM", name: "J.M. Smucker", type: "SP500" },
+      { ticker: "SNA", name: "Snap-on", type: "SP500" },
+      { ticker: "SEDG", name: "SolarEdge Technologies", type: "SP500" },
+      { ticker: "SO", name: "Southern Company", type: "SP500" },
+      { ticker: "LUV", name: "Southwest Airlines", type: "SP500" },
+      { ticker: "SWK", name: "Stanley Black & Decker", type: "SP500" },
+      { ticker: "SBUX", name: "Starbucks", type: "SP500" },
+      { ticker: "STT", name: "State Street Corporation", type: "SP500" },
+      { ticker: "STLD", name: "Steel Dynamics", type: "SP500" },
+      { ticker: "STE", name: "Steris", type: "SP500" },
+      { ticker: "SYK", name: "Stryker Corporation", type: "SP500" },
+      { ticker: "SIVB", name: "SVB Financial Group", type: "SP500" },
+      { ticker: "SYF", name: "Synchrony Financial", type: "SP500" },
+      { ticker: "SNPS", name: "Synopsys", type: "SP500" },
+      { ticker: "SYY", name: "Sysco", type: "SP500" },
+      { ticker: "TMUS", name: "T-Mobile US", type: "SP500" },
+      { ticker: "TROW", name: "T. Rowe Price", type: "SP500" },
+      { ticker: "TTWO", name: "Take-Two Interactive", type: "SP500" },
+      { ticker: "TPR", name: "Tapestry, Inc.", type: "SP500" },
+      { ticker: "TRGP", name: "Targa Resources", type: "SP500" },
+      { ticker: "TGT", name: "Target Corporation", type: "SP500" },
+      { ticker: "TEL", name: "TE Connectivity", type: "SP500" },
+      { ticker: "TDY", name: "Teledyne Technologies", type: "SP500" },
+      { ticker: "TFX", name: "Teleflex", type: "SP500" },
+      { ticker: "TER", name: "Teradyne", type: "SP500" },
+      { ticker: "TSLA", name: "Tesla", type: "SP500" },
+      { ticker: "TXN", name: "Texas Instruments", type: "SP500" },
+      { ticker: "TXT", name: "Textron", type: "SP500" },
+      { ticker: "TMO", name: "Thermo Fisher Scientific", type: "SP500" },
+      { ticker: "TJX", name: "TJX Companies", type: "SP500" },
+      { ticker: "TSCO", name: "Tractor Supply", type: "SP500" },
+      { ticker: "TT", name: "Trane Technologies", type: "SP500" },
+      { ticker: "TDG", name: "TransDigm Group", type: "SP500" },
+      { ticker: "TRV", name: "Travelers Companies", type: "SP500" },
+      { ticker: "TRMB", name: "Trimble Inc.", type: "SP500" },
+      { ticker: "TFC", name: "Truist Financial", type: "SP500" },
+      { ticker: "TYL", name: "Tyler Technologies", type: "SP500" },
+      { ticker: "TSN", name: "Tyson Foods", type: "SP500" },
+      { ticker: "USB", name: "U.S. Bancorp", type: "SP500" },
+      { ticker: "UDR", name: "UDR, Inc.", type: "SP500" },
+      { ticker: "ULTA", name: "Ulta Beauty", type: "SP500" },
+      { ticker: "UAA", name: "Under Armour (Class A)", type: "SP500" },
+      { ticker: "UA", name: "Under Armour (Class C)", type: "SP500" },
+      { ticker: "UNP", name: "Union Pacific", type: "SP500" },
+      { ticker: "UAL", name: "United Airlines Holdings", type: "SP500" },
+      { ticker: "UNH", name: "UnitedHealth Group", type: "SP500" },
+      { ticker: "UPS", name: "United Parcel Service", type: "SP500" },
+      { ticker: "URI", name: "United Rentals", type: "SP500" },
+      { ticker: "UHS", name: "Universal Health Services", type: "SP500" },
+      { ticker: "VLO", name: "Valero Energy", type: "SP500" },
+      { ticker: "VTR", name: "Ventas", type: "SP500" },
+      { ticker: "VRSN", name: "VeriSign", type: "SP500" },
+      { ticker: "VRSK", name: "Verisk Analytics", type: "SP500" },
+      { ticker: "VZ", name: "Verizon Communications", type: "SP500" },
+      { ticker: "VRTX", name: "Vertex Pharmaceuticals", type: "SP500" },
+      { ticker: "VFC", name: "VF Corporation", type: "SP500" },
+      { ticker: "VTRS", name: "Viatris", type: "SP500" },
+      { ticker: "VICI", name: "VICI Properties", type: "SP500" },
+      { ticker: "V", name: "Visa", type: "SP500" },
+      { ticker: "VMC", name: "Vulcan Materials", type: "SP500" },
+      { ticker: "WAB", name: "Wabtec Corporation", type: "SP500" },
+      { ticker: "WBA", name: "Walgreens Boots Alliance", type: "SP500" },
+      { ticker: "WMT", name: "Walmart", type: "SP500" },
+      { ticker: "WBD", name: "Warner Bros. Discovery", type: "SP500" },
+      { ticker: "WM", name: "Waste Management", type: "SP500" },
+      { ticker: "WAT", name: "Waters Corporation", type: "SP500" },
+      { ticker: "WEC", name: "WEC Energy Group", type: "SP500" },
+      { ticker: "WFC", name: "Wells Fargo", type: "SP500" },
+      { ticker: "WELL", name: "Welltower", type: "SP500" },
+      { ticker: "WST", name: "West Pharmaceutical Services", type: "SP500" },
+      { ticker: "WDC", name: "Western Digital", type: "SP500" },
+      { ticker: "WRK", name: "WestRock", type: "SP500" },
+      { ticker: "WY", name: "Weyerhaeuser", type: "SP500" },
+      { ticker: "WHR", name: "Whirlpool Corporation", type: "SP500" },
+      { ticker: "WMB", name: "Williams Companies", type: "SP500" },
+      { ticker: "WTW", name: "Willis Towers Watson", type: "SP500" },
+      { ticker: "GWW", name: "W.W. Grainger", type: "SP500" },
+      { ticker: "WYNN", name: "Wynn Resorts", type: "SP500" },
+      { ticker: "XEL", name: "Xcel Energy", type: "SP500" },
+      { ticker: "XYL", name: "Xylem Inc.", type: "SP500" },
+      { ticker: "YUM", name: "Yum! Brands", type: "SP500" },
+      { ticker: "ZBRA", name: "Zebra Technologies", type: "SP500" },
+      { ticker: "ZBH", name: "Zimmer Biomet", type: "SP500" },
+      { ticker: "ZION", name: "Zions Bancorporation", type: "SP500" },
+      { ticker: "ZTS", name: "Zoetis", type: "SP500" },
+      // CAC 40
+      { ticker: "AI.PA", name: "Air Liquide", type: "CAC40" },
+      { ticker: "AIR.PA", name: "Airbus", type: "CAC40" },
+      { ticker: "ALO.PA", name: "Alstom", type: "CAC40" },
+      { ticker: "MT.PA", name: "ArcelorMittal", type: "CAC40" },
+      { ticker: "CS.PA", name: "AXA", type: "CAC40" },
+      { ticker: "BN.PA", name: "Danone", type: "CAC40" },
+      { ticker: "EN.PA", name: "Bouygues", type: "CAC40" },
+      { ticker: "CAP.PA", name: "Capgemini", type: "CAC40" },
+      { ticker: "CA.PA", name: "Carrefour", type: "CAC40" },
+      { ticker: "ACA.PA", name: "Crédit Agricole", type: "CAC40" },
+      { ticker: "BNP.PA", name: "BNP Paribas", type: "CAC40" },
+      { ticker: "ENGI.PA", name: "Engie", type: "CAC40" },
+      { ticker: "EL.PA", name: "EssilorLuxottica", type: "CAC40" },
+      { ticker: "RMS.PA", name: "Hermès", type: "CAC40" },
+      { ticker: "OR.PA", name: "L'Oréal", type: "CAC40" },
+      { ticker: "MC.PA", name: "LVMH", type: "CAC40" },
+      { ticker: "LR.PA", name: "Legrand", type: "CAC40" },
+      { ticker: "ML.PA", name: "Michelin", type: "CAC40" },
+      { ticker: "ORA.PA", name: "Orange", type: "CAC40" },
+      { ticker: "RI.PA", name: "Pernod Ricard", type: "CAC40" },
+      { ticker: "PUB.PA", name: "Publicis Groupe", type: "CAC40" },
+      { ticker: "RNO.PA", name: "Renault", type: "CAC40" },
+      { ticker: "SAF.PA", name: "Safran", type: "CAC40" },
+      { ticker: "SGO.PA", name: "Saint-Gobain", type: "CAC40" },
+      { ticker: "SAN.PA", name: "Sanofi", type: "CAC40" },
+      { ticker: "SU.PA", name: "Schneider Electric", type: "CAC40" },
+      { ticker: "GLE.PA", name: "Société Générale", type: "CAC40" },
+      { ticker: "SW.PA", name: "Sodexo", type: "CAC40" },
+      { ticker: "STM.PA", name: "STMicroelectronics", type: "CAC40" },
+      { ticker: "TEP.PA", name: "Teleperformance", type: "CAC40" },
+      { ticker: "HO.PA", name: "Thales", type: "CAC40" },
+      { ticker: "TTE.PA", name: "TotalEnergies", type: "CAC40" },
+      { ticker: "URW.PA", name: "Unibail-Rodamco-Westfield", type: "CAC40" },
+      { ticker: "VIE.PA", name: "Veolia", type: "CAC40" },
+      { ticker: "DG.PA", name: "Vinci", type: "CAC40" },
+      { ticker: "VIV.PA", name: "Vivendi", type: "CAC40" },
+      { ticker: "WLN.PA", name: "Worldline", type: "CAC40" },
+      { ticker: "KER.PA", name: "Kering", type: "CAC40" },
+      { ticker: "ATO.PA", name: "Atos", type: "CAC40" },
+      { ticker: "BVI.PA", name: "Bureau Veritas", type: "CAC40" },
+      // DAX
+      { ticker: "ADS.DE", name: "Adidas", type: "DAX" },
+      { ticker: "ALV.DE", name: "Allianz", type: "DAX" },
+      { ticker: "BAS.DE", name: "BASF", type: "DAX" },
+      { ticker: "BAYN.DE", name: "Bayer", type: "DAX" },
+      { ticker: "BEI.DE", name: "Beiersdorf", type: "DAX" },
+      { ticker: "BMW.DE", name: "BMW", type: "DAX" },
+      { ticker: "BNR.DE", name: "Brenntag", type: "DAX" },
+      { ticker: "CBK.DE", name: "Commerzbank", type: "DAX" },
+      { ticker: "CON.DE", name: "Continental", type: "DAX" },
+      { ticker: "1COV.DE", name: "Covestro", type: "DAX" },
+      { ticker: "DAI.DE", name: "Daimler", type: "DAX" },
+      { ticker: "DBK.DE", name: "Deutsche Bank", type: "DAX" },
+      { ticker: "DB1.DE", name: "Deutsche Börse", type: "DAX" },
+      { ticker: "DTE.DE", name: "Deutsche Telekom", type: "DAX" },
+      { ticker: "DHER.DE", name: "Delivery Hero", type: "DAX" },
+      { ticker: "EOAN.DE", name: "E.ON", type: "DAX" },
+      { ticker: "FRE.DE", name: "Fresenius", type: "DAX" },
+      { ticker: "FME.DE", name: "Fresenius Medical Care", type: "DAX" },
+      { ticker: "HEI.DE", name: "HeidelbergCement", type: "DAX" },
+      { ticker: "HEN3.DE", name: "Henkel", type: "DAX" },
+      { ticker: "IFX.DE", name: "Infineon Technologies", type: "DAX" },
+      { ticker: "LIN.DE", name: "Linde", type: "DAX" },
+      { ticker: "MRK.DE", name: "Merck KGaA", type: "DAX" },
+      { ticker: "MTX.DE", name: "MTU Aero Engines", type: "DAX" },
+      { ticker: "MUV2.DE", name: "Munich Re", type: "DAX" },
+      { ticker: "PUM.DE", name: "Puma", type: "DAX" },
+      { ticker: "QIA.DE", name: "Qiagen", type: "DAX" },
+      { ticker: "RWE.DE", name: "RWE", type: "DAX" },
+      { ticker: "SAP.DE", name: "SAP", type: "DAX" },
+      { ticker: "SRT3.DE", name: "Sartorius", type: "DAX" },
+      { ticker: "SIE.DE", name: "Siemens", type: "DAX" },
+      { ticker: "SHL.DE", name: "Siemens Healthineers", type: "DAX" },
+      { ticker: "SY1.DE", name: "Symrise", type: "DAX" },
+      { ticker: "VOW3.DE", name: "Volkswagen", type: "DAX" },
+      { ticker: "VNA.DE", name: "Vonovia", type: "DAX" },
+      { ticker: "ZAL.DE", name: "Zalando", type: "DAX" },
+      { ticker: "DHL.DE", name: "Deutsche Post", type: "DAX" },
+      { ticker: "HFG.DE", name: "HelloFresh", type: "DAX" },
+      { ticker: "POX.DE", name: "Porsche", type: "DAX" },
+      { ticker: "TKA.DE", name: "Thyssenkrupp", type: "DAX" }
+    ]
+  },
+  crypto: {
+    default: { 
+      ticker: "BTC", 
+      name: "Bitcoin", 
+      price: 58230, 
+      change: -120.50, 
+      changePercent: -0.21, 
+      chartData: [58000, 58500, 58300, 58150, 58230], 
+      indicators: [
+        { name: "Market Cap", value: "$1.15T", note: 5, maxNote: 5 },
+        { name: "Volume 24h", value: "$32.4B", note: 4, maxNote: 5 },
+        { name: "Circulating Supply", value: "19.7M", note: 3, maxNote: 5 },
+        { name: "Price Volatility", value: "4.2%", note: 2, maxNote: 5 },
+        { name: "Transaction Speed", value: "7 tx/s", note: 3, maxNote: 5 }
+      ], 
+      overallScore: 80, 
+      explanation: "<span class='fw-bold'>Bitcoin</span> reste la <span class='text-warning'>crypto de référence</span> avec une <span class='fst-italic'>capitalisation massive</span> et un volume élevé, renforçant sa <span class='text-success'>liquidité</span>. Cependant, sa volatilité reste un <span class='text-danger'>risque</span>, et la vitesse des transactions est limitée par rapport à d'autres blockchains. L'offre circulante approche son maximum, ce qui peut soutenir la <span class='fw-bold'>valeur</span> à long terme."
+    },
+    suggestions: [
+      { ticker: "BTC", name: "Bitcoin" },
+      { ticker: "ETH", name: "Ethereum" },
+      { ticker: "SOL", name: "Solana" },
+      { ticker: "DOGE", name: "Dogecoin" }
+    ],
+    searchList: [
+      // Top 100 cryptos (liste partielle, extensible via API CoinGecko)
+      { ticker: "BTC", name: "Bitcoin", type: "crypto" },
+      { ticker: "ETH", name: "Ethereum", type: "crypto" },
+      { ticker: "USDT", name: "Tether", type: "crypto" },
+      { ticker: "BNB", name: "Binance Coin", type: "crypto" },
+      { ticker: "XRP", name: "Ripple", type: "crypto" },
+      { ticker: "ADA", name: "Cardano", type: "crypto" },
+      { ticker: "SOL", name: "Solana", type: "crypto" },
+      { ticker: "DOGE", name: "Dogecoin", type: "crypto" },
+      { ticker: "DOT", name: "Polkadot", type: "crypto" },
+      { ticker: "MATIC", name: "Polygon", type: "crypto" },
+      { ticker: "SHIB", name: "Shiba Inu", type: "crypto" },
+      { ticker: "TRX", name: "TRON", type: "crypto" },
+      { ticker: "AVAX", name: "Avalanche", type: "crypto" },
+      { ticker: "LINK", name: "Chainlink", type: "crypto" },
+      { ticker: "LTC", name: "Litecoin", type: "crypto" },
+      { ticker: "BCH", name: "Bitcoin Cash", type: "crypto" },
+      { ticker: "ALGO", name: "Algorand", type: "crypto" },
+      { ticker: "XLM", name: "Stellar", type: "crypto" },
+      { ticker: "ATOM", name: "Cosmos", type: "crypto" },
+      { ticker: "UNI", name: "Uniswap", type: "crypto" },
+      { ticker: "XMR", name: "Monero", type: "crypto" },
+      { ticker: "ETC", name: "Ethereum Classic", type: "crypto" },
+      { ticker: "HBAR", name: "Hedera", type: "crypto" },
+      { ticker: "ICP", name: "Internet Computer", type: "crypto" },
+      { ticker: "LDO", name: "Lido DAO", type: "crypto" },
+      { ticker: "FIL", name: "Filecoin", type: "crypto" },
+      { ticker: "MKR", name: "Maker", type: "crypto" },
+      { ticker: "CRO", name: "Crypto.com Coin", type: "crypto" },
+      { ticker: "QNT", name: "Quant", type: "crypto" },
+      { ticker: "VET", name: "VeChain", type: "crypto" },
+      { ticker: "NEAR", name: "NEAR Protocol", type: "crypto" },
+      { ticker: "AAVE", name: "Aave", type: "crypto" },
+      { ticker: "GRT", name: "The Graph", type: "crypto" },
+      { ticker: "EGLD", name: "MultiversX", type: "crypto" },
+      { ticker: "EOS", name: "EOS", type: "crypto" },
+      { ticker: "XTZ", name: "Tezos", type: "crypto" },
+      { ticker: "THETA", name: "Theta Network", type: "crypto" },
+      { ticker: "AXS", name: "Axie Infinity", type: "crypto" },
+      { ticker: "SAND", name: "The Sandbox", type: "crypto" },
+      { ticker: "MANA", name: "Decentraland", type: "crypto" }
+      // Étendre à 100 via API
+    ]
+  }
+};
+
+let currentContent = "action";
+let currentHealth = "actions";
+let currentAsset = assetsData.action.default;
+let assetChart = null;
+
+function switchContent(type) {
+  currentContent = type;
+  currentHealth = type === "action" ? "actions" : "cryptos";
+  document.querySelectorAll(".btn-filter").forEach(btn => {
+    btn.classList.remove("active", "crypto");
+    if (btn.getAttribute("onclick") === `switchContent('${type}')`) {
+      btn.classList.add("active");
+      if (type === "crypto") btn.classList.add("crypto");
+    }
+  });
+  document.querySelectorAll(".btn-health").forEach(btn => {
+    btn.classList.remove("active", "crypto");
+    if (btn.getAttribute("onclick") === `switchHealth('${currentHealth}')`) {
+      btn.classList.add("active");
+      if (currentHealth === "cryptos") btn.classList.add("crypto");
+    }
+  });
+  currentAsset = assetsData[type].default;
+  updateContent();
+  updateSuggestions("");
+}
+
+function switchHealth(type) {
+  currentHealth = type;
+  currentContent = type === "actions" ? "action" : "crypto";
+  document.querySelectorAll(".btn-health").forEach(btn => {
+    btn.classList.remove("active", "crypto");
+    if (btn.getAttribute("onclick") === `switchHealth('${type}')`) {
+      btn.classList.add("active");
+      if (type === "cryptos") btn.classList.add("crypto");
+    }
+  });
+  document.querySelectorAll(".btn-filter").forEach(btn => {
+    btn.classList.remove("active", "crypto");
+    if (btn.getAttribute("onclick") === `switchContent('${currentContent}')`) {
+      btn.classList.add("active");
+      if (currentContent === "crypto") btn.classList.add("crypto");
+    }
+  });
+  currentAsset = assetsData[currentContent].default;
+  updateContent();
+  updateSuggestions("");
+}
+
+function updateContent() {
+  // Boutons de suggestion
+  const suggestionButtons = document.getElementById("suggestionButtons");
+  suggestionButtons.innerHTML = "";
+  assetsData[currentContent].suggestions.forEach(suggestion => {
+    const btn = document.createElement("button");
+    btn.className = `btn-suggestion ${currentContent === "crypto" ? "crypto" : ""}`;
+    btn.innerHTML = `<i class="bi ${currentContent === "action" ? "bi-building" : "bi-currency-bitcoin"} me-2"></i>${suggestion.name}`;
+    btn.onclick = () => selectAsset(suggestion.ticker);
+    suggestionButtons.appendChild(btn);
+  });
+
+  // Prix et variation
+  document.getElementById("assetName").innerHTML = `<i class="bi ${currentContent === "action" ? "bi-building" : "bi-currency-bitcoin"} me-2"></i>${currentAsset.name} (${currentAsset.ticker})`;
+  document.getElementById("assetPrice").textContent = currentContent === "action" ? `$${currentAsset.price}` : `${currentAsset.price} USDT`;
+  document.getElementById("assetPrice").className = currentContent === "action" ? "text-primary fs-5" : "text-warning fs-5";
+  document.getElementById("assetChange").innerHTML = `<i class="bi ${currentAsset.change >= 0 ? "bi-arrow-up-circle" : "bi-arrow-down-circle"} me-1"></i>${currentAsset.change >= 0 ? "+" : ""}${currentAsset.change}${currentContent === "action" ? "$" : " USDT"} (${currentAsset.changePercent >= 0 ? "+" : ""}${currentAsset.changePercent}%)`;
+  document.getElementById("assetChange").className = currentAsset.change >= 0 ? "text-success" : "text-danger";
+
+  // Graphique
+  if (assetChart) assetChart.destroy();
+  const chartCtx = document.getElementById("assetChart").getContext("2d");
+  assetChart = new Chart(chartCtx, {
+    type: "line",
+    data: {
+      labels: ["Jour 1", "Jour 2", "Jour 3", "Jour 4", "Jour 5"],
+      datasets: [{
+        label: currentAsset.name,
+        data: currentAsset.chartData,
+        borderColor: currentContent === "action" ? "#007BFF" : "#FFD700",
+        backgroundColor: currentContent === "action" ? "rgba(0, 123, 255, 0.1)" : "rgba(255, 215, 0, 0.1)",
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: currentContent === "action" ? "#007BFF" : "#FFD700",
+        pointBorderColor: "#fff",
+        pointBorderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: false, title: { display: true, text: currentContent === "action" ? "Prix ($)" : "Prix (USDT)", color: "#2C3E50" } },
+        x: { title: { display: true, text: "Jours", color: "#2C3E50" } }
+      },
+      plugins: { 
+        legend: { display: false }, 
+        title: { 
+          display: true, 
+          text: `Évolution du prix de ${currentAsset.name}`, 
+          color: "#2C3E50", 
+          font: { size: 16 } 
+        } 
+      },
+      maintainAspectRatio: false
+    }
+  });
+
+  // Indicateurs
+  const indicatorsGrid = document.getElementById("indicatorsGrid");
+  indicatorsGrid.innerHTML = "";
+  currentAsset.indicators.forEach(indicator => {
+    const card = document.createElement("div");
+    card.className = "indicator-card";
+    card.innerHTML = `
+      <h6><i class="bi bi-pie-chart-fill me-2 ${currentContent === "action" ? "text-primary" : "text-warning"}"></i>${indicator.name}</h6>
+      <p class="fw-bold">${indicator.value}</p>
+      <p>Note: <span class="text-primary">${indicator.note}</span>/${indicator.maxNote}</p>
+      <div class="chart-container large-pie">
+        <canvas id="pie-${indicator.name.replace(/\s/g, "-")}"></canvas>
+      </div>
+    `;
+    indicatorsGrid.appendChild(card);
+    const ctx = document.getElementById(`pie-${indicator.name.replace(/\s/g, "-")}`).getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        datasets: [{ data: [indicator.note, indicator.maxNote - indicator.note], backgroundColor: [currentContent === "action" ? "#28A745" : "#FFD700", "#E9ECEF"], borderWidth: 0 }]
+      },
+      options: { cutout: "70%", plugins: { legend: { display: false }, tooltip: { enabled: false } }, maintainAspectRatio: false }
+    });
+  });
+
+  // Note globale
+  document.getElementById("score20Text").innerHTML = `<span class="fst-italic">Score sur 20 de</span> <span class="fw-bold">${currentAsset.name}</span>`;
+  document.getElementById("score20Value").textContent = `${Math.round(currentAsset.overallScore / 5)}/20`;
+  document.getElementById("score100Text").innerHTML = `<span class="fst-italic">Score sur 100 de</span> <span class="fw-bold">${currentAsset.name}</span>`;
+  document.getElementById("score100Value").textContent = `${currentAsset.overallScore}/100`;
+  const overallChart = document.getElementById("overallScoreChart").getContext("2d");
+  new Chart(overallChart, {
+    type: "doughnut",
+    data: {
+      datasets: [{ data: [currentAsset.overallScore, 100 - currentAsset.overallScore], backgroundColor: [currentContent === "action" ? "#007BFF" : "#FFD700", "#E9ECEF"], borderWidth: 0 }]
+    },
+    options: { cutout: "70%", plugins: { legend: { display: false }, tooltip: { enabled: false } }, maintainAspectRatio: false }
+  });
+
+  // Explications
+  document.getElementById("explanationText").innerHTML = currentAsset.explanation;
+}
+
+function selectAsset(ticker) {
+  const allAssets = [...assetsData.action.searchList, ...assetsData.crypto.searchList];
+  const selected = allAssets.find(asset => asset.ticker === ticker);
+  if (selected) {
+    const isCrypto = selected.type === "crypto";
+    switchContent(isCrypto ? "crypto" : "action");
+    const newAsset = {
+      NVDA: assetsData.action.default,
+      AAPL: { ...assetsData.action.default, ticker: "AAPL", name: "Apple", price: 189.87, change: 1.23, changePercent: 0.65, chartData: [185, 187, 188, 189, 189.87], overallScore: 82, explanation: "<span class='fw-bold'>Apple</span> maintient une <span class='text-success'>santé financière solide</span> grâce à ses marges élevées et sa marque puissante. Le <span class='fst-italic'>ROE</span> est robuste, mais le Debt-to-Equity légèrement plus élevé reflète des emprunts pour rachats d'actions." },
+      MSFT: { ...assetsData.action.default, ticker: "MSFT", name: "Microsoft", price: 420.45, change: -0.78, changePercent: -0.19, chartData: [415, 418, 420, 419, 420.45], overallScore: 88, explanation: "<span class='fw-bold'>Microsoft</span> excelle avec des <span class='text-success'>marges élevées</span> et un <span class='fst-italic'>Current Ratio</span> solide, soutenu par le cloud. Le Payout Ratio modéré indique un équilibre entre dividendes et <span class='text-primary'>croissance</span>." },
+      AMZN: { ...assetsData.action.default, ticker: "AMZN", name: "Amazon", price: 186.13, change: 2.10, changePercent: 1.14, chartData: [180, 182, 184, 185, 186.13], overallScore: 80, explanation: "<span class='fw-bold'>Amazon</span> montre une <span class='text-success'>croissance forte</span>, mais des marges plus faibles en raison d'investissements massifs. Le <span class='fst-italic'>Quick Ratio</span> reste solide pour un détaillant." },
+      BTC: assetsData.crypto.default,
+      ETH: { ...assetsData.crypto.default, ticker: "ETH", name: "Ethereum", price: 2950, change: 45.30, changePercent: 1.56, chartData: [2900, 2920, 2940, 2930, 2950], overallScore: 78, explanation: "<span class='fw-bold'>Ethereum</span> bénéficie d'une forte <span class='text-warning'>adoption</span> grâce aux smart contracts, mais la <span class='text-danger'>volatilité</span> et les frais élevés posent des défis. Le volume reste robuste." },
+      SOL: { ...assetsData.crypto.default, ticker: "SOL", name: "Solana", price: 150.25, change: -2.15, changePercent: -1.41, chartData: [148, 149, 151, 150, 150.25], overallScore: 75, explanation: "<span class='fw-bold'>Solana</span> offre une <span class='text-success'>vitesse élevée</span>, mais sa <span class='text-danger'>centralisation relative</span> est un risque. Le Market Cap progresse rapidement." },
+      DOGE: { ...assetsData.crypto.default, ticker: "DOGE", name: "Dogecoin", price: 0.12, change: 0.01, changePercent: 8.33, chartData: [0.10, 0.11, 0.11, 0.12, 0.12], overallScore: 60, explanation: "<span class='fw-bold'>Dogecoin</span> repose sur la <span class='text-warning'>communauté</span>, mais son <span class='text-danger'>utilité limitée</span> et sa volatilité extrême le rendent spéculatif." }
+    }[ticker];
+    if (newAsset) {
+      currentAsset = newAsset;
+      updateContent();
+      document.getElementById("tickerInput").value = "";
+      updateSuggestions("");
+    }
+  }
+}
+
+function updateSuggestions(query) {
+  const suggestionsList = document.getElementById("suggestionsList");
+  const contentBelow = document.getElementById("contentBelowSearch");
+  suggestionsList.innerHTML = "";
+  if (query) {
+    const allAssets = [...assetsData.action.searchList, ...assetsData.crypto.searchList];
+    const filtered = allAssets.filter(asset => 
+      asset.ticker.toLowerCase().startsWith(query.toLowerCase()) || 
+      asset.name.toLowerCase().startsWith(query.toLowerCase())
+    ).slice(0, 4); // Max 4 suggestions
+    filtered.forEach(asset => {
+      const item = document.createElement("div");
+      item.className = "suggestion-item";
+      item.innerHTML = `<i class="bi ${asset.type === "crypto" ? "bi-currency-bitcoin text-warning" : "bi-building text-primary"} me-2"></i>${asset.name} (${asset.ticker})`;
+      item.onclick = () => selectAsset(asset.ticker);
+      suggestionsList.appendChild(item);
+    });
+    suggestionsList.classList.toggle("active", filtered.length > 0);
+    // Ajuster la marge du contenu
+    const suggestionHeight = filtered.length * 48; // 48px par suggestion
+    contentBelow.style.marginTop = `${Math.min(suggestionHeight + 10, 200)}px`;
+  } else {
+    suggestionsList.classList.remove("active");
+    contentBelow.style.marginTop = "0px";
+  }
+}
+
+document.getElementById("tickerInput").addEventListener("input", (e) => {
+  updateSuggestions(e.target.value);
+});
+
+document.getElementById("tickerInput").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    const ticker = e.target.value.trim().toUpperCase();
+    selectAsset(ticker);
+  }
+});
+
+// Initialisation
+updateContent();
+updateSuggestions("");
+
   </script>
 </body>
 </html>
