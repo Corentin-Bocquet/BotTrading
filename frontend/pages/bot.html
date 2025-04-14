@@ -749,7 +749,7 @@
       </div>
 
       <div class="right-section bot-history">
-        <h3>Historique des trades</h3>
+        <h3>Historique des ordres</h3>
         <table class="trade-history-table">
           <thead>
             <tr>
@@ -758,8 +758,8 @@
               <th>Type</th>
               <th>Taille</th>
               <th>Prix d'entrée</th>
-              <th>Prix de sortie</th>
-              <th>Profit/Perte</th>
+              <th>Status</th>
+              <th>Classe actif</th>
             </tr>
           </thead>
           <tbody id="tradeHistoryBody">
@@ -862,7 +862,7 @@
     <div class="modal-body">
       <div class="stats-upper">
         <div class="stats-left">
-          <h6>Gains : <span class="gain-value">+12 450 €</span></h6>
+          <h6>Gains : <span class="gain-value" id="gain-value"></span></h6>
           <div style="display: flex; justify-content: space-around;">
             <div class="chart-container">
               <canvas id="winPercentageChart"></canvas>
@@ -1039,10 +1039,67 @@
     const user = JSON.parse(userString);
     const userInfo = JSON.parse(user);
     console.log(userInfo.firstName + ' ' + userInfo.photo);
-
+    var ordres = [];
     // Afficher la valeur de 'user' dans un élément HTML
     document.getElementById('userName').innerText = `${userInfo.firstName} ${userInfo.lastName}`;
     document.getElementById('userImage').src = `http://217.154.7.154:4000/photo/${userInfo.photo}`;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+      };
+
+      fetch("http://217.154.7.154:3000/api/allorders", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result)
+          const data = JSON.parse(result);
+          const tradeHistoryBody = document.getElementById('tradeHistoryBody');
+          data.forEach((trade) => {
+            const date = new Date(trade.created_at);
+            const formatted = date.toLocaleString('fr-FR', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+            });
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${formatted}</td>
+              <td>${trade.symbol}</td>
+              <td>${trade.side}</td>
+              <td>${trade.qty}</td>
+              <td>${trade.filled_avg_price}</td>
+              <td>${trade.status}</td>
+              <td>${trade.asset_class}</td>
+            `;
+            tradeHistoryBody.appendChild(row);
+          })
+        .catch((error) => console.error(error));
+  });
+})
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+      };
+
+      fetch("http://217.154.7.154:3000/api/account", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result)
+          var infoCompte = JSON.parse(result);
+          var valuePortefeuille = parseFloat(infoCompte.portfolio_value) - 100000;
+          document.getElementById('gain-value').innerText = valuePortefeuille + ' €';
+        })
+        .catch((error) => console.error(error));
+    });
+  
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
