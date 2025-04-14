@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
+  <title>Bot - BullSter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,6 +14,7 @@
     body {
       padding-bottom: 70px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
     }
 
     .sidebar {
@@ -45,38 +49,42 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: white;
-      border-top: 1px solid #ddd;
+      background: transparent;
+      
+      border-top: 2px solid #ddd;
       display: flex;
       justify-content: space-around;
       padding: 0.5rem 0;
       z-index: 1030;
+      backdrop-filter: blur(40px);
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .bottom-nav a {
-  text-decoration: none;
-  color: #6C757D;
-  transition: all 0.3s ease;
-}
+      text-decoration: none;
+      color: #6C757D;
+      transition: all 0.3s ease;
+    }
 
-.bottom-nav a.active {
-  color: #007BFF; /* Couleur vive pour l'élément actif */
-  font-weight: bold; /* Texte en gras */
-}
+    .bottom-nav a.active {
+      color: #007BFF;
+      font-weight: bold;
+    }
 
-.bottom-nav a.active i {
-  font-size: 1.5rem; /* Icône légèrement plus grande */
-  color: #007BFF; /* Couleur vive pour l'icône */
-  filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5)); /* Lueur derrière l'icône */
-}
+    .bottom-nav a.active i {
+      font-size: 1.5rem;
+      color: #007BFF;
+      filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5));
+    }
 
-.bottom-nav a.active small {
-  font-weight: bold; /* Texte "Bot" en gras */
-}
+    .bottom-nav a.active small {
+      font-weight: bold;
+    }
 
-.bottom-nav a:hover {
-  color: #34495E;
-}
+    .bottom-nav a:hover {
+      color: #34495E;
+    }
 
     .bottom-nav i { font-size: 1.3rem; }
 
@@ -85,7 +93,7 @@
       height: 60px;
       object-fit: cover;
       border-radius: 50%;
-      border: 2px solid #007BFF; /* Contour réduit */
+      border: 2px solid rgb(255, 255, 255, 0.5);
       box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
     }
 
@@ -104,7 +112,6 @@
 
     .close-btn:hover { color: #E74C3C; }
 
-    /* Style pour les boutons non modifiés */
     .btn-modern {
       display: inline-block;
       padding: 8px 16px;
@@ -138,12 +145,13 @@
     }
 
     .btn-modern-primary {
+      background-color: white;
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-      border: 2px solid #000; /* Contour noir pour le bouton Paramètres */
+      border: 2px solid #000;
     }
 
     .btn-modern-primary:hover {
-        border: 2px solid #000;
+      background-color: white;
       box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
     }
 
@@ -160,7 +168,6 @@
       box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
     }
 
-    /* Nouveau style pour les boutons spécifiés */
     .sidebar-item {
       display: flex;
       align-items: center;
@@ -325,6 +332,194 @@
     .trade-table .buy { font-weight: bold; color: #28A745; }
     .trade-table .sell { font-weight: bold; color: #E74C3C; }
 
+    .container-fluid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 100px;
+      height: auto;
+    }
+
+    .upper-section, .lower-section {
+      display: flex;
+      height: 45vh;
+      margin-bottom: 20px;
+    }
+
+    .left-section, .right-section {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+
+    .left-section { margin-right: 10px; }
+    .right-section { margin-left: 10px; }
+
+    button:not(.btn-icon-modern):not(.modal-close):not(.close-btn) {
+      color: #61677C;
+      font-weight: bold;
+      box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      background-color: #fff;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    button:not(.btn-icon-modern):not(.modal-close):not(.close-btn):hover {
+      box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    }
+
+    button:not(.btn-icon-modern):not(.modal-close):not(.close-btn):active {
+      box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+    }
+
+    .bot-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+
+    .bot-controls .btn {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .bot-controls #chooseBotBtn {
+      color: #3951a7;
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .bot-controls #startBotBtn {
+      color: #39a767;
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .bot-controls #stopBotBtn {
+      color: #a75139;
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .bot-controls #configBotBtn {
+      color: #61677C;
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .bot-stats h3, .bot-description h3, .bot-history h3 {
+      color: #2C3E50;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .stat-item {
+      background-color: #F9FAFB;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-item label {
+      font-size: 0.9rem;
+      color: #6C757D;
+    }
+
+    .stat-item span {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #2C3E50;
+    }
+
+    .stat-item .positive { color: #28A745; }
+    .stat-item .negative { color: #E74C3C; }
+
+    .charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .chart-wrapper {
+      flex: 1;
+      min-width: 200px;
+      height: 200px;
+    }
+
+    .bot-description p {
+      color: #34495E;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .bot-description ul {
+      list-style: none;
+      padding: 0;
+      color: #34495E;
+    }
+
+    .bot-description ul li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .bot-description ul li i {
+      margin-right: 8px;
+      color: #007BFF;
+    }
+
+    .trade-history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .trade-history-table th {
+      background-color: #2C3E50;
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .trade-history-table td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .trade-history-table tr:nth-child(even) { background-color: #F9FAFB; }
+    .trade-history-table tr:hover { background-color: #ECF0F1; }
+
     #statsModal .modal-body {
       display: flex;
       flex-direction: column;
@@ -413,6 +608,19 @@
     @media (max-width: 768px) {
       .sidebar { width: 100%; left: -100%; }
       .modal { width: 95vw; height: 95vh; padding: 15px; }
+      .upper-section, .lower-section {
+        flex-direction: column;
+        height: auto;
+      }
+      .left-section, .right-section {
+        margin: 0 0 20px 0;
+      }
+      .charts-container {
+        flex-direction: column;
+      }
+      .chart-wrapper {
+        height: 150px;
+      }
       .stats-upper { flex-direction: column; height: auto; }
       .stats-left, .stats-right { width: 100%; }
       .stats-lower { margin-bottom: 15px; }
@@ -425,283 +633,233 @@
       .modal-close { font-size: 1.5rem; }
       .sidebar-item span { font-size: 0.8rem; }
       .sidebar-item i { font-size: 1rem; }
-      .btn-modern { font-size: 0.75rem; padding: 6px 12px; }
+      button:not(.btn-icon-modern):not(.modal-close):not(.close-btn) { font-size: 0.75rem; padding: 6px 12px; }
       .stats-info p { font-size: 0.7rem; }
       .stats-info i { font-size: 0.8rem; }
-      .trade-table th, .trade-table td { padding: 8px; }
     }
 
-    .logo {
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      width: 100%;
+      margin-left: 8%;
+      padding: 0px 0;
+    }
+
+    .container .card {
+      z-index: 1;
+      position: relative;
+      height: 250px;
+      width: 35%;
+      margin: 35px auto;
+      margin-left: 20%;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+    }
+
+    .container .card:nth-child(1),
+    .container .card:nth-child(2) {
+      margin: 30px 5%;
+    }
+
+    .container .card:nth-child(3) {
+      margin: 30px 27%;
+    }
+
+    .container .card .imgBx {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 100px;
-      height: auto;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      z-index: 1;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.5s ease-in-out;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
     }
 
+    .container .card:hover .imgBx {
+      width: 150px;
+      height: 150px;
+      left: -75px;
+      top: calc(50% - 75px);
+      z-index: 5;
+    }
 
+    .container .card .imgBx img {
+      max-width: 150px;
+      transition: 0.5s ease-in-out;
+    }
 
+    .container .card:hover .imgBx img {
+      max-width: 100px;
+      transition: 0.5s ease-in-out;
+    }
 
+    .container .card .content {
+      position: absolute;
+      right: 0;
+      width: calc(100% - 75px);
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+    }
 
+    .container .card .content .Agressif {
+      color: #e94f22;
+      margin-bottom: 5px;
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
 
+    .container .card .content .Modere {
+      color: #0b62cc;
+      margin-bottom: 5px;
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
 
+    .container .card .content .Passif {
+      color: #94c88e;
+      margin-bottom: 5px;
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
 
+    .container .card .content .AgressifBtn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 20px;
+      border-radius: 5px;
+      background: #e94f22;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 1000;
+    }
 
+    .container .card .content .ModereBtn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 20px;
+      border-radius: 5px;
+      background: #0b62cc;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 1000;
+    }
 
+    .container .card .content .PassifBtn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 20px;
+      border-radius: 5px;
+      background: #94c88e;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 1000;
+    }
 
+    .container .card .content .AgressifBtn:hover, .ModereBtn:hover, .PassifBtn:hover {
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
 
-    .community-container {
-  padding-bottom: 80px; /* Pour éviter chevauchement avec la bottom-nav */
-}
+    @media (max-width:1500px)and (min-width: 1100px){
+        .container .card{
+            padding: 1%; 
+        }
 
-.community-title {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  color: #2C3E50;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        .container .card .content {
+            font-size: 0.8rem;
+        }
 
-.btn-glass {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
-  padding: 10px 20px;
-  color: #2C3E50;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  margin-right: 10px;
-}
+        .container .card:nth-child(1),
+    .container .card:nth-child(2) {
+      margin: 30px 5%;
+    }
 
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-}
+    .container .card:nth-child(3) {
+      margin: 30px 27%;
+    }
+    }
 
-.btn-glass.active {
-  background: #007BFF;
-  color: white;
-  border-color: #007BFF;
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
-}
+    @media (max-width: 1100px) {
+      .container {
+        position: relative;
+        width: 100%;
+        
+        flex-direction: column;
+        align-items: center;
+      }
 
-.btn-glass.active:hover {
-  background: #007BFF;
-  color: white;
-  border-color: #007BFF;
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 1);
-}
+      .container .card {
+        width: 400px;
+        height: 600px;
+        flex-direction: column;
+        background: transparent;
+        margin: -20px 0;
+        box-shadow: none;
+        border: none;
+      }
 
-.btn-add-post {
-  background: #28A745;
-  color: white;
-  border: none;
-}
+      .container .card .imgBx {
+        position: relative;
+      }
 
-.btn-add-post:hover {
-  background: #218838;
-  transform: translateY(-2px);
-}
+      .container .card .imgBx,
+      .container .card:hover .imgBx {
+        width: 80%;
+        height: 200px;
+        top: 100px;
+        left: 10%;
+      }
 
-.post-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
+      .container .card:hover .imgBx {
+        top: 80px;
+      }
 
-.post-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
+      .container .card .imgBx img,
+      .container .card:hover .imgBx img {
+        max-width: 100px;
+      }
 
-.post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
+      .container .card .content {
+        position: relative;
+        width: 100%;
+        height: 65%;
+        background: #fff;
+        box-shadow: none;
+        border-top: 100px solid #fff;
+        border-radius: 20px;
+        padding: 10%;
+      }
 
-.post-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.post-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #2C3E50;
-  margin-bottom: 8px;
-}
-
-.post-description {
-  font-size: 0.9rem;
-  color: #34495E;
-  margin-bottom: 8px;
-}
-
-.post-author {
-  font-size: 0.8rem;
-  color: #6C757D;
-  font-style: italic;
-}
-
-.community-right {
-    background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 15px;
-  margin-top: 10.7%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease;
-  }
-
-  .community-right:hover {
-    transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
-  }
-
-.chat-container {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 15px;
-  max-height: 80vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.chat-message {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 15px;
-}
-
-.chat-message img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.chat-message-content {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 10px;
-  max-width: 80%;
-}
-
-.chat-message-author {
-  font-weight: 600;
-  color: #2C3E50;
-}
-
-.chat-message-text {
-  font-size: 0.9rem;
-  color: #34495E;
-}
-
-.chat-message-time {
-  font-size: 0.7rem;
-  color: #6C757D;
-}
-
-.chat-input {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
-  padding: 10px;
-}
-
-.chat-input input {
-  width: 100%;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  background: transparent;
-  color: #2C3E50;
-  font-size: 0.9rem;
-}
-
-.chat-input input:focus {
-  outline: none;
-}
-
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 2);
-  backdrop-filter: blur(30px);
-  border-radius: 15px;
-}
-
-.glass-input {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  border : 2px solid grey;
-}
-
-.glass-input:focus {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #007BFF;
-}
-
-@media (max-width: 992px) {
-  .community-left, .community-right {
-    width: 100%;
-  }
-  .community-right {
-    background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 15px;
-  margin-top: 10%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease;
-  }
-
-  .community-right:hover {
-    transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
-  }
-  .post-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 576px) {
-  .btn-glass {
-    padding: 8px 15px;
-    font-size: 0.8rem;
-  }
-  .post-title {
-    font-size: 1rem;
-  }
-  .post-description {
-    font-size: 0.8rem;
-  }
-}
-
+      .container .card:nth-child(1),
+      .container .card:nth-child(2),
+      .container .card:nth-child(3) {
+        margin: -20px 0;
+      }
+    }
   </style>
 </head>
 <body>
-
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
     <i class="bi bi-list fs-2"></i>
   </button>
@@ -711,8 +869,8 @@
       <i class="bi bi-x"></i>
     </button>
     <div class="text-center mb-4">
-      <img src="../assets/images/default-profile.jpg" alt="Profil" class="profile-pic mb-2" id="userImage">
-      <h5 id="userName">Nom d'utilisateur</h5>
+      <img src="" alt="Profil" class="profile-pic mb-2" id="userImage">
+      <h5 id="userName"></h5>
       <p id="userInfo" class="mb-1 small text-muted"></p>
       <a href="settings.html" class="btn btn-modern-primary btn-sm">Paramètres</a>
     </div>
@@ -743,7 +901,49 @@
 
   <img src="logo.png" alt="BullSter Logo" class="logo">
 
-  <!-- Modal pour Paramètres du profil -->
+  <div class="container-fluid">
+    <div class="container">
+      <div class="card">
+        <div class="imgBx">
+          <img src="Agressif.png" alt="Bot Agressif">
+        </div>
+        <div class="content">
+          <div>
+            <h3 class="Agressif">Agressif</h3>
+            <p>Stratégie risquée mais potentiellement très rentable, avec des trades fréquents sur des altcoins volatils et peu de temps de pause</p>
+            <a class="AgressifBtn" href="Bot-C-C-A.html">Choisir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="imgBx">
+          <img src="Modere.png" alt="Bot Modere">
+        </div>
+        <div class="content">
+          <div>
+            <h3 class="Modere">Modéré</h3>
+            <p>Un juste équilibre entre sécurité et rendement. On suit les tendances sans entrer ou sortir trop souvent des positions</p>
+            <a class="ModereBtn" href="Bot-C-C-M.html">Choisir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="imgBx">
+          <img src="Passif.png" alt="Bot Passif">
+        </div>
+        <div class="content">
+          <div>
+            <h3 class="Passif">Passif</h3>
+            <p>On investit et on laisse faire le marché. Parfait pour ceux qui croient en la crypto mais veulent rester tranquilles</p>
+            <a class="PassifBtn" href="Bot-C-C-P.html">Choisir</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal" id="profileModal">
     <div class="modal-header">
       <h5>Paramètres du profil</h5>
@@ -756,19 +956,19 @@
         <div class="input-container" id="nameInputContainer">
           <input type="text" id="nameInput" placeholder="Entrez votre nom">
         </div>
-        <button class="btn btn-modern" id="editNameBtn" onclick="toggleEdit('name')">Modifier le nom</button>
+        <button id="editNameBtn" onclick="toggleEdit('name')">Modifier le nom</button>
       </div>
       <div>
         <div class="input-container" id="firstnameInputContainer">
           <input type="text" id="firstnameInput" placeholder="Entrez votre prénom">
         </div>
-        <button class="btn btn-modern" id="editFirstnameBtn" onclick="toggleEdit('firstname')">Modifier le prénom</button>
+        <button id="editFirstnameBtn" onclick="toggleEdit('firstname')">Modifier le prénom</button>
       </div>
       <div>
         <div class="input-container" id="ageInputContainer">
           <input type="number" id="ageInput" placeholder="Entrez votre âge" min="0">
         </div>
-        <button class="btn btn-modern" id="editAgeBtn" onclick="toggleEdit('age')">Modifier l'âge</button>
+        <button id="editAgeBtn" onclick="toggleEdit('age')">Modifier l'âge</button>
       </div>
       <div>
         <div class="input-container" id="sexInputContainer">
@@ -778,31 +978,30 @@
             <option value="F">F</option>
           </select>
         </div>
-        <button class="btn btn-modern" id="editSexBtn" onclick="toggleEdit('sex')">Modifier le sexe</button>
+        <button id="editSexBtn" onclick="toggleEdit('sex')">Modifier le sexe</button>
       </div>
       <div>
         <div class="input-container" id="emailInputContainer">
           <input type="email" id="emailInput" placeholder="Entrez votre email">
         </div>
-        <button class="btn btn-modern" id="editEmailBtn" onclick="toggleEdit('email')">Modifier l'adresse mail</button>
+        <button id="editEmailBtn" onclick="toggleEdit('email')">Modifier l'adresse mail</button>
       </div>
       <div>
         <div class="input-container" id="phoneInputContainer">
           <input type="tel" id="phoneInput" placeholder="Entrez votre numéro">
         </div>
-        <button class="btn btn-modern" id="editPhoneBtn" onclick="toggleEdit('phone')">Modifier le numéro de téléphone</button>
+        <button id="editPhoneBtn" onclick="toggleEdit('phone')">Modifier le numéro de téléphone</button>
       </div>
       <div>
         <div class="input-container" id="photoInputContainer">
           <div class="drop-zone" id="photoDropZone">Déposez une image ici ou cliquez pour sélectionner</div>
           <input type="file" id="photoInput" accept="image/*" style="display: none;">
         </div>
-        <button class="btn btn-modern" id="editPhotoBtn" onclick="toggleEdit('photo')">Modifier la photo de profil</button>
+        <button id="editPhotoBtn" onclick="toggleEdit('photo')">Modifier la photo de profil</button>
       </div>
     </div>
   </div>
 
-  <!-- Modal pour Historique des trades -->
   <div class="modal" id="tradeModal">
     <div class="modal-header">
       <h5>Historique des trades</h5>
@@ -822,13 +1021,11 @@
           </tr>
         </thead>
         <tbody id="tradeTableBody">
-          <!-- Les lignes seront ajoutées dynamiquement ici -->
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Modal pour Statistiques Pertes/Gains -->
   <div class="modal" id="statsModal">
     <div class="modal-header">
       <h5>Statistiques Pertes/Gains</h5>
@@ -868,8 +1065,7 @@
     </div>
   </div>
 
-  <!-- Modal pour À propos -->
-<div class="modal" id="aboutModal">
+  <div class="modal" id="aboutModal">
     <div class="modal-header">
       <h5>À propos</h5>
       <button class="modal-close" onclick="toggleAboutModal()">
@@ -881,17 +1077,12 @@
         <strong><i class="bi bi-bar-chart-fill me-2"></i>Bienvenue sur BullSter</strong><br>
         Votre compagnon de confiance pour le trading et la gestion de portefeuille. Conçu pour les investisseurs de tous niveaux, BullSter vous aide à suivre vos performances, analyser vos positions et améliorer vos stratégies avec précision.
       </p>
-  
       <hr>
-      
-  
       <h6><i class="bi bi-lightbulb-fill me-2 text-warning"></i><strong>Notre mission</strong></h6>
       <p>
         Offrir à chacun, débutant ou professionnel, les outils d’analyse et de gestion les plus puissants dans une interface intuitive et moderne. Plus qu’un outil, BullSter est une plateforme pensée pour vous accompagner à chaque étape de votre parcours d'investissement.
       </p>
-
       <hr>
-  
       <h6><i class="bi bi-tools me-2 text-primary"></i><strong>Fonctionnalités clés</strong></h6>
       <ul class="list-unstyled ms-3">
         <li><i class="bi bi-graph-up-arrow me-2 text-success"></i>Suivi en temps réel de vos portefeuilles multi-actifs</li>
@@ -900,16 +1091,12 @@
         <li><i class="bi bi-shuffle me-2 text-secondary"></i>Comparaison et ajustement de stratégies</li>
         <li><i class="bi bi-database-check me-2 text-success"></i>Historique complet de vos transactions</li>
       </ul>
-
       <hr>
-  
       <h6><i class="bi bi-people-fill me-2 text-dark"></i><strong>Qui sommes-nous ?</strong></h6>
       <p>
         BullSter est développé par <strong>ISEN</strong>, une équipe passionnée de finance, technologie et design. Nous réunissons des profils variés : ingénieurs, data scientists, UX designers et analystes financiers. Ensemble, nous construisons un outil puissant, centré sur l’utilisateur et pensé pour durer.
       </p>
-
       <hr>
-  
       <h6><i class="bi bi-flag-fill me-2 text-danger"></i><strong>Nos piliers</strong></h6>
       <ul class="list-unstyled ms-3">
         <li><i class="bi bi-lightning-fill me-2 text-warning"></i><strong>Innovation continue</strong> — Des mises à jour fréquentes et utiles</li>
@@ -917,16 +1104,12 @@
         <li><i class="bi bi-lock-fill me-2 text-secondary"></i><strong>Sécurité</strong> — Vos données protégées avec rigueur</li>
         <li><i class="bi bi-people-fill me-2 text-success"></i><strong>Accessibilité</strong> — Outils conçus pour tous les profils</li>
       </ul>
-
       <hr>
-  
       <h6><i class="bi bi-binoculars-fill me-2 text-indigo"></i><strong>Notre vision</strong></h6>
       <p>
         Nous imaginons un futur où chaque investisseur, quel que soit son niveau, peut gérer ses actifs en toute autonomie, grâce à une technologie intelligente, pédagogique et évolutive. Intégrations API, IA prédictive, trading collaboratif… ce n’est que le début.
       </p>
-  
       <hr>
-  
       <p class="mb-1"><em>Nous ne vous montrons pas que les chiffres — nous vous aidons à en tirer le meilleur.</em></p>
       <p class="text-muted small">
         <i class="bi bi-info-circle me-1"></i>Version 1.0 — Mise à jour : Avril 2025<br>
@@ -934,10 +1117,8 @@
       </p>
     </div>
   </div>
-  
 
-  <!-- Modal pour Sécurité -->
-<div class="modal" id="securityModal">
+  <div class="modal" id="securityModal">
     <div class="modal-header">
       <h5>Sécurité</h5>
       <button class="modal-close" onclick="toggleSecurityModal()">
@@ -949,9 +1130,7 @@
         <strong><i class="bi bi-shield-lock-fill me-2 text-primary"></i>Votre sécurité est notre priorité</strong><br>
         Chez <strong>BullSter</strong>, la protection de vos données et de vos actifs est au cœur de nos préoccupations. Nous mettons en œuvre des technologies de pointe pour garantir un environnement fiable et sécurisé.
       </p>
-  
       <hr>
-  
       <h6><strong><i class="bi bi-shield-check me-2 text-success"></i>Nos mesures de sécurité</strong></h6>
       <ul class="list-unstyled ms-3">
         <li><i class="bi bi-lock-fill me-2 text-dark"></i><strong>Chiffrement de bout en bout (AES-256)</strong> — Vos données sont cryptées à toutes les étapes de transmission et de stockage.</li>
@@ -959,9 +1138,7 @@
         <li><i class="bi bi-shield-exclamation me-2 text-danger"></i><strong>Surveillance active</strong> — Notre système détecte en temps réel toute tentative d'accès non autorisée ou activité suspecte.</li>
         <li><i class="bi bi-cloud-check-fill me-2 text-info"></i><strong>Hébergement sécurisé</strong> — Infrastructure hébergée sur des serveurs certifiés et conformes aux normes de sécurité internationales (ISO/IEC 27001).</li>
       </ul>
-  
       <hr>
-  
       <h6><strong><i class="bi bi-lightbulb me-2 text-warning"></i>Bonnes pratiques recommandées</strong></h6>
       <ul class="list-unstyled ms-3">
         <li><i class="bi bi-key-fill me-2 text-secondary"></i>Utilisez un mot de passe fort, long et unique.</li>
@@ -969,26 +1146,20 @@
         <li><i class="bi bi-lock me-2 text-secondary"></i>Activez la double authentification dès la création de votre compte.</li>
         <li><i class="bi bi-shield-fill-exclamation me-2 text-secondary"></i>Méfiez-vous des tentatives de phishing. <strong>BullSter</strong> ne vous demandera jamais vos identifiants par e-mail.</li>
       </ul>
-  
       <hr>
-  
       <h6><strong><i class="bi bi-envelope-lock me-2"></i>Besoin d'aide ou signalement ?</strong></h6>
       <p class="mb-1">
         Contactez notre équipe sécurité à l’adresse suivante :
         <a href="mailto:corentin.bocquet@student.junia.com">corentin.bocquet@student.junia.com</a>
       </p>
-  
       <hr>
-  
       <p class="text-muted small">
         <i class="bi bi-shield-check me-1"></i>Dernière mise à jour : Avril 2025 — <strong>BullSter</strong> propulsé par <strong>ISEN</strong>
       </p>
     </div>
   </div>
-  
 
-  <!-- Modal pour Aide -->
-<div class="modal" id="helpModal">
+  <div class="modal" id="helpModal">
     <div class="modal-header">
       <h5>Aide</h5>
       <button class="modal-close" onclick="toggleHelpModal()">
@@ -1000,25 +1171,19 @@
         <strong><i class="bi bi-question-circle-fill me-2 text-primary"></i>Centre d’aide BullSter</strong><br>
         Retrouve ici les réponses aux questions fréquentes et les ressources utiles pour bien utiliser la plateforme.
       </p>
-  
       <hr>
-  
       <h6><strong><i class="bi bi-lightning-fill me-2 text-warning"></i>FAQ rapide</strong></h6>
       <ul class="list-unstyled ms-3">
         <li><i class="bi bi-person-circle me-2 text-info"></i><strong>Comment modifier mon profil ?</strong><br>Accédez à <em>“Paramètres du profil”</em> via la barre latérale.</li>
         <li><i class="bi bi-clipboard-data me-2 text-success"></i><strong>Où consulter mes trades ?</strong><br>Ouvre <em>“Historique des trades”</em> pour suivre toutes tes opérations passées.</li>
         <li><i class="bi bi-unlock me-2 text-danger"></i><strong>Problème de connexion ?</strong><br>Vérifie tes identifiants ou réinitialise ton mot de passe depuis l'écran de connexion.</li>
       </ul>
-  
       <hr>
-  
       <h6><strong><i class="bi bi-book me-2 text-secondary"></i>Besoin d’un coup de main ?</strong></h6>
       <p>
         Consulte notre <a href="#" style="color: #007BFF;">guide utilisateur complet</a> pour une prise en main détaillée de toutes les fonctionnalités de BullSter.
       </p>
-  
       <hr>
-  
       <h6><strong><i class="bi bi-headset me-2 text-success"></i>Assistance et support</strong></h6>
       <p class="mb-1">
         Une question ? Un bug à signaler ? Contactez notre équipe :
@@ -1027,83 +1192,29 @@
           <li><i class="bi bi-chat-dots me-2"></i>Utilisez le chat en direct intégré à la plateforme</li>
         </ul>
       </p>
-  
       <hr>
-  
       <p class="text-muted small">
         <i class="bi bi-info-circle me-1"></i>Dernière mise à jour : Avril 2025 — <strong>BullSter</strong> propulsé par <strong>ISEN</strong>
       </p>
     </div>
   </div>
 
-  <div class="container mt-4 community-container">
-  <div class="row">
-    <!-- Partie gauche : Idées de la communauté -->
-    <div class="col-lg-8 community-left">
-      <h2 class="community-title mb-4">Idées de la communauté 🌟</h2>
-      <div class="d-flex mb-4">
-        <button class="btn-glass btn-community active" onclick="switchContent('action')">Action 📈</button>
-        <button class="btn-glass btn-community" onclick="switchContent('crypto')">Crypto 🪙</button>
-        <button class="btn-glass btn-add-post ms-auto" onclick="togglePostModal()">Ajouter un poste ➕</button>
-      </div>
-      <div class="post-grid" id="postGrid"></div>
-    </div>
-
-    <!-- Partie droite : Chat -->
-    <div class="col-lg-4 community-right">
-      <div class="chat-container glass-effect">
-        <div class="d-flex mb-3">
-          <button class="btn-glass btn-chat active" onclick="switchChat('actions')">Actions 📊</button>
-          <button class="btn-glass btn-chat" onclick="switchChat('cryptos')">Cryptos 💸</button>
-        </div>
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input glass-effect">
-          <input type="text" id="chatInput" placeholder="Vous avez quelque chose à dire ? 💬" onkeypress="if(event.key === 'Enter') sendMessage()">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal pour ajouter un poste -->
-  <div class="modal glass-effect" id="postModal">
-    <div class="modal-header">
-      <h5>Ajouter un nouveau poste 📝</h5>
-      <button class="modal-close" onclick="togglePostModal()">
-        <i class="bi bi-x"></i>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="mb-3">
-        <label for="postTitle" class="form-label">Titre</label>
-        <input type="text" id="postTitle" class="form-control glass-input" placeholder="Entrez le titre">
-      </div>
-      <div class="mb-3">
-        <label for="postDescription" class="form-label">Description</label>
-        <textarea id="postDescription" class="form-control glass-input" rows="4" placeholder="Décrivez votre idée"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="postAuthor" class="form-label">Auteur</label>
-        <input type="text" id="postAuthor" class="form-control glass-input" placeholder="Votre nom">
-      </div>
-      <div class="mb-3">
-        <label for="postImage" class="form-label">Image (16:9)</label>
-        <div class="drop-zone glass-effect" id="postImageDropZone">Déposez une image ici ou cliquez pour sélectionner</div>
-        <input type="file" id="postImage" accept="image/*" style="display: none;">
-      </div>
-      <button class="btn btn-modern glass-effect" onclick="addPost()">Publier</button>
-    </div>
-  </div>
-</div>
-
   <div class="bottom-nav">
     <a href="learn.html" class="text-dark text-center"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
     <a href="trade.html" class="text-dark text-center"><i class="bi bi-graph-up-arrow"></i><br><small>Trade</small></a>
-    <a href="bot.html" class="text-dark text-center"><i class="bi bi-cpu"></i><br><small>Bot</small></a>
+    <a href="bot.html" class="text-dark text-center active"><i class="bi bi-cpu"></i><br><small>Bot</small></a>
     <a href="wallet.html" class="text-dark text-center"><i class="bi bi-wallet2"></i><br><small>Wallet</small></a>
-    <a href="community.html" class="text-dark text-center active"><i class="bi bi-people"></i><br><small>Communauté</small></a>
+    <a href="community.html" class="text-dark text-center"><i class="bi bi-people"></i><br><small>Communauté</small></a>
   </div>
 
   <script>
+    const userString = sessionStorage.getItem('user');
+    const user = JSON.parse(userString);
+    const userInfo = JSON.parse(user);
+    console.log(userInfo.firstName + ' ' + userInfo.photo);
+
+    document.getElementById('userName').innerText = `${userInfo.firstName} ${userInfo.lastName}`;
+    document.getElementById('userImage').src = `http://217.154.7.154:4000/photo/${userInfo.photo}`;
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
@@ -1113,15 +1224,10 @@
 
     const toggleModal = (modalId) => {
       const modal = document.getElementById(modalId);
-      
-      // Si une modale est déjà ouverte et que ce n'est pas celle cliquée, fermer l'ancienne
       if (activeModal && activeModal !== modal) {
         activeModal.classList.remove('active');
       }
-
-      // Basculer l'état de la modale cliquée
       modal.classList.toggle('active');
-      
       if (modal.classList.contains('active')) {
         activeModal = modal;
         if (modalId === 'statsModal') loadStatsCharts();
@@ -1315,188 +1421,33 @@
       });
     }
 
+    function loadBotCharts() {
+      const pnlCtx = document.getElementById('pnlChart').getContext('2d');
+      new Chart(pnlCtx, {
+        type: 'line',
+        data: { labels: ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5'], datasets: [{ label: 'PNL ($)', data: [100, 500, 1200, 2000, 3250], borderColor: '#28A745', fill: false, tension: 0.4 }] },
+        options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false }, title: { display: true, text: 'Évolution PNL', color: '#2C3E50' } }, maintainAspectRatio: false }
+      });
+
+      const successRateCtx = document.getElementById('successRateChart').getContext('2d');
+      new Chart(successRateCtx, {
+        type: 'doughnut',
+        data: { labels: ['Réussite', 'Échec'], datasets: [{ data: [68, 32], backgroundColor: ['#28A745', '#E74C3C'], borderWidth: 0 }] },
+        options: { cutout: '70%', plugins: { legend: { display: false }, title: { display: true, text: 'Taux de Réussite', color: '#2C3E50' } }, maintainAspectRatio: false }
+      });
+
+      const tradeVolumeCtx = document.getElementById('tradeVolumeChart').getContext('2d');
+      new Chart(tradeVolumeCtx, {
+        type: 'bar',
+        data: { labels: ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5'], datasets: [{ label: 'Volume', data: [5, 8, 10, 12, 7], backgroundColor: '#007BFF' }] },
+        options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false }, title: { display: true, text: 'Volume des Trades', color: '#2C3E50' } }, maintainAspectRatio: false }
+      });
+    }
+
     loadUser();
     updateTradeTable();
+    loadBotCharts();
     setTimeout(simulateNewTrade, 3000);
-
-    document.addEventListener('DOMContentLoaded', () => {
-  const currentPage = window.location.pathname.split('/').pop() || 'bot.html'; // Récupère le nom de la page actuelle
-  const navLinks = document.querySelectorAll('.bottom-nav a');
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-});
-
-
-
-
-
-
-
-
-// Données fictives pour les postes
-let posts = {
-  action: [
-    { id: 1, title: "Investir dans Tesla ?", description: "Tesla montre une forte croissance, mais attention à la volatilité.", author: "Jean Dupont", image: "https://www.journaldugeek.com/app/uploads/2024/04/ModelS-tesla-voiture.jpg" },
-    { id: 2, title: "Apple : un bon choix ?", description: "Apple reste solide avec ses nouveaux produits.", author: "Marie Curie", image: "https://pictures.latribune.fr/cdn-cgi/image/width=3840,format=auto,quality=80/301/2538301.png?twic=v1/cover=1200x675" },
-    { id: 3, title: "Microsoft en hausse", description: "Microsoft bénéficie de l’IA et du cloud.", author: "Paul Martin", image: "https://pictures.latribune.fr/cdn-cgi/image/width=3840,format=auto,quality=80/66/2418066.jpg?twic=v1/cover=1200x675" },
-    { id: 4, title: "Amazon : à surveiller", description: "Amazon domine le e-commerce mais concurrence rude.", author: "Sophie Lemoine", image: "https://fr.al3omk.com/wp-content/uploads/2023/09/vis_0925202317090385.jpg" },
-    { id: 5, title: "Google : pari sûr ?", description: "Google continue d’innover dans la tech.", author: "Luc Durand", image: "https://i0.wp.com/blog.sowefund.com/wp-content/uploads/2014/07/morning-brew-NrOUHQ2jHtU-unsplash.jpg?fit=3000%2C2000&ssl=1" },
-    { id: 6, title: "Nvidia : boom de l’IA", description: "Nvidia profite de la demande en IA.", author: "Emma Blanc", image: "https://pictures.latribune.fr/cdn-cgi/image/width=3840,format=auto,quality=80/383/2131383.jpg?twic=v1/cover=1200x675" }
-  ],
-  crypto: [
-    { id: 7, title: "Bitcoin : toujours d’actu ?", description: "BTC reste la référence mais attention aux régulations.", author: "Clara Rousseau", image: "https://cimg.co/news/88816/223065/acheter-btc.jpg" },
-    { id: 8, title: "Ethereum 2.0", description: "Ethereum passe à la preuve d’enjeu, un game-changer ?", author: "Thomas Lefèvre", image: "https://www.moneyland.ch/resources/public/dtc/media/investir-ethereum.jpg" },
-    { id: 9, title: "Solana : la montée", description: "Solana attire avec ses transactions rapides.", author: "Anna Petit", image: "https://xtb.scdn5.secure.raxcdn.com/kb_main_photo/0103/13/572babd6-5508-4ab3-98f2-3bc6d6cebbc3/kb_main_photo_front/solana-trading-how-to-start-investing-in-solana-sol-header.png" },
-    { id: 10, title: "Cardano : à long terme", description: "Cardano mise sur la recherche académique.", author: "Marc Dubois", image: "https://libertex.com/sites/default/files/styles/blog_detail_hero/public/blog/cardano-pp-main.jpg?itok=tda8J_33" },
-    { id: 11, title: "Polkadot : interopérabilité", description: "Polkadot connecte les blockchains.", author: "Lise Garnier", image: "https://www.cointribune.com/app/uploads/2020/10/polkadot-ipo-initial-parachain-offering.jpg" },
-    { id: 12, title: "Ripple : pour les banques", description: "Ripple vise les paiements internationaux.", author: "Hugo Morel", image: "https://traderfrancophone.fr/wp-content/uploads/2021/05/Ripple-scaled-1.jpg" }
-  ]
-};
-
-// Données fictives pour le chat
-let messages = {
-  actions: [
-    { author: "Jean Dupont", text: "Quelqu’un a des news sur Tesla ?", time: "2025-04-13 10:30", image: "Persona1.jpg" },
-    { author: "Marie Curie", text: "Apple va sortir un nouveau produit, ça peut booster le cours.", time: "2025-04-13 11:15", image: "Persona2.jpg" }
-  ],
-  cryptos: [
-    { author: "Clara Rousseau", text: "Bitcoin est en consolidation, bon moment pour entrer ?", time: "2025-04-13 09:45", image: "Persona3.jpg" },
-    { author: "Thomas Lefèvre", text: "Ethereum semble prêt pour un breakout !", time: "2025-04-13 12:00", image: "Persona4.png" }
-  ]
-};
-
-let currentContent = "action";
-let currentChat = "actions";
-
-function switchContent(type) {
-  currentContent = type;
-  document.querySelectorAll(".btn-community").forEach(btn => btn.classList.remove("active"));
-  document.querySelector(`button[onclick="switchContent('${type}')"]`).classList.add("active");
-  renderPosts();
-}
-
-function switchChat(type) {
-  currentChat = type;
-  document.querySelectorAll(".btn-chat").forEach(btn => btn.classList.remove("active"));
-  document.querySelector(`button[onclick="switchChat('${type}')"]`).classList.add("active");
-  renderMessages();
-}
-
-function renderPosts() {
-  const grid = document.getElementById("postGrid");
-  grid.innerHTML = "";
-  posts[currentContent].forEach(post => {
-    const card = document.createElement("div");
-    card.className = "post-card";
-    card.innerHTML = `
-      <img src="${post.image}" alt="${post.title}" class="post-image">
-      <h3 class="post-title">${post.title}</h3>
-      <p class="post-description">${post.description}</p>
-      <p class="post-author">Par ${post.author}</p>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-function renderMessages() {
-  const chat = document.getElementById("chatMessages");
-  chat.innerHTML = "";
-  messages[currentChat].forEach(msg => {
-    const message = document.createElement("div");
-    message.className = "chat-message";
-    message.innerHTML = `
-      <img src="${msg.image}" alt="${msg.author}">
-      <div class="chat-message-content">
-        <div class="chat-message-author">${msg.author}</div>
-        <div class="chat-message-text">${msg.text}</div>
-        <div class="chat-message-time">${msg.time}</div>
-      </div>
-    `;
-    chat.appendChild(message);
-  });
-  chat.scrollTop = chat.scrollHeight;
-}
-
-function togglePostModal() {
-  const modal = document.getElementById("postModal");
-  modal.classList.toggle("active");
-  if (!modal.classList.contains("active")) {
-    document.getElementById("postTitle").value = "";
-    document.getElementById("postDescription").value = "";
-    document.getElementById("postAuthor").value = "";
-    document.getElementById("postImage").value = "";
-    document.getElementById("postImageDropZone").textContent = "Déposez une image ici ou cliquez pour sélectionner";
-  }
-}
-
-function addPost() {
-  const title = document.getElementById("postTitle").value.trim();
-  const description = document.getElementById("postDescription").value.trim();
-  const author = document.getElementById("postAuthor").value.trim();
-  const imageInput = document.getElementById("postImage");
-  if (!title || !description || !author) {
-    alert("Veuillez remplir tous les champs.");
-    return;
-  }
-  const image = imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : "https://via.placeholder.com/320x180";
-  const newPost = {
-    id: posts[currentContent].length + 1,
-    title,
-    description,
-    author,
-    image
-  };
-  posts[currentContent].push(newPost);
-  renderPosts();
-  togglePostModal();
-}
-
-function sendMessage() {
-  const input = document.getElementById("chatInput");
-  const text = input.value.trim();
-  if (!text) return;
-  const newMessage = {
-    author: "Utilisateur", // À remplacer par le vrai nom d’utilisateur
-    text,
-    time: new Date().toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }),
-    image: "https://via.placeholder.com/40" // À remplacer par la vraie photo
-  };
-  messages[currentChat].push(newMessage);
-  renderMessages();
-  input.value = "";
-}
-
-const postImageDropZone = document.getElementById("postImageDropZone");
-const postImageInput = document.getElementById("postImage");
-postImageDropZone.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  postImageDropZone.classList.add("dragover");
-});
-postImageDropZone.addEventListener("dragleave", () => postImageDropZone.classList.remove("dragover"));
-postImageDropZone.addEventListener("drop", (e) => {
-  e.preventDefault();
-  postImageDropZone.classList.remove("dragover");
-  postImageInput.files = e.dataTransfer.files;
-  if (postImageInput.files.length > 0) {
-    postImageDropZone.textContent = `Image sélectionnée : ${postImageInput.files[0].name}`;
-  }
-});
-postImageDropZone.addEventListener("click", () => postImageInput.click());
-postImageInput.addEventListener("change", () => {
-  if (postImageInput.files.length > 0) {
-    postImageDropZone.textContent = `Image sélectionnée : ${postImageInput.files[0].name}`;
-  }
-});
-
-// Initialisation
-renderPosts();
-renderMessages();
   </script>
 </body>
 </html>

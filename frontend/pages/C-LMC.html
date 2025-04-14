@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bot - BullSter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -56,7 +59,6 @@
       backdrop-filter: blur(40px);
       border-radius: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
     }
 
     .bottom-nav a {
@@ -388,46 +390,44 @@
     }
 
     .bot-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  gap: 10px;
-  width: 100%;
-  height: 100%; /* tu peux ajuster */
-  padding: 10px;
-}
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
 
-.bot-controls .btn {
-    cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-
-
+    .bot-controls .btn {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
 
     .bot-controls #chooseBotBtn {
-      color: #3951a7; /* Bleu pour "Choisir le bot" */
+      color: #3951a7;
       grid-column: 1;
-  grid-row: 1;
+      grid-row: 1;
     }
 
     .bot-controls #startBotBtn {
-      color: #39a767; /* Vert pour "Lancer le bot" */
+      color: #39a767;
       grid-column: 2;
-  grid-row: 1;
+      grid-row: 1;
     }
 
     .bot-controls #stopBotBtn {
-      color: #a75139; /* Rouge foncé pour "Stopper le bot" */
+      color: #a75139;
       grid-column: 1;
-  grid-row: 2;
+      grid-row: 2;
     }
 
     .bot-controls #configBotBtn {
-      color: #61677C; /* Rouge foncé pour "Stopper le bot" */
+      color: #61677C;
       grid-column: 2;
-  grid-row: 2;
+      grid-row: 2;
     }
 
     .bot-stats h3, .bot-description h3, .bot-history h3 {
@@ -642,45 +642,188 @@
       display: flex;
       flex-wrap: wrap;
       position: relative;
-      width: 1000px;
-      justify-content: space-between;
-      margin: 20px;
-      padding: 20px 0;
+      width: 100%;
+      margin-left: 8%;
+      padding: 0px 0;
     }
 
     .container .card {
+      z-index: 1;
       position: relative;
       height: 250px;
-      width: 45%;
-      margin: 30px 0;
+      width: 35%;
+      margin: 35px auto;
+      margin-left: 20%;
       border-radius: 20px;
       background: #fff;
-      overflow: hidden;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+    }
+
+    .container .card:nth-child(1),
+    .container .card:nth-child(2) {
+      margin: 30px 5%;
+    }
+
+    .container .card:nth-child(3) {
+      margin: 30px 27%;
     }
 
     .container .card .imgBx {
       position: absolute;
-      top: 10PX;
+      top: 10px;
       left: 10px;
-      background: rgba(255, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(20px);
+      z-index: 1;
       width: calc(100% - 20px);
       height: calc(100% - 20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 20px;
       overflow: hidden;
-      transition: all 0.5s ease-in-out;
+      transition: 0.5s ease-in-out;
       z-index: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
     }
 
+    .container .card:hover .imgBx {
+      width: 150px;
+      height: 150px;
+      left: -75px;
+      top: calc(50% - 75px);
+      z-index: 5;
+    }
 
+    .container .card .imgBx img {
+      max-width: 150px;
+      filter: invert(1);
+      transition: 0.5s ease-in-out;
+    }
+
+    .container .card:hover .imgBx img {
+      max-width: 100px;
+      filter: invert(1);
+      transition: 0.5s ease-in-out;
+    }
+
+    .container .card .content {
+      position: absolute;
+      right: 0;
+      width: calc(100% - 75px);
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .container .card .content h3 {
+      color: #ff0057;
+      margin-bottom: 5px;
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .container .card .content a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 20px;
+      border-radius: 5px;
+      background: #0095ff;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 1000;
+    }
+
+    .container .card .content a:hover {
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width:1500px)and (min-width: 1100px){
+        .container .card{
+            padding: 1%; 
+        }
+
+        .container .card .content {
+            font-size: 0.8rem;
+        }
+
+        .container .card:nth-child(1),
+    .container .card:nth-child(2) {
+      margin: 30px 5%;
+    }
+
+    .container .card:nth-child(3) {
+      margin: 30px 27%;
+    }
+    }
+
+    @media (max-width: 1100px) {
+      .container {
+        position: relative;
+        width: 100%;
+        
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container .card {
+        width: 400px;
+        height: 600px;
+        flex-direction: column;
+        background: transparent;
+        margin: -20px 0;
+        box-shadow: none;
+        border: none;
+      }
+
+      .container .card .imgBx {
+        position: relative;
+      }
+
+      .container .card .imgBx,
+      .container .card:hover .imgBx {
+        width: 80%;
+        height: 200px;
+        top: 100px;
+        left: 10%;
+      }
+
+      .container .card:hover .imgBx {
+        top: 80px;
+      }
+
+      .container .card .imgBx img,
+      .container .card:hover .imgBx img {
+        max-width: 100px;
+      }
+
+      .container .card .content {
+        position: relative;
+        width: 100%;
+        height: 65%;
+        background: #fff;
+        box-shadow: none;
+        border-top: 100px solid #fff;
+        border-radius: 20px;
+        padding: 10%;
+      }
+
+      .container .card:nth-child(1),
+      .container .card:nth-child(2),
+      .container .card:nth-child(3) {
+        margin: -20px 0;
+      }
+    }
   </style>
 </head>
 <body>
-
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
     <i class="bi bi-list fs-2"></i>
   </button>
@@ -723,50 +866,46 @@
   <img src="logo.png" alt="BullSter Logo" class="logo">
 
   <div class="container-fluid">
-   
-
     <div class="container">
-        <div class="card">
-            <div class="imgBx">
-                <img src="design.png" alt="LongTerm Image">
-            </div>
-            <div class="content">
-                <div>
-                    <h3>Design</h3>
-                    <p>Le trading Long Terme conçu pour maximiser les profits sur le long terme. Il utilise des algorithmes avancés pour analyser les tendances du marché et prendre des décisions éclairées.</p>
-                    <a href="L-AMP.html" >Choisir</a>
-                </div>
-            </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="LongTerm.png" alt="LongTerm Bot">
         </div>
+        <div class="content">
+          <div>
+            <h3>Long Term</h3>
+            <p>On achète des cryptos solides comme Bitcoin ou Ethereum et on les conserve plusieurs années pour profiter de leur forte croissance</p>
+            <a href="C-L-AMP.html">Choisir</a>
+          </div>
+        </div>
+      </div>
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="code.png" alt="MiddleTerm Image">
-            </div>
-            <div class="content">
-                <div>
-                    <h3>Code</h3>
-                    <p>Le trading Long Terme conçu pour maximiser les profits sur le long terme. Il utilise des algorithmes avancés pour analyser les tendances du marché et prendre des décisions éclairées.</p>
-                    <a href="L-AMP.html" >Choisir</a>
-                </div>
-            </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="MiddleTerm.png" alt="MiddleTerm Bot">
         </div>
+        <div class="content">
+          <div>
+            <h3>Middle Term</h3>
+            <p>Ce style vise à garder des cryptos plusieurs semaines ou mois pour profiter de cycles haussiers sans suivre le marché chaque jour</p>
+            <a href="C-M-AMP.html">Choisir</a>
+          </div>
+        </div>
+      </div>
 
-        <div class="card">
-            <div class="imgBx">
-                <img src="Launch.png" alt="LongTerm Image">
-            </div>
-            <div class="content">
-                <div>
-                    <h3>Launch</h3>
-                    <p>Le trading Long Terme conçu pour maximiser les profits sur le long terme. Il utilise des algorithmes avancés pour analyser les tendances du marché et prendre des décisions éclairées.</p>
-                    <a href="L-AMP.html" >Choisir</a>
-                </div>
-            </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="ShortTerm.png" alt="Short Term Bot">
         </div>
+        <div class="content">
+          <div>
+            <h3>Short Term</h3>
+            <p>On achète et revend en quelques jours selon les tendances. Idéal pour capter les mouvements rapides et la volatilité des cryptos</p>
+            <a href="C-C-AMP.html">Choisir</a>
+          </div>
+        </div>
+      </div>
     </div>
-
-    
   </div>
 
   <div class="modal" id="profileModal">
@@ -851,7 +990,6 @@
     </div>
   </div>
 
-  <!-- Modal pour Statistiques Pertes/Gains restauré de l'ancien code -->
   <div class="modal" id="statsModal">
     <div class="modal-header">
       <h5>Statistiques Pertes/Gains</h5>
@@ -1034,13 +1172,11 @@
   </div>
 
   <script>
-    
     const userString = sessionStorage.getItem('user');
     const user = JSON.parse(userString);
     const userInfo = JSON.parse(user);
     console.log(userInfo.firstName + ' ' + userInfo.photo);
 
-    // Afficher la valeur de 'user' dans un élément HTML
     document.getElementById('userName').innerText = `${userInfo.firstName} ${userInfo.lastName}`;
     document.getElementById('userImage').src = `http://217.154.7.154:4000/photo/${userInfo.photo}`;
     const toggleSidebar = () => {
