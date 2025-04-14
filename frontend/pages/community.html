@@ -1082,13 +1082,9 @@
         <textarea id="postDescription" class="form-control glass-input" rows="4" placeholder="Décrivez votre idée"></textarea>
       </div>
       <div class="mb-3">
-        <label for="postAuthor" class="form-label">Auteur</label>
-        <input type="text" id="postAuthor" class="form-control glass-input" placeholder="Votre nom">
-      </div>
-      <div class="mb-3">
         <label for="postImage" class="form-label">Image (16:9)</label>
         <div class="drop-zone glass-effect" id="postImageDropZone">Déposez une image ici ou cliquez pour sélectionner</div>
-        <input type="file" id="postImage" accept="image/*" style="display: none;">
+        <input type="file" id="postImage" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
       </div>
       <button class="btn btn-modern glass-effect" onclick="addPost()">Publier</button>
     </div>
@@ -1108,6 +1104,11 @@
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
     }
+
+    // Récupération des données au changement de la page
+    const userString = sessionStorage.getItem('user');
+    const user = JSON.parse(userString);
+    const userInfo = JSON.parse(user);
 
     let activeModal = null;
 
@@ -1332,44 +1333,52 @@
   });
 });
 
-
-
-
-
-
-
-
-// Données fictives pour les postes
-let posts = {
-  action: [
-    { id: 1, title: "Investir dans Tesla ?", description: "Tesla montre une forte croissance, mais attention à la volatilité.", author: "Jean Dupont", image: "https://www.journaldugeek.com/app/uploads/2024/04/ModelS-tesla-voiture.jpg" },
-    { id: 2, title: "Apple : un bon choix ?", description: "Apple reste solide avec ses nouveaux produits.", author: "Marie Curie", image: "https://pictures.latribune.fr/cdn-cgi/image/width=3840,format=auto,quality=80/301/2538301.png?twic=v1/cover=1200x675" },
-    { id: 3, title: "Microsoft en hausse", description: "Microsoft bénéficie de l’IA et du cloud.", author: "Paul Martin", image: "https://pictures.latribune.fr/cdn-cgi/image/width=3840,format=auto,quality=80/66/2418066.jpg?twic=v1/cover=1200x675" },
-    { id: 4, title: "Amazon : à surveiller", description: "Amazon domine le e-commerce mais concurrence rude.", author: "Sophie Lemoine", image: "https://fr.al3omk.com/wp-content/uploads/2023/09/vis_0925202317090385.jpg" },
-    { id: 5, title: "Google : pari sûr ?", description: "Google continue d’innover dans la tech.", author: "Luc Durand", image: "https://i0.wp.com/blog.sowefund.com/wp-content/uploads/2014/07/morning-brew-NrOUHQ2jHtU-unsplash.jpg?fit=3000%2C2000&ssl=1" },
-    { id: 6, title: "Nvidia : boom de l’IA", description: "Nvidia profite de la demande en IA.", author: "Emma Blanc", image: "https://pictures.latribune.fr/cdn-cgi/image/width=3840,format=auto,quality=80/383/2131383.jpg?twic=v1/cover=1200x675" }
-  ],
-  crypto: [
-    { id: 7, title: "Bitcoin : toujours d’actu ?", description: "BTC reste la référence mais attention aux régulations.", author: "Clara Rousseau", image: "https://cimg.co/news/88816/223065/acheter-btc.jpg" },
-    { id: 8, title: "Ethereum 2.0", description: "Ethereum passe à la preuve d’enjeu, un game-changer ?", author: "Thomas Lefèvre", image: "https://www.moneyland.ch/resources/public/dtc/media/investir-ethereum.jpg" },
-    { id: 9, title: "Solana : la montée", description: "Solana attire avec ses transactions rapides.", author: "Anna Petit", image: "https://xtb.scdn5.secure.raxcdn.com/kb_main_photo/0103/13/572babd6-5508-4ab3-98f2-3bc6d6cebbc3/kb_main_photo_front/solana-trading-how-to-start-investing-in-solana-sol-header.png" },
-    { id: 10, title: "Cardano : à long terme", description: "Cardano mise sur la recherche académique.", author: "Marc Dubois", image: "https://libertex.com/sites/default/files/styles/blog_detail_hero/public/blog/cardano-pp-main.jpg?itok=tda8J_33" },
-    { id: 11, title: "Polkadot : interopérabilité", description: "Polkadot connecte les blockchains.", author: "Lise Garnier", image: "https://www.cointribune.com/app/uploads/2020/10/polkadot-ipo-initial-parachain-offering.jpg" },
-    { id: 12, title: "Ripple : pour les banques", description: "Ripple vise les paiements internationaux.", author: "Hugo Morel", image: "https://traderfrancophone.fr/wp-content/uploads/2021/05/Ripple-scaled-1.jpg" }
-  ]
+// Récupération des messages pour le chat au chargement de la page
+var messageData = [];
+var postData = [];
+var messages = {
+  actions: [],
+  cryptos: []
 };
-
-// Données fictives pour le chat
-let messages = {
-  actions: [
-    { author: "Jean Dupont", text: "Quelqu’un a des news sur Tesla ?", time: "2025-04-13 10:30", image: "Persona1.jpg" },
-    { author: "Marie Curie", text: "Apple va sortir un nouveau produit, ça peut booster le cours.", time: "2025-04-13 11:15", image: "Persona2.jpg" }
-  ],
-  cryptos: [
-    { author: "Clara Rousseau", text: "Bitcoin est en consolidation, bon moment pour entrer ?", time: "2025-04-13 09:45", image: "Persona3.jpg" },
-    { author: "Thomas Lefèvre", text: "Ethereum semble prêt pour un breakout !", time: "2025-04-13 12:00", image: "Persona4.png" }
-  ]
+var posts = {
+  action: [],
+  crypto: []
 };
+// Récupération des messages depuis l'API
+document.addEventListener('DOMContentLoaded', () => {
+  const requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  fetch("http://217.154.7.154:4000/coments", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      messageData = result;
+      messages = {
+        actions: messageData.filter(msg => msg.type === 'actions'),
+        cryptos: messageData.filter(msg => msg.type === 'cryptos')
+      };
+      renderMessages(); // Render messages after fetching data
+    })
+    .catch(error => console.error('Error fetching comments:', error));
+
+    const requestOptionsPosts = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    fetch("http://217.154.7.154:4000/posts", requestOptionsPosts)
+      .then(response => response.json())
+      .then(result => {
+        postData = result;
+        posts = {
+          action: postData.filter(post => post.type === 'action'),
+          crypto: postData.filter(post => post.type === 'crypto')
+        };
+        renderPosts(); // Render posts after fetching data
+      })
+      .catch(error => console.error('Error fetching posts:', error));
+});
+
 
 let currentContent = "action";
 let currentChat = "actions";
@@ -1395,10 +1404,10 @@ function renderPosts() {
     const card = document.createElement("div");
     card.className = "post-card";
     card.innerHTML = `
-      <img src="${post.image}" alt="${post.title}" class="post-image">
+      <img src="http://217.154.7.154:4000/image/${post.image}" alt="${post.title}" class="post-image">
       <h3 class="post-title">${post.title}</h3>
-      <p class="post-description">${post.description}</p>
-      <p class="post-author">Par ${post.author}</p>
+      <p class="post-description">${post.content}</p>
+      <p class="post-author">Par ${post.user.firstName} ${post.user.lastName}</p>
     `;
     grid.appendChild(card);
   });
@@ -1407,15 +1416,23 @@ function renderPosts() {
 function renderMessages() {
   const chat = document.getElementById("chatMessages");
   chat.innerHTML = "";
+  // trie des messages par date
+  messages[currentChat].sort((a, b) => new Date(a.comentDate) - new Date(b.comentDate));
+  // affiche les messages
   messages[currentChat].forEach(msg => {
+    // convertir le timestamp en date lisible
+    const date = new Date(msg.comentDate);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+    const dateMessage = date.toLocaleDateString('fr-FR', options);
+
     const message = document.createElement("div");
     message.className = "chat-message";
     message.innerHTML = `
-      <img src="${msg.image}" alt="${msg.author}">
+      <img src="http://217.154.7.154:4000/photo/${msg.user.photo}" alt="${msg.user.lastName}">
       <div class="chat-message-content">
-        <div class="chat-message-author">${msg.author}</div>
-        <div class="chat-message-text">${msg.text}</div>
-        <div class="chat-message-time">${msg.time}</div>
+        <div class="chat-message-author">${msg.user.firstName} ${msg.user.lastName}</div>
+        <div class="chat-message-text">${msg.comentContent}</div>
+        <div class="chat-message-time">${dateMessage}</div>
       </div>
     `;
     chat.appendChild(message);
@@ -1435,42 +1452,99 @@ function togglePostModal() {
   }
 }
 
+// Fonction pour gérer le téléchargement d'image
+var imageName = "";
+function handleImageUpload(event) {
+          const file = event.target.files[0];
+          if (file) {
+                // Envoyer le fichier au serveur
+                const formData = new FormData();
+                formData.append("file", file);
+                const requestOptions = {
+                method: "POST",
+                body: formData,
+                redirect: "follow"
+                };
+
+                fetch("http://217.154.7.154:4000/posts/image", requestOptions)
+                .then((response) => response.text())
+                .then((result) => {
+                  console.log(result)
+                // Traiter la réponse du serveur
+                  var result = JSON.parse(result);
+                  imageName = result.filename; // Récupérer le nom de l'image
+                })
+                .catch((error) => console.error(error));
+            }
+}
+
 function addPost() {
   const title = document.getElementById("postTitle").value.trim();
   const description = document.getElementById("postDescription").value.trim();
-  const author = document.getElementById("postAuthor").value.trim();
   const imageInput = document.getElementById("postImage");
-  if (!title || !description || !author) {
+  if (!title || !description ) {
     alert("Veuillez remplir tous les champs.");
     return;
   }
-  const image = imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : "https://via.placeholder.com/320x180";
-  const newPost = {
-    id: posts[currentContent].length + 1,
-    title,
-    description,
-    author,
-    image
+  if (imageInput.files.length === 0) {
+    alert("Veuillez sélectionner une image.");
+    return;
+  }
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const newPost = JSON.stringify({
+    "userId": userInfo.id, // À remplacer par le vrai nom d’utilisateur
+    "title": title,
+    "content": description,
+    "image": imageName,
+    "type": currentContent,
+  });
+  console.log(newPost);
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: newPost,
+    redirect: "follow"
   };
-  posts[currentContent].push(newPost);
-  renderPosts();
-  togglePostModal();
+
+  fetch("http://217.154.7.154:4000/posts", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      console.log(result)
+      window.location.reload();
+    })
+    .catch((error) => console.error(error));
 }
 
 function sendMessage() {
   const input = document.getElementById("chatInput");
   const text = input.value.trim();
   if (!text) return;
-  const newMessage = {
-    author: "Utilisateur", // À remplacer par le vrai nom d’utilisateur
-    text,
-    time: new Date().toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }),
-    image: "https://via.placeholder.com/40" // À remplacer par la vraie photo
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const newMessage = JSON.stringify({
+    "userId": userInfo.id, // À remplacer par le vrai nom d’utilisateur
+    "comentContent": text,
+    "type": currentChat,
+  });
+    const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: newMessage,
+    redirect: "follow"
   };
-  messages[currentChat].push(newMessage);
-  renderMessages();
-  input.value = "";
+
+  fetch("http://217.154.7.154:4000/coments", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      console.log(result)
+      window.location.reload();
+    })
+    .catch((error) => console.error(error));
+    input.value = "";
 }
+
+
 
 const postImageDropZone = document.getElementById("postImageDropZone");
 const postImageInput = document.getElementById("postImage");

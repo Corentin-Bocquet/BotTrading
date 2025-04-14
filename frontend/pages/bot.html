@@ -1142,7 +1142,7 @@
     // Afficher la valeur de 'user' dans un élément HTML
     document.getElementById('userName').innerText = `${userInfo.firstName} ${userInfo.lastName}`;
     document.getElementById('userImage').src = `http://217.154.7.154:4000/photo/${userInfo.photo}`;
-
+    var data = [];
     window.addEventListener('DOMContentLoaded', () => {
       const requestOptions = {
         method: "GET",
@@ -1153,7 +1153,7 @@
         .then((response) => response.text())
         .then((result) => {
           console.log(result)
-          const data = JSON.parse(result);
+          data = JSON.parse(result);
           const tradeHistoryBody = document.getElementById('tradeHistoryBody');
           data.forEach((trade) => {
             const date = new Date(trade.created_at);
@@ -1171,7 +1171,7 @@
               <td>${trade.symbol}</td>
               <td>${trade.side}</td>
               <td>${trade.qty}</td>
-              <td>${trade.filled_avg_price}</td>
+              <td>${trade.filled_avg_price === null ? 'N/A' : trade.filled_avg_price + ' $'}</td>
               <td>${trade.status}</td>
               <td>${trade.asset_class}</td>
             `;
@@ -1300,25 +1300,23 @@
       if (photoInput.files.length > 0) dropZone.textContent = `Image sélectionnée : ${photoInput.files[0].name}`;
     });
 
-    let tradesData = [
-      { date: '2025-04-01', symbol: 'BTC', type: 'Buy', price: '58,230 $', quantity: '0.5' },
-      { date: '2025-04-02', symbol: 'ETH', type: 'Sell', price: '2,950 $', quantity: '2.0' },
-      { date: '2025-04-03', symbol: 'ADA', type: 'Buy', price: '0.45 $', quantity: '1000' },
-      { date: '2025-04-04', symbol: 'XRP', type: 'Sell', price: '0.62 $', quantity: '500' },
-      { date: '2025-04-05', symbol: 'BNB', type: 'Buy', price: '420 $', quantity: '1.5' }
-    ];
-
     function updateTradeTable() {
       const tbody = document.getElementById('tradeTableBody');
       tbody.innerHTML = '';
-      for (let i = 0; i < tradesData.length; i++) {
-        const trade = tradesData[i];
+      for (let i = 0; i < data.length; i++) {
+        const trade = data[i];
+        const date = new Date(trade.created_at);
+            const formatted = date.toLocaleString('fr-FR', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            });
         const tr = document.createElement('tr');
-        const tdDate = document.createElement('td'); tdDate.textContent = trade.date;
+        const tdDate = document.createElement('td'); tdDate.textContent = formatted;
         const tdSymbol = document.createElement('td'); tdSymbol.textContent = trade.symbol;
-        const tdType = document.createElement('td'); tdType.textContent = trade.type; tdType.className = trade.type.toLowerCase() === 'buy' ? 'buy' : 'sell';
-        const tdPrice = document.createElement('td'); tdPrice.textContent = trade.price;
-        const tdQuantity = document.createElement('td'); tdQuantity.textContent = trade.quantity;
+        const tdType = document.createElement('td'); tdType.textContent = trade.side; tdType.className = trade.side.toLowerCase() === 'buy' ? 'buy' : 'sell';
+        const tdPrice = document.createElement('td'); tdPrice.textContent = trade.filled_avg_price === null ? 'N/A' : trade.filled_avg_price + ' $';
+        const tdQuantity = document.createElement('td'); tdQuantity.textContent = trade.qty;
         tr.appendChild(tdDate); tr.appendChild(tdSymbol); tr.appendChild(tdType); tr.appendChild(tdPrice); tr.appendChild(tdQuantity);
         tbody.appendChild(tr);
       }
