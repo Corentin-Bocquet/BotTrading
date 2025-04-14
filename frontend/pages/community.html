@@ -461,6 +461,16 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.community-logo {
+  
+  width: 6%;
+  height: auto;
+}
+
+.titre{
+    margin-bottom: 4%;
+}
+
 .btn-glass {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -559,7 +569,7 @@
   backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 15px;
-  margin-top: 10.7%;
+  margin-top: 11.7%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
   transition: transform 0.3s ease;
   }
@@ -645,7 +655,7 @@
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 2);
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(50px);
   border-radius: 15px;
 }
 
@@ -1040,7 +1050,10 @@
   <div class="row">
     <!-- Partie gauche : Idées de la communauté -->
     <div class="col-lg-8 community-left">
-      <h2 class="community-title mb-4">Idées de la communauté 🌟</h2>
+        <div class="titre d-flex">
+            <img class="community-logo me-3" src="Community.png" alt="Logo">
+            <h2 class="community-title mb-0">Idées de la communauté</h2>
+          </div>
       <div class="d-flex mb-4">
         <button class="btn-glass btn-community active" onclick="switchContent('action')">Action 📈</button>
         <button class="btn-glass btn-community" onclick="switchContent('crypto')">Crypto 🪙</button>
