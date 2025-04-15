@@ -1161,9 +1161,9 @@
           </div>
           <div class="suggestion-buttons mb-4" id="suggestionButtons"></div>
           <div class="price-info glass-effect mb-4">
-            <h5 id="assetName" class="fw-bold"><i class="bi bi-building me-2"></i>NVIDIA (NVDA)</h5>
-            <p id="assetPrice" class="text-primary fs-5">$135.72</p>
-            <p id="assetChange" class="text-success"><i class="bi bi-arrow-up-circle me-1"></i>+0.45$ (+0.33%)</p>
+            <h5 id="assetName" class="fw-bold"><i class="bi bi-building me-2"></i></h5>
+            <p id="assetPrice" class="text-primary fs-5"></p>
+            <p id="assetChange" class="text-success"><i class="bi bi-arrow-up-circle me-1"></i></p>
           </div>
           <div class="chart-container glass-effect">
             <canvas id="assetChart"></canvas>
@@ -2154,6 +2154,11 @@ function switchContent(type) {
   updateContent();
   updateSuggestions("");
 }
+var dataPrice = [];
+var dataRatios = [];
+window.addEventListener('DOMContentLoaded', () => {
+  updateContent();
+    });
 
 function switchHealth(type) {
   currentHealth = type;
@@ -2176,36 +2181,55 @@ function switchHealth(type) {
   updateContent();
   updateSuggestions("");
 }
-
+let overallScoreChartInstance;
 function updateContent() {
-  // Boutons de suggestion
-  const suggestionButtons = document.getElementById("suggestionButtons");
-  suggestionButtons.innerHTML = "";
-  assetsData[currentContent].suggestions.forEach(suggestion => {
-    const btn = document.createElement("button");
-    btn.className = `btn-suggestion ${currentContent === "crypto" ? "crypto" : ""}`;
-    btn.innerHTML = `<i class="bi ${currentContent === "action" ? "bi-building" : "bi-currency-bitcoin"} me-2"></i>${suggestion.name}`;
-    btn.onclick = () => selectAsset(suggestion.ticker);
-    suggestionButtons.appendChild(btn);
-  });
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+
+  fetch(`http://217.154.7.154:3000/api/history/${currentAsset.ticker}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      console.log(result);
+      dataPrice = JSON.parse(result);
+      console.log(dataPrice.history.map(item => item.close));
+      // Récupération des ratios
+      const requestOptions2 = {
+        method: "GET",
+        redirect: "follow"
+      };
+
+      fetch(`http://217.154.7.154:3000/api/ratios/${currentAsset.ticker}`, requestOptions2)
+        .then((response) => response.text())
+        .then((result) => {
+          dataRatios = JSON.parse(result);
+          console.log(dataRatios);
+          let change = 0;
+  change = (dataPrice.history[4].close - dataPrice.history[3].close).toFixed(2);
+  changePercent = ((change / dataPrice.history[3].close) * 100).toFixed(2);
   // Prix et variation
   document.getElementById("assetName").innerHTML = `<i class="bi ${currentContent === "action" ? "bi-building" : "bi-currency-bitcoin"} me-2"></i>${currentAsset.name} (${currentAsset.ticker})`;
-  document.getElementById("assetPrice").textContent = currentContent === "action" ? `$${currentAsset.price}` : `${currentAsset.price} USDT`;
+  document.getElementById("assetPrice").textContent = currentContent === "action" ? `$${dataPrice.history[4].close}` : `${currentAsset.price} USDT`;
   document.getElementById("assetPrice").className = currentContent === "action" ? "text-primary fs-5" : "text-warning fs-5";
-  document.getElementById("assetChange").innerHTML = `<i class="bi ${currentAsset.change >= 0 ? "bi-arrow-up-circle" : "bi-arrow-down-circle"} me-1"></i>${currentAsset.change >= 0 ? "+" : ""}${currentAsset.change}${currentContent === "action" ? "$" : " USDT"} (${currentAsset.changePercent >= 0 ? "+" : ""}${currentAsset.changePercent}%)`;
-  document.getElementById("assetChange").className = currentAsset.change >= 0 ? "text-success" : "text-danger";
+  document.getElementById("assetChange").innerHTML = `<i class="bi ${change >= 0 ? "bi-arrow-up-circle" : "bi-arrow-down-circle"} me-1"></i>${change >= 0 ? "+" : ""}${change}${currentContent === "action" ? "$" : " USDT"} (${changePercent >= 0 ? "+" : ""}${changePercent}%)`;
+  document.getElementById("assetChange").className = change >= 0 ? "text-success" : "text-danger";
 
   // Graphique
   if (assetChart) assetChart.destroy();
   const chartCtx = document.getElementById("assetChart").getContext("2d");
+  const chartData = currentContent === "action" ? dataPrice.history.map(item => item.close) : currentAsset.chartData;
   assetChart = new Chart(chartCtx, {
     type: "line",
     data: {
       labels: ["Jour 1", "Jour 2", "Jour 3", "Jour 4", "Jour 5"],
       datasets: [{
         label: currentAsset.name,
-        data: currentAsset.chartData,
+        data: chartData,
         borderColor: currentContent === "action" ? "#007BFF" : "#FFD700",
         backgroundColor: currentContent === "action" ? "rgba(0, 123, 255, 0.1)" : "rgba(255, 215, 0, 0.1)",
         fill: true,
@@ -2236,27 +2260,28 @@ function updateContent() {
   // Indicateurs
   const indicatorsGrid = document.getElementById("indicatorsGrid");
   indicatorsGrid.innerHTML = "";
-  currentAsset.indicators.forEach(indicator => {
+  for(const key in dataRatios) {
+    const { value, note } = dataRatios[key];
     const card = document.createElement("div");
     card.className = "indicator-card";
     card.innerHTML = `
-      <h6><i class="bi bi-pie-chart-fill me-2 ${currentContent === "action" ? "text-primary" : "text-warning"}"></i>${indicator.name}</h6>
-      <p class="fw-bold">${indicator.value}</p>
-      <p>Note: <span class="text-primary">${indicator.note}</span>/${indicator.maxNote}</p>
+      <h6><i class="bi bi-pie-chart-fill me-2 ${currentContent === "action" ? "text-primary" : "text-warning"}"></i>${key}</h6>
+      <p class="fw-bold">${value}</p>
+      <p>Note: <span class="text-primary">${note}</span>/5</p>
       <div class="chart-container large-pie">
-        <canvas id="pie-${indicator.name.replace(/\s/g, "-")}"></canvas>
+        <canvas id="pie-${key.replace(/\s/g, "-")}"></canvas>
       </div>
     `;
     indicatorsGrid.appendChild(card);
-    const ctx = document.getElementById(`pie-${indicator.name.replace(/\s/g, "-")}`).getContext("2d");
+    const ctx = document.getElementById(`pie-${key.replace(/\s/g, "-")}`).getContext("2d");
     new Chart(ctx, {
       type: "doughnut",
       data: {
-        datasets: [{ data: [indicator.note, indicator.maxNote - indicator.note], backgroundColor: [currentContent === "action" ? "#28A745" : "#FFD700", "#E9ECEF"], borderWidth: 0 }]
+        datasets: [{ data: [note, 5 - note], backgroundColor: [currentContent === "action" ? "#28A745" : "#FFD700", "#E9ECEF"], borderWidth: 0 }]
       },
       options: { cutout: "70%", plugins: { legend: { display: false }, tooltip: { enabled: false } }, maintainAspectRatio: false }
     });
-  });
+  }
 
   // Note globale
   document.getElementById("score20Text").innerHTML = `<span class="fst-italic">Score sur 20 de</span> <span class="fw-bold">${currentAsset.name}</span>`;
@@ -2264,16 +2289,51 @@ function updateContent() {
   document.getElementById("score100Text").innerHTML = `<span class="fst-italic">Score sur 100 de</span> <span class="fw-bold">${currentAsset.name}</span>`;
   document.getElementById("score100Value").textContent = `${currentAsset.overallScore}/100`;
   const overallChart = document.getElementById("overallScoreChart").getContext("2d");
-  new Chart(overallChart, {
-    type: "doughnut",
-    data: {
-      datasets: [{ data: [currentAsset.overallScore, 100 - currentAsset.overallScore], backgroundColor: [currentContent === "action" ? "#007BFF" : "#FFD700", "#E9ECEF"], borderWidth: 0 }]
-    },
-    options: { cutout: "70%", plugins: { legend: { display: false }, tooltip: { enabled: false } }, maintainAspectRatio: false }
-  });
+
+    // S'il existe déjà, on le détruit
+    if (overallScoreChartInstance) {
+      overallScoreChartInstance.destroy();
+    }
+
+    // On crée un nouveau graphique et on le stocke
+    overallScoreChartInstance = new Chart(overallChart, {
+      type: "doughnut",
+      data: {
+        datasets: [{
+          data: [currentAsset.overallScore, 100 - currentAsset.overallScore],
+          backgroundColor: [currentContent === "action" ? "#007BFF" : "#FFD700", "#E9ECEF"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: "70%",
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        },
+        maintainAspectRatio: false
+      }
+});
 
   // Explications
   document.getElementById("explanationText").innerHTML = currentAsset.explanation;
+        })
+        .catch((error) => console.error(error));
+      })
+      .catch((error) => console.error(error));
+
+    
+
+  // Boutons de suggestion
+  const suggestionButtons = document.getElementById("suggestionButtons");
+  suggestionButtons.innerHTML = "";
+  assetsData[currentContent].suggestions.forEach(suggestion => {
+    const btn = document.createElement("button");
+    btn.className = `btn-suggestion ${currentContent === "crypto" ? "crypto" : ""}`;
+    btn.innerHTML = `<i class="bi ${currentContent === "action" ? "bi-building" : "bi-currency-bitcoin"} me-2"></i>${suggestion.name}`;
+    btn.onclick = () => selectAsset(suggestion.ticker);
+    suggestionButtons.appendChild(btn);
+  });
 }
 
 function selectAsset(ticker) {
@@ -2294,7 +2354,9 @@ function selectAsset(ticker) {
     }[ticker];
     if (newAsset) {
       currentAsset = newAsset;
+      console.log(newAsset)
       updateContent();
+      console.log(`Selected asset: ${currentAsset.name} (${currentAsset.ticker})`);
       document.getElementById("tickerInput").value = "";
       updateSuggestions("");
     }

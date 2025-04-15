@@ -883,16 +883,16 @@
     </div>
     <div class="modal-body">
       <div>
-        <div class="input-container" id="nameInputContainer">
-          <input type="text" id="nameInput" placeholder="Entrez votre nom">
+        <div class="input-container" id="lastNameInputContainer">
+          <input type="text" id="lastNameInput" placeholder="Entrez votre nom">
         </div>
-        <button id="editNameBtn" onclick="toggleEdit('name')">Modifier le nom</button>
+        <button id="editLastNameBtn" onclick="toggleEdit('lastName')">Modifier le nom</button>
       </div>
       <div>
-        <div class="input-container" id="firstnameInputContainer">
-          <input type="text" id="firstnameInput" placeholder="Entrez votre prénom">
+        <div class="input-container" id="firstNameInputContainer">
+          <input type="text" id="firstNameInput" placeholder="Entrez votre prénom">
         </div>
-        <button id="editFirstnameBtn" onclick="toggleEdit('firstname')">Modifier le prénom</button>
+        <button id="editFirstNameBtn" onclick="toggleEdit('firstName')">Modifier le prénom</button>
       </div>
       <div>
         <div class="input-container" id="ageInputContainer">
@@ -1142,7 +1142,7 @@
     
     const userString = sessionStorage.getItem('user');
     const user = JSON.parse(userString);
-    const userInfo = JSON.parse(user);
+    let userInfo = JSON.parse(user);
     console.log(userInfo.firstName + ' ' + userInfo.photo);
     var ordres = [];
     // Afficher la valeur de 'user' dans un élément HTML
@@ -1252,8 +1252,8 @@
     }
 
     const buttonTexts = {
-      name: 'Modifier le nom',
-      firstname: 'Modifier le prénom',
+      lastName: 'Modifier le nom',
+      firstName: 'Modifier le prénom',
       age: 'Modifier l\'âge',
       sex: 'Modifier le sexe',
       email: 'Modifier l\'adresse mail',
@@ -1278,6 +1278,30 @@
           if (field === 'age' && isNaN(value)) { alert('Veuillez entrer un nombre valide'); return; }
           if (field === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) { alert('Veuillez entrer une adresse email valide'); return; }
           if (field === 'phone' && !/^\+?\d{9,15}$/.test(value)) { alert('Veuillez entrer un numéro de téléphone valide'); return; }
+          const myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+
+          const raw = JSON.stringify({
+            [field]: value
+          });
+          const requestOptions = {
+            method: "PUT",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+          };
+
+          fetch(`http://217.154.7.154:4000/users/${userInfo.id}`, requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+              console.log(result)
+              userInfo = JSON.parse(result);
+              sessionStorage.setItem('user', JSON.stringify(result));
+              window.location.reload();
+            })
+
+            .catch((error) => console.error(error));
+
           console.log(`${field} updated to: ${value}`);
           inputContainer.style.display = 'none';
           btn.textContent = buttonTexts[field];
