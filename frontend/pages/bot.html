@@ -370,7 +370,7 @@
     button:not(.btn-icon-modern):not(.modal-close):not(.close-btn) {
       color: #61677C;
       font-weight: bold;
-      box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+      /*box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;*/
       transition: all 0.2s ease-in-out;
       cursor: pointer;
       font-weight: 600;
@@ -397,11 +397,12 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background: transparent;
+  background: rgb(191, 199, 212);
   gap: 10px;
   width: 100%;
   height: 100%; /* tu peux ajuster */
   padding: 10px;
+  overflow: hidden;
 }
 
 .bot-controls .btn {
@@ -413,29 +414,79 @@
 
 
     .bot-controls #chooseBotBtn {
-      color: #3951a7; /* Bleu pour "Choisir le bot" */
+      color: rgb(17, 173, 234, 0.7); /* Bleu pour "Choisir le bot" */
       grid-column: 1;
   grid-row: 1;
-  background: transparent;
-      backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(70px);
+      width:100%;
+      height: 100%;
+    }
+
+    .bot-controls #chooseBotBtn:hover {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+      color: rgb(17, 173, 234);
+    }
+
+    .bot-controls a {
+      text-decoration: none;
     }
 
     .bot-controls #startBotBtn {
-      color: #39a767; /* Vert pour "Lancer le bot" */
+        color: rgb(7, 148, 50, 0.7); /* Vert pour "Lancer le bot" */
       grid-column: 2;
   grid-row: 1;
+  width:100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(70px);
+    }
+
+    .bot-controls #startBotBtn:hover {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+      color: rgba(7, 149, 50, 1);
     }
 
     .bot-controls #stopBotBtn {
-      color: #a75139; /* Rouge foncé pour "Stopper le bot" */
+        color: rgb(185, 5, 5, 0.7); /* Rouge foncé pour "Stopper le bot" */
       grid-column: 1;
   grid-row: 2;
+  width:100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(70px);
+    }
+
+    .bot-controls #stopBotBtn:hover {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+      color: rgb(185, 5, 5, 1);
     }
 
     .bot-controls #configBotBtn {
-      color: #61677C; /* Rouge foncé pour "Stopper le bot" */
+        color: rgba(0, 0, 0, 0.4); /* Rouge foncé pour "Stopper le bot" */
       grid-column: 2;
   grid-row: 2;
+  width:100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(70px);
+    }
+
+    .bot-controls #configBotBtn:hover {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+      color: rgb(0, 0, 0);
     }
 
     .bot-stats h3, .bot-description h3, .bot-history h3 {
@@ -741,6 +792,27 @@
       color: #fff;
       font-weight: 500;
     }
+    .btn-icon{
+        margin-right: 2%;
+        width:50px;
+        opacity: 0.7;
+    }
+
+    .bot-controls .chooseBotBtn:hover .btn-icon{
+        opacity: 1;
+    }
+
+    .bot-controls .startBotBtn:hover .btn-icon{
+        opacity: 1;
+    }
+
+    .bot-controls .stopBotBtn:hover .btn-icon{
+        opacity: 1;
+    }
+
+    .bot-controls .configBotBtn:hover .btn-icon{
+        opacity: 1;
+    }
 
   </style>
 </head>
@@ -792,10 +864,10 @@
 
     <div class="upper-section">
       <div class="left-section bot-controls">
-        <a href="ActionCrypto.html"><button id="chooseBotBtn">Choisir le bot</button></a>
-        <button id="startBotBtn">Lancer le bot</button>
-        <button id="stopBotBtn">Stopper le bot</button>
-        <button id="configBotBtn">Configuration</button>
+        <a href="ActionCrypto.html"><button class="chooseBotBtn" id="chooseBotBtn"><img src="Choisir.png" class="btn-icon">Choisir le bot</button></a>
+        <button class="startBotBtn" id="startBotBtn"><img src="Lancer.png" class="btn-icon">Lancer le bot</button>
+        <button class="stopBotBtn" id="stopBotBtn"><img src="Stop.png" class="btn-icon">Stopper le bot</button>
+        <button class="configBotBtn" id="configBotBtn"><img src="Config.png" class="btn-icon">Configuration</button>
       </div>
 
       <div class="right-section bot-stats">
