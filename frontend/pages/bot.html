@@ -323,6 +323,7 @@
     .trade-table td {
       padding: 12px;
       border-bottom: 1px solid #ddd;
+      
     }
 
     .trade-table tr:nth-child(even) { background-color: #F9FAFB; }
@@ -564,6 +565,10 @@
       font-size: 0.9rem;
     }
 
+    .trade-history-table thead {
+        border-radius: 20px;
+    }
+
     .trade-history-table th {
       background-color: #2C3E50;
       color: white;
@@ -574,6 +579,8 @@
     .trade-history-table td {
       padding: 12px;
       border-bottom: 1px solid #ddd;
+      border-left: 1px dashed #ddd;
+      border-right: 1px dashed #ddd;
     }
 
     .trade-history-table tr:nth-child(even) { background-color: #F9FAFB; }
@@ -814,6 +821,14 @@
         opacity: 1;
     }
 
+    .top-left {
+  border-top-left-radius: 10px;
+}
+
+.top-right {
+  border-top-right-radius: 10px;
+}
+
   </style>
 </head>
 <body>
@@ -930,13 +945,13 @@
         <table class="trade-history-table">
           <thead>
             <tr>
-              <th>Date & Heure</th>
+              <th class="top-left">Date & Heure</th>
               <th>Actif</th>
               <th>Type</th>
               <th>Taille</th>
               <th>Prix d'entrée</th>
               <th>Status</th>
-              <th>Classe actif</th>
+              <th class="top-right">Classe actif</th>
             </tr>
           </thead>
           <tbody id="tradeHistoryBody">
