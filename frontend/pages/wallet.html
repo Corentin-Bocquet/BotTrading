@@ -1193,7 +1193,7 @@
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
               <h2 class="fw-bold mb-1">Wallet</h2>
-              <p class="text-muted small">Updated: <span id="walletDateTime">April 14, 2025 10:30 AM</span></p>
+              <p class="text-muted small">Updated: <span id="walletDateTime"></span></p>
             </div>
             <button class="btn btn-outline-secondary btn-edit rounded-3" onclick="toggleEditWalletModal()">
               <i class="bi bi-pencil me-2"></i>Edit
@@ -1205,7 +1205,7 @@
             <div class="col-md-6">
               <h4 class="fw-bold"><i class="bi bi-wallet2 me-2"></i>Wallet Balance</h4>
               <div class="d-flex align-items-center">
-                <h1 class="fw-bold me-3" id="walletBalance">$12,450.75</h1>
+                <h1 class="fw-bold me-3" id="walletBalance"></h1>
                 <button class="btn btn-secondary btn-hide-price rounded-3" onclick="toggleHidePrice()">
                   <span id="hidePriceText">Hide Price</span>
                   <i class="bi bi-eye-slash ms-2"></i>
@@ -1217,11 +1217,11 @@
               <div class="mini-section glassmorphism rounded-3 p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <span><i class="bi bi-credit-card me-2"></i>Total Deposited</span>
-                  <span class="text-primary"><i class="bi bi-arrow-down-circle me-1"></i>$15,000.00</span>
+                  <span class="text-primary" id="totalDeposit"><i class="bi bi-arrow-down-circle me-1"></i></span>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <span><i class="bi bi-clock me-2"></i>Total Withdrawn</span>
-                  <span class="text-primary"><i class="bi bi-arrow-up-circle me-1"></i>$2,549.25</span>
+                  <span class="text-primary" id="totalWithdraw"><i class="bi bi-arrow-up-circle me-1"></i></span>
                 </div>
               </div>
             </div>
@@ -1377,7 +1377,7 @@
           <button class="btn btn-success btn-action rounded-3 flex-fill me-2" onclick="selectWalletAction('deposit')">
             <i class="bi bi-arrow-down-circle me-2"></i>Deposit
           </button>
-          <button class="btn btn-danger btn-action rounded-3 flex-fill" onclick="selectWalletAction('withdraw')">
+          <button class="btn btn-danger btn-action rounded-3 flex-fill" onclick="selectWalletAction('withdrawal')">
             <i class="bi bi-arrow-up-circle me-2"></i>Withdraw
           </button>
         </div>
@@ -1397,6 +1397,12 @@
   </div>
 
   <script>
+    // On charegement de la page je charge les données utilisateur
+    const userString = sessionStorage.getItem('user');
+    const user = JSON.parse(userString);
+    let userInfo = JSON.parse(user);
+    document.getElementById('walletBalance').textContent = userInfo.wallet.walletBalance;
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
@@ -1626,6 +1632,28 @@
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
+
+fetch(`http://217.154.7.154:4000/wallet/${userInfo.wallet.id}`, requestOptions)
+  .then((response) => response.text())
+  .then((result) => {
+    console.log(result);
+    userInfo.wallet = JSON.parse(result);
+    document.getElementById('walletBalance').textContent = userInfo.wallet.walletBalance;
+    document.getElementById('walletDateTime').textContent = new Date(userInfo.wallet.updatedAt).toLocaleString('fr-FR', { timeZone: 'UTC' });
+    const totalDeposit = userInfo.wallet.history.filter(item => item.type === 'deposit').reduce((acc, item) => acc + parseFloat(item.amount), 0);
+    const totalWithdraw = userInfo.wallet.history.filter(item => item.type === 'withdrawal').reduce((acc, item) => acc + parseFloat(item.amount), 0);
+    document.getElementById('totalDeposit').textContent = totalDeposit.toLocaleString('fr-FR', { style: 'currency', currency: 'USD' });
+    document.getElementById('totalWithdraw').textContent = totalWithdraw.toLocaleString('fr-FR', { style: 'currency', currency: 'USD' });
+    updateTransactionTable('wallet');
+})
+  .catch((error) => console.error(error));
+})
+
 
 // Ajout de Flatpickr pour les calendriers
 document.addEventListener('DOMContentLoaded', () => {
@@ -1647,6 +1675,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Données des transactions
+
 let transactionData = {
   wallet: [
     { action: 'Deposit', amount: '$5,000.00', date: '2025-04-10', time: '14:30', status: 'Completed', icon: 'bi-arrow-down-circle' },
@@ -1663,15 +1692,25 @@ let transactionData = {
 function updateTransactionTable(type = 'wallet') {
   const tbody = document.getElementById('transactionTableBody');
   tbody.innerHTML = '';
-  const data = transactionData[type];
+  const data = userInfo.wallet.history
   data.forEach(item => {
+    // convertir date en format lisible
+    const date = new Date(item.date);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formattedDate = date.toLocaleDateString('fr-FR', options);
+    const formattedTime = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    const itemDate = formattedDate;
+    const itemTime = formattedTime;
     const tr = document.createElement('tr');
+    // ajouter icon selon le type d'action
+    const icon = item.type === 'deposit' ? 'bi-arrow-down-circle' : 'bi-arrow-up-circle';
+
     tr.innerHTML = `
-      <td class="action-${item.action.toLowerCase()}"><i class="bi ${item.icon} me-2"></i>${item.action}</td>
+      <td class="action-${item.type.toLowerCase()}"><i class="bi ${icon} me-2"></i>${item.type}</td>
       <td>${item.amount}</td>
-      <td>${item.date}</td>
-      <td>${item.time}</td>
-      <td>${item.status}</td>
+      <td>${itemDate}</td>
+      <td>${itemTime}</td>
+      <td>Completed</td>
     `;
     tbody.appendChild(tr);
   });
@@ -1694,7 +1733,7 @@ function toggleHidePrice() {
     balanceEl.textContent = '********';
     hideTextEl.textContent = 'Show Price';
   } else {
-    balanceEl.textContent = '$12,450.75';
+    balanceEl.textContent = userInfo.wallet.walletBalance;
     hideTextEl.textContent = 'Hide Price';
   }
 }
@@ -1719,19 +1758,33 @@ function submitWalletAction() {
     alert('Please select an action and enter a valid amount');
     return;
   }
-  const date = new Date().toISOString().split('T')[0];
-  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const newTransaction = {
-    action: selectedAction.charAt(0).toUpperCase() + selectedAction.slice(1),
-    amount: `$${parseFloat(amount).toFixed(2)}`,
-    date,
-    time,
-    status: 'Pending',
-    icon: selectedAction === 'deposit' ? 'bi-arrow-down-circle' : 'bi-arrow-up-circle'
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    type: selectedAction,
+    amount: parseFloat(amount),
+  });
+
+  const requestOptions = {
+    method: "PUT",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
   };
-  transactionData.wallet.push(newTransaction);
-  updateTransactionTable('wallet');
-  toggleEditWalletModal();
+
+  fetch(`http://217.154.7.154:4000/wallet/action/${userInfo.wallet.id}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      console.log(result)
+      window.location.reload();
+      updateTransactionTable('wallet');
+      toggleEditWalletModal();
+    })
+    .catch((error) => console.error(error));
+
+  
 }
 
 // Recherche par date
