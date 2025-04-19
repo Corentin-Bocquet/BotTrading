@@ -15,7 +15,7 @@
 
     body {
       padding-bottom: 70px;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(120deg, #270f20, #432038, #642c51);
     }
 
     .sidebar {
@@ -454,21 +454,20 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
     position: relative;
     justify-content: center;
     align-items: center;
     display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-
 @media (max-width: 1068px) {
     .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -477,7 +476,7 @@
     width: 280px;
     height: 400px;
     margin: 30px;
-    margin-bottom: 90%;
+    margin-bottom: 30%;
     box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -550,7 +549,7 @@
 
 
 .container .card .content h3 {
-    font-size: 1.8em;
+    font-size: 1.7em;
     color: #fff;
     z-index:1;
     bottom: -200px;
@@ -592,11 +591,29 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: rgb(216, 1, 191);
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
+}
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -929,81 +946,98 @@
       </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
+  <h2 class="learn-title">Les Indicateurs Fondamentaux</h2>
   <div class="container">
-    
+    <!-- Carte 1: Introduction aux Indicateurs Fondamentaux -->
     <div class="card">
         <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
+            <i class="bi bi-graph-up icon-intro"></i>
+            <h3>Introduction aux Indicateurs Fondamentaux</h3>
+            <p>Mesurez la santé économique des marchés avec les indicateurs fondamentaux.</p>
+            <a href="https://www.notion.so/Les-Indicateurs-conomiques-1c21d612a9ca808faf2ef4c3e93ad6fc?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 2: Les Indicateurs Économiques -->
     <div class="card">
         <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
+            <i class="bi bi-bar-chart icon-economic"></i>
+            <h3>Les Indicateurs Économiques</h3>
+            <p>Analysez PIB, inflation et chômage pour comprendre les marchés.</p>
+            <a href="https://www.notion.so/Les-Indicateurs-conomiques-1c21d612a9ca808faf2ef4c3e93ad6fc?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 3: Les Indicateurs Monétaires et Politiques de Banques Centrales -->
     <div class="card">
         <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
+            <i class="bi bi-bank icon-monetary"></i>
+            <h3>Indicateurs Monétaires et Politiques de Banques Centrales</h3>
+            <p>Étudiez taux d’intérêt et politiques monétaires pour anticiper les marchés.</p>
+            <a href="https://www.notion.so/Les-Indicateurs-Mon-taires-et-Politiques-de-Banques-Centrales-1c21d612a9ca8037be76e439a281d65a?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 4: Le Marché du Travail -->
     <div class="card">
         <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
+            <i class="bi bi-person-workspace icon-labor"></i>
+            <h3>Le Marché du Travail</h3>
+            <p>Analysez chômage et emplois pour évaluer la santé économique.</p>
+            <a href="https://www.notion.so/Le-March-du-Travail-1c21d612a9ca8093866aede9450d4673?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 5: Les Indicateurs de Secteur Manufacturier et Commercial -->
     <div class="card">
         <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
+            <i class="bi bi-buildings icon-manufacturing"></i>
+            <h3>Indicateurs de Secteur Manufacturier et Commercial</h3>
+            <p>Étudiez production et ventes pour prévoir les tendances sectorielles.</p>
+            <a href="https://www.notion.so/Les-Indicateurs-de-Secteur-Manufacturier-et-Commercial-1c31d612a9ca807283e1cad39bcb3e60?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 6: Les Indicateurs Boursiers et Financiers -->
     <div class="card">
         <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
+            <i class="bi bi-pie-chart icon-financial"></i>
+            <h3>Indicateurs Boursiers et Financiers</h3>
+            <p>Analysez ratios financiers et résultats pour évaluer les actions.</p>
+            <a href="https://www.notion.so/Les-Indicateurs-Boursiers-et-Financiers-1c31d612a9ca8090ab5bc99aa5e51d6c?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 7: Les Indicateurs de Sentiment et Géopolitique -->
     <div class="card">
         <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
+            <i class="bi bi-globe icon-sentiment"></i>
+            <h3>Indicateurs de Sentiment et Géopolitique</h3>
+            <p>Évaluez confiance des investisseurs et événements géopolitiques.</p>
+            <a href="https://www.notion.so/Les-Indicateurs-de-Sentiment-et-G-opolitique-1c31d612a9ca80559d78f879f203c932?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 8: Comment Interpréter Ces Indicateurs ? -->
     <div class="card">
         <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
+            <i class="bi bi-search icon-interpret"></i>
+            <h3>Comment Interpréter Ces Indicateurs ?</h3>
+            <p>Apprenez à lire les indicateurs pour prendre des décisions éclairées.</p>
+            <a href="https://www.notion.so/Comment-Interpr-ter-Ces-Indicateurs-1c31d612a9ca800084acf576a809bb4f?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
-  </div>
+
+    <!-- Carte 9: Utilisation Stratégique en Trading -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-gear icon-strategic"></i>
+            <h3>Utilisation Stratégique en Trading</h3>
+            <p>Combinez indicateurs fondamentaux et techniques pour optimiser vos trades.</p>
+            <a href="https://www.notion.so/Utilisation-Strat-gique-en-Trading-1c31d612a9ca80d98940f208bf1fc0a8?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+</div>
 
   <script type="text/javascript" src="vanilla-tilt.js"></script>
   <script>

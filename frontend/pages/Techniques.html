@@ -15,7 +15,7 @@
 
     body {
       padding-bottom: 70px;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(120deg, #0f2427, #203d43, #2c5c64);
     }
 
     .sidebar {
@@ -454,21 +454,20 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
     position: relative;
     justify-content: center;
     align-items: center;
     display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-
 @media (max-width: 1068px) {
     .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -477,7 +476,7 @@
     width: 280px;
     height: 400px;
     margin: 30px;
-    margin-bottom: 90%;
+    margin-bottom: 30%;
     box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -550,7 +549,7 @@
 
 
 .container .card .content h3 {
-    font-size: 1.8em;
+    font-size: 1.7em;
     color: #fff;
     z-index:1;
     bottom: -200px;
@@ -592,11 +591,29 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: rgb(1, 202, 216);
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
+}
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -929,81 +946,208 @@
       </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
+  <h2 class="learn-title">Les Indicateurs Techniques</h2>
   <div class="container">
-    
+    <!-- Carte 1: Moyennes Mobiles (SMA, EMA) en Trading -->
     <div class="card">
         <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
+            <i class="bi bi-graph-up icon-moving-averages"></i>
+            <h3>Moyennes Mobiles (SMA, EMA) en Trading</h3>
+            <p>Utilisez SMA et EMA pour identifier les tendances du marché.</p>
+            <a href="https://www.notion.so/INDICATEUR-DE-TENDANCE-MACD-1c31d612a9ca8067a2c2e91eb099aef2?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 2: MACD -->
     <div class="card">
         <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
+            <i class="bi bi-bar-chart icon-macd"></i>
+            <h3>MACD</h3>
+            <p>Analysez la dynamique des prix avec l’indicateur MACD.</p>
+            <a href="https://www.notion.so/INDICATEUR-DE-TENDANCE-MACD-1c31d612a9ca8067a2c2e91eb099aef2?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 3: Parabolic SAR -->
     <div class="card">
         <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
+            <i class="bi bi-dot icon-parabolic"></i>
+            <h3>Parabolic SAR</h3>
+            <p>Repérez les renversements de tendance avec le Parabolic SAR.</p>
+            <a href="https://www.notion.so/INDICATEUR-DE-TENDANCE-Parabolic-SAR-1c31d612a9ca802a9232fa227d47ba42?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 4: ADX (Average Directional Index) -->
     <div class="card">
         <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
+            <i class="bi bi-arrow-up-right icon-adx"></i>
+            <h3>ADX (Average Directional Index)</h3>
+            <p>Mesurez la force des tendances avec l’indicateur ADX.</p>
+            <a href="https://www.notion.so/INDICATEUR-DE-TENDANCE-ADX-Average-Directional-Index-1c31d612a9ca8008bef1e529316bf997?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 5: RSI (Relative Strength Index) -->
     <div class="card">
         <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
+            <i class="bi bi-speedometer icon-rsi"></i>
+            <h3>RSI (Relative Strength Index)</h3>
+            <p>Évaluez les conditions de surachat/survente avec le RSI.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-MOMENTUM-RSI-Relative-Strength-Index-1c31d612a9ca8012bc06c322262ece84?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 6: Stochastique -->
     <div class="card">
         <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
+            <i class="bi bi-line icon-stochastic"></i>
+            <h3>Stochastique</h3>
+            <p>Identifiez les opportunités avec l’indicateur stochastique.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-MOMENTUM-Stochastique-1c31d612a9ca80ff981cc4ec726698cd?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 7: CCI (Commodity Channel Index) -->
     <div class="card">
         <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
+            <i class="bi bi-graph-down icon-cci"></i>
+            <h3>CCI (Commodity Channel Index)</h3>
+            <p>Détectez les extrêmes de prix avec le CCI en trading.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-MOMENTUM-CCI-Commodity-Channel-Index-1c31d612a9ca80708648d02ed794124b?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 8: Momentum -->
     <div class="card">
         <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
+            <i class="bi bi-rocket icon-momentum"></i>
+            <h3>Momentum</h3>
+            <p>Mesurez la vitesse des variations de prix avec Momentum.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-MOMENTUM-Momentum-1c31d612a9ca80cbaf9adc3036e0435c?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
-  </div>
+
+    <!-- Carte 9: Volume -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-bar-chart-fill icon-volume"></i>
+            <h3>Volume</h3>
+            <p>Analysez le volume pour confirmer la force des mouvements.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-VOLUME-Volume-1c31d612a9ca80a6abcfc7f666e21983?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 10: OBV -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-graph-up-arrow icon-obv"></i>
+            <h3>OBV</h3>
+            <p>Utilisez l’OBV pour évaluer la pression d’achat/vente.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-VOLUME-OBV-1c31d612a9ca806f87cecd964499a7e3?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 11: VWAP -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-calculator icon-vwap"></i>
+            <h3>VWAP</h3>
+            <p>Tradez avec le VWAP pour évaluer les prix moyens pondérés.</p>
+            <a href="https://www.notion.so/INDICATEURS-DE-VOLUME-VWAP-1c31d612a9ca809a8992fa119720cf84?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 12: Ichimoku -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-cloud icon-ichimoku"></i>
+            <h3>Ichimoku</h3>
+            <p>Maîtrisez l’Ichimoku pour analyser tendances et supports.</p>
+            <a href="https://www.notion.so/Ichimoku-1c31d612a9ca80ae8a38c66f0120a664?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 13: Indicateur Bandes de Bollinger -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-bounding-box icon-bollinger"></i>
+            <h3>Indicateur Bandes de Bollinger</h3>
+            <p>Utilisez les Bandes de Bollinger pour repérer la volatilité.</p>
+            <a href="https://www.notion.so/Indicateur-Bandes-de-Bollinger-1c31d612a9ca80a4a23ec6210f68638b?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 14: Global Net Liquidity (GNL) -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-water icon-gnl"></i>
+            <h3>Global Net Liquidity (GNL)</h3>
+            <p>Évaluez la liquidité globale pour anticiper les marchés.</p>
+            <a href="https://www.notion.so/Global-Net-Liquidity-GNL-1c31d612a9ca80599616cff8bc990c15?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 15: Gap CME -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-arrow-left-right icon-gap"></i>
+            <h3>Gap CME</h3>
+            <p>Analysez les gaps CME pour identifier des opportunités.</p>
+            <a href="https://www.notion.so/Gap-CME-1c31d612a9ca8096b2cac70f6597758b?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 16: Fair Value Gap (FVG) -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-square-half icon-fvg"></i>
+            <h3>Fair Value Gap (FVG)</h3>
+            <p>Repérez les zones de déséquilibre avec le FVG en trading.</p>
+            <a href="https://www.notion.so/Fair-Value-Gap-FVG-1c31d612a9ca80289234c805dd2c7163?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 17: L'Indicateur CoT (Commitment of Traders) -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-people icon-cot"></i>
+            <h3>L'Indicateur CoT (Commitment of Traders)</h3>
+            <p>Analysez les positions des traders avec l’indicateur CoT.</p>
+            <a href="https://www.notion.so/L-Indicateur-CoT-Commitment-of-Traders-1c31d612a9ca80449690e97be564e3fd?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 18: Previous Daily High & Previous Daily Low -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-arrows-expand icon-high-low"></i>
+            <h3>Previous Daily High & Previous Daily Low</h3>
+            <p>Utilisez les hauts/bas quotidiens pour définir des niveaux clés.</p>
+            <a href="https://www.notion.so/Previous-Daily-High-Previous-Daily-Low-1c31d612a9ca8026b7cbcea0c3cafadc?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 19: Sell Side Liquidity -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-cash icon-liquidity"></i>
+            <h3>Sell Side Liquidity</h3>
+            <p>Comprenez la liquidité côté vente pour optimiser vos trades.</p>
+            <a href="https://www.notion.so/Sell-Side-Liquidity-1c31d612a9ca8090adfad34e403c4793?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 20: S&P Homebuilders Select Industry Index -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-house icon-homebuilders"></i>
+            <h3>S&P Homebuilders Select Industry Index</h3>
+            <p>Analysez l’indice immobilier pour trader le secteur construction.</p>
+            <a href="https://www.notion.so/S-P-Homebuilders-Select-Industry-Index-1c31d612a9ca8031b116dbe8c539fb21?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+</div>
 
   <script type="text/javascript" src="vanilla-tilt.js"></script>
   <script>

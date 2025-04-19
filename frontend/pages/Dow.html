@@ -15,7 +15,7 @@
 
     body {
       padding-bottom: 70px;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(120deg, #271e0f, #433820, #644c2c);
     }
 
     .sidebar {
@@ -454,21 +454,20 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
     position: relative;
     justify-content: center;
     align-items: center;
     display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-
 @media (max-width: 1068px) {
     .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -477,7 +476,7 @@
     width: 280px;
     height: 400px;
     margin: 30px;
-    margin-bottom: 90%;
+    margin-bottom: 30%;
     box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -592,11 +591,29 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: rgb(216, 134, 1);
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
+}
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -929,81 +946,78 @@
       </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
+  <h2 class="learn-title">La Théorie de Dow</h2>
   <div class="container">
-    
+    <!-- Carte 1: Introduction à la Théorie de Dow -->
     <div class="card">
         <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
+            <i class="bi bi-book icon-intro"></i>
+            <h3>Introduction à la Théorie de Dow</h3>
+            <p>Découvrez les bases de la théorie de Dow pour analyser les marchés.</p>
+            <a href="https://www.notion.so/Les-Six-Principes-Fondamentaux-de-la-Th-orie-de-Dow-1c21d612a9ca8006b6c9cc5696fbaf4a?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 2: Les Six Principes Fondamentaux de la Théorie de Dow -->
     <div class="card">
         <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
+            <i class="bi bi-list-check icon-principles"></i>
+            <h3>Les Six Principes Fondamentaux de la Théorie de Dow</h3>
+            <p>Maîtrisez les six principes clés qui guident l’analyse technique.</p>
+            <a href="https://www.notion.so/Les-Six-Principes-Fondamentaux-de-la-Th-orie-de-Dow-1c21d612a9ca8006b6c9cc5696fbaf4a?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 3: Les Trois Types de Tendances en Analyse Technique -->
     <div class="card">
         <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
+            <i class="bi bi-arrow-up-right icon-trends"></i>
+            <h3>Les Trois Types de Tendances en Analyse Technique</h3>
+            <p>Identifiez tendances primaires, secondaires et mineures en trading.</p>
+            <a href="https://www.notion.so/Les-Trois-Types-de-Tendances-en-Analyse-Technique-1c21d612a9ca80fab0bef7739dba34de?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 4: Les Phases du Cycle de Marché -->
     <div class="card">
         <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
+            <i class="bi bi-arrow-repeat icon-cycles"></i>
+            <h3>Les Phases du Cycle de Marché</h3>
+            <p>Analysez accumulation, expansion et autres phases des marchés.</p>
+            <a href="https://www.notion.so/Les-Phases-du-Cycle-de-March-1c21d612a9ca80fb940ff89641e0d5af?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 5: Confirmation par les Indices en Analyse Technique -->
     <div class="card">
         <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
+            <i class="bi bi-check-circle icon-confirmation"></i>
+            <h3>Confirmation par les Indices en Analyse Technique</h3>
+            <p>Utilisez les indices pour valider les signaux de trading.</p>
+            <a href="https://www.notion.so/Confirmation-par-les-Indices-en-Analyse-Technique-1c21d612a9ca80ef8fc5f930fec9d666?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 6: Rôle du Volume dans la Théorie de Dow -->
     <div class="card">
         <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
+            <i class="bi bi-bar-chart-fill icon-volume"></i>
+            <h3>Rôle du Volume dans la Théorie de Dow</h3>
+            <p>Comprenez comment le volume confirme les tendances dans la théorie.</p>
+            <a href="https://www.notion.so/R-le-du-Volume-dans-la-Th-orie-de-Dow-1c21d612a9ca80beae3ff35df3ec3564?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 7: Utilisation Pratique en Trading : Théorie de Dow -->
     <div class="card">
         <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
+            <i class="bi bi-gear icon-practical"></i>
+            <h3>Utilisation Pratique en Trading : Théorie de Dow</h3>
+            <p>Appliquez la théorie de Dow pour prendre des décisions de trading.</p>
+            <a href="https://www.notion.so/Utilisation-Pratique-en-Trading-Th-orie-de-Dow-1c21d612a9ca80eda195d51eae839bdf?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-  </div>
+</div>
 
   <script type="text/javascript" src="vanilla-tilt.js"></script>
   <script>

@@ -454,21 +454,20 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
     position: relative;
     justify-content: center;
     align-items: center;
     display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-
 @media (max-width: 1068px) {
     .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -477,7 +476,7 @@
     width: 280px;
     height: 400px;
     margin: 30px;
-    margin-bottom: 90%;
+    margin-bottom: 30%;
     box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -592,11 +591,29 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: blue; 
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
+}
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -929,81 +946,138 @@
       </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
+  <h2 class="learn-title">Les Bases</h2>
   <div class="container">
-    
+    <!-- Carte 1: Objectif et Définition du Trading -->
     <div class="card">
         <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
+            <i class="bi bi-bullseye"></i>
+            <h3>Objectif et Définition du Trading</h3>
+            <p>Comprenez ce qu'est le trading, ses objectifs et comment fonctionnent les marchés financiers.</p>
+            <a href="https://www.notion.so/Types-de-Traders-1c11d612a9ca8016912de2e27a528ed1?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 2: Types de Traders -->
     <div class="card">
         <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
+            <i class="bi bi-people"></i>
+            <h3>Types de Traders</h3>
+            <p>Découvrez les profils de traders : scalpeurs, day traders, swing traders et long terme.</p>
+            <a href="https://www.notion.so/Types-de-Traders-1c11d612a9ca8016912de2e27a528ed1?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 3: Risques du Trading -->
     <div class="card">
         <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
+            <i class="bi bi-exclamation-triangle"></i>
+            <h3>Risques du Trading</h3>
+            <p>Identifiez les risques : volatilité, levier, stress. Apprenez à protéger votre capital.</p>
+            <a href="https://www.notion.so/Risques-du-Trading-1c11d612a9ca8023a581d768ee0a29ef?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 4: Les Marchés Financiers : Définition -->
     <div class="card">
         <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
+            <i class="bi bi-globe"></i>
+            <h3>Les Marchés Financiers : Définition</h3>
+            <p>Explorez les marchés financiers, leur rôle et leur impact sur les investissements.</p>
+            <a href="https://www.notion.so/Les-March-s-Financiers-D-finition-1c11d612a9ca8079a756fd34499034ee?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 5: Les Principaux Marchés -->
     <div class="card">
         <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
+            <i class="bi bi-bank"></i>
+            <h3>Les Principaux Marchés</h3>
+            <p>Actions, obligations, devises, cryptos : découvrez les grands marchés financiers.</p>
+            <a href="https://www.notion.so/Les-Principaux-March-s-1c11d612a9ca8026a720d7efbdc3613e?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 6: Comment Investir ? -->
     <div class="card">
         <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
+            <i class="bi bi-wallet2"></i>
+            <h3>Comment Investir ?</h3>
+            <p>Apprenez à choisir un courtier, ouvrir un compte et gérer votre portefeuille.</p>
+            <a href="https://www.notion.so/Comment-Investir-1c11d612a9ca80f5b525ca0f6fc8eda4?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 7: Les Actifs et Instruments Financiers -->
     <div class="card">
         <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
+            <i class="bi bi-cash-stack"></i>
+            <h3>Les Actifs et Instruments Financiers</h3>
+            <p>Actions, ETF, obligations, cryptos : comprenez les actifs pour investir.</p>
+            <a href="https://www.notion.so/Les-Actifs-et-Instruments-Financiers-1c11d612a9ca80c1888ec07fe0fc6e23?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 8: Les Types de Graphiques -->
     <div class="card">
         <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
+            <i class="bi bi-graph-up"></i>
+            <h3>Les Types de Graphiques</h3>
+            <p>Maîtrisez les graphiques en lignes, barres et chandeliers pour analyser les prix.</p>
+            <a href="https://www.notion.so/Les-Types-de-Graphiques-1c11d612a9ca80d6b910eec3c37543da?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
-  </div>
+
+    <!-- Carte 9: Les Bougies Japonaises -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-bar-chart"></i>
+            <h3>Les Bougies Japonaises</h3>
+            <p>Lisez les chandeliers pour repérer tendances et retournements du marché.</p>
+            <a href="https://www.notion.so/Les-Bougies-Japonaises-1c11d612a9ca807db6d0dd75057d9fe2?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 10: Les Unités de Temps en Trading -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-clock"></i>
+            <h3>Les Unités de Temps en Trading</h3>
+            <p>Choisissez le bon timeframe pour analyser et trader selon votre style.</p>
+            <a href="https://www.notion.so/Les-unit-s-de-temps-Timeframes-en-trading-1c11d612a9ca80c5bad3f19bfc2a318e?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 11: Les Types d’Ordres en Bourse -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-cart-check"></i>
+            <h3>Les Types d’Ordres en Bourse</h3>
+            <p>Maîtrisez les ordres au marché, limité et stop pour trader efficacement.</p>
+            <a href="https://www.notion.so/Les-Types-d-Ordres-en-Bourse-1c11d612a9ca807dbaafcc9bee23fe3c?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 12: Le Spread (Bid et Ask) -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-arrows-angle-expand"></i>
+            <h3>Le Spread (Bid et Ask)</h3>
+            <p>Comprenez le spread et son impact sur vos coûts de trading.</p>
+            <a href="https://www.notion.so/Le-Spread-Diff-rence-entre-le-Bid-et-l-Ask-1c11d612a9ca808e91bddc575facd741?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 13: Les Notions de Levier et de Marge -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-speedometer"></i>
+            <h3>Les Notions de Levier et de Marge</h3>
+            <p>Utilisez levier et marge avec prudence pour amplifier vos trades.</p>
+            <a href="https://www.notion.so/Les-Notions-de-Levier-et-de-Marge-1c11d612a9ca80b19714f39a9c60b96e?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+</div>
 
   <script type="text/javascript" src="vanilla-tilt.js"></script>
   <script>

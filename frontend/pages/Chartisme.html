@@ -15,7 +15,7 @@
 
     body {
       padding-bottom: 70px;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(120deg, #27250f, #434120, #64602c);
     }
 
     .sidebar {
@@ -454,21 +454,20 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
     position: relative;
     justify-content: center;
     align-items: center;
     display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-
 @media (max-width: 1068px) {
     .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -477,7 +476,7 @@
     width: 280px;
     height: 400px;
     margin: 30px;
-    margin-bottom: 90%;
+    margin-bottom: 30%;
     box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -592,11 +591,31 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: yellow; 
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
+}
+
+
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -929,81 +948,128 @@
       </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
+  <h2 class="learn-title">Le Chartisme</h2>
   <div class="container">
-    
+    <!-- Carte 1: Introduction aux Figures Chartistes -->
     <div class="card">
         <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
+            <i class="bi bi-graph-up icon-intro"></i>
+            <h3>Introduction aux Figures Chartistes</h3>
+            <p>Découvrez les bases du chartisme et comment les figures prédisent les prix.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Drapeau-Flag-1c11d612a9ca80aaa514f92e6dc1e01f?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 2: Chartisme : Figure de Continuation - Drapeau (Flag) -->
     <div class="card">
         <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
+            <i class="bi bi-flag icon-flag"></i>
+            <h3>Figure de Continuation - Drapeau (Flag)</h3>
+            <p>Repérez le drapeau, une pause avant la poursuite d’une tendance.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Drapeau-Flag-1c11d612a9ca80aaa514f92e6dc1e01f?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 3: Chartisme : Figure de Continuation - Fanion (Pennant) -->
     <div class="card">
         <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
+            <i class="bi bi-triangle icon-pennant"></i>
+            <h3>Figure de Continuation - Fanion (Pennant)</h3>
+            <p>Identifiez le fanion, une consolidation avant la reprise d’une tendance.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Fanion-Pennant-1c11d612a9ca80898ec0d11ea53b4a8e?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 4: Chartisme : Figure de Continuation - Triangle Ascendant -->
     <div class="card">
         <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
+            <i class="bi bi-caret-up icon-asc-triangle"></i>
+            <h3>Figure de Continuation - Triangle Ascendant</h3>
+            <p>Maîtrisez le triangle ascendant, signe d’une hausse imminente.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Triangle-Ascendant-1c11d612a9ca80f69bf8cb4258e0bde7?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 5: Chartisme : Figure de Continuation - Triangle Descendant -->
     <div class="card">
         <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
+            <i class="bi bi-caret-down icon-desc-triangle"></i>
+            <h3>Figure de Continuation - Triangle Descendant</h3>
+            <p>Repérez le triangle descendant, indicateur d’une baisse à venir.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Triangle-Descendant-1c11d612a9ca805f8e1bebc4a77606c4?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 6: Chartisme : Figure de Continuation - Triangle Symétrique -->
     <div class="card">
         <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
+            <i class="bi bi-caret-right-fill icon-sym-triangle"></i>
+            <h3>Figure de Continuation - Triangle Symétrique</h3>
+            <p>Analysez le triangle symétrique pour anticiper la direction des prix.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Triangle-Sym-trique-1c11d612a9ca80e7977febd9cf090d7f?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 7: Chartisme : Figures de Retournement - Épaule-Tête-Épaule -->
     <div class="card">
         <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
+            <i class="bi bi-graph-down icon-ete"></i>
+            <h3>Figures de Retournement - Épaule-Tête-Épaule</h3>
+            <p>Identifiez l’ETE et ETE inversée pour prévoir les retournements.</p>
+            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-paule-T-te-paule-ETE-et-ETE-Invers-e-1c11d612a9ca803fb599ef5c66eca14c?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 8: Chartisme : Figures de Retournement - Double Sommet et Double Creux -->
     <div class="card">
         <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
+            <i class="bi bi-graph-down-arrow icon-double"></i>
+            <h3>Figures de Retournement - Double Sommet et Creux</h3>
+            <p>Repérez double sommet/creux pour anticiper un changement de tendance.</p>
+            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-Double-Sommet-et-Double-Creux-1c11d612a9ca806b9042fb933227e26f?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
-  </div>
+
+    <!-- Carte 9: Chartisme : Figures de Retournement - Triple Sommet et Triple Creux -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-bar-chart-fill icon-triple"></i>
+            <h3>Figures de Retournement - Triple Sommet et Creux</h3>
+            <p>Maîtrisez triple sommet/creux pour prévoir des renversements majeurs.</p>
+            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-Triple-Sommet-et-Triple-Creux-1c11d612a9ca80bc9dbed0ff24461b7e?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 10: Chartisme : Figure de Retournement - Rounding Bottom / Top -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-circle-half icon-rounding"></i>
+            <h3>Figure de Retournement - Rounding Bottom / Top</h3>
+            <p>Repérez la soucoupe pour anticiper un retournement progressif.</p>
+            <a href="https://www.notion.so/Chartisme-Figure-de-Retournement-Rounding-Bottom-Top-Soucoupe-1c11d612a9ca80808ae6fc34af271b5d?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 11: Chartisme : Figures de Retournement - Biseau Ascendant et Descendant -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-caret-left-fill icon-wedge"></i>
+            <h3>Figures de Retournement - Biseau Ascendant et Descendant</h3>
+            <p>Analysez les biseaux pour prévoir des changements de tendance.</p>
+            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-Biseau-Ascendant-et-Descendant-1c11d612a9ca8028a954d2e4e59fb01b?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 12: Comment Lire une Figure Chartiste ? -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-book icon-read"></i>
+            <h3>Comment Lire une Figure Chartiste ?</h3>
+            <p>Apprenez à interpréter les figures chartistes pour mieux trader.</p>
+            <a href="https://www.notion.so/Comment-Lire-une-Figure-Chartiste-1c11d612a9ca80478d89e34db9d2deff?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+</div>
 
   <script type="text/javascript" src="vanilla-tilt.js"></script>
   <script>

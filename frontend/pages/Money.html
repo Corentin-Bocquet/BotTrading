@@ -15,7 +15,7 @@
 
     body {
       padding-bottom: 70px;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(120deg, #0f2715, #204328, #2c6439);
     }
 
     .sidebar {
@@ -454,21 +454,20 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
     position: relative;
     justify-content: center;
     align-items: center;
     display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-
 @media (max-width: 1068px) {
     .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -477,7 +476,7 @@
     width: 280px;
     height: 400px;
     margin: 30px;
-    margin-bottom: 90%;
+    margin-bottom: 30%;
     box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -592,11 +591,29 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: rgb(4, 191, 4);
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
+}
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
+}
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -929,81 +946,108 @@
       </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
+  <h2 class="learn-title">Le Money Management</h2>
   <div class="container">
-    
+    <!-- Carte 1: Introduction au Money Management -->
     <div class="card">
         <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
+            <i class="bi bi-wallet2 icon-intro"></i>
+            <h3>Introduction au Money Management</h3>
+            <p>Apprenez à gérer votre capital pour trader efficacement et minimiser les risques.</p>
+            <a href="https://www.notion.so/Le-Capital-de-Trading-Bien-G-rer-Son-Argent-1c21d612a9ca80938d92fb4ae7aaff3c?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 2: Le Capital de Trading : Bien Gérer Son Argent -->
     <div class="card">
         <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
+            <i class="bi bi-cash-stack icon-capital"></i>
+            <h3>Le Capital de Trading : Bien Gérer Son Argent</h3>
+            <p>Protégez et optimisez votre capital avec des stratégies de gestion.</p>
+            <a href="https://www.notion.so/Le-Capital-de-Trading-Bien-G-rer-Son-Argent-1c21d612a9ca80938d92fb4ae7aaff3c?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 3: Le Risque par Trade : Protégez votre Capital ! -->
     <div class="card">
         <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
+            <i class="bi bi-exclamation-triangle icon-risk"></i>
+            <h3>Le Risque par Trade : Protégez votre Capital !</h3>
+            <p>Limitez les pertes par trade pour préserver votre capital à long terme.</p>
+            <a href="https://www.notion.so/Le-Risque-par-Trade-Prot-gez-votre-Capital-1c21d612a9ca802db835f9db4b722188?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 4: Le Ratio Risque/Rendement (Risk-Reward Ratio - RRR) -->
     <div class="card">
         <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
+            <i class="bi bi-hr icon-rrr"></i>
+            <h3>Le Ratio Risque/Rendement (RRR)</h3>
+            <p>Évaluez le rapport risque/rendement pour des trades plus rentables.</p>
+            <a href="https://www.notion.so/Le-Ratio-Risque-Rendement-Risk-Reward-Ratio-RRR-1c21d612a9ca80c39a41d4f5529c73e6?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 5: La Diversification et l’Exposition au Marché -->
     <div class="card">
         <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
+            <i class="bi bi-pie-chart icon-diversification"></i>
+            <h3>La Diversification et l’Exposition au Marché</h3>
+            <p>Répartissez vos investissements pour réduire les risques de pertes.</p>
+            <a href="https://www.notion.so/La-Diversification-et-l-Exposition-au-March-1c21d612a9ca80349ef0efa3f1ac28de?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 6: L'Utilisation du Stop-Loss et du Take-Profit -->
     <div class="card">
         <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
+            <i class="bi bi-arrows-angle-contract icon-stop"></i>
+            <h3>L'Utilisation du Stop-Loss et du Take-Profit</h3>
+            <p>Maîtrisez stop-loss et take-profit pour sécuriser vos trades.</p>
+            <a href="https://www.notion.so/L-Utilisation-du-Stop-Loss-et-du-Take-Profit-1c21d612a9ca805891cdca82fe92a0ae?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 7: Le Drawdown et la Gestion des Pertes -->
     <div class="card">
         <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
+            <i class="bi bi-graph-down icon-drawdown"></i>
+            <h3>Le Drawdown et la Gestion des Pertes</h3>
+            <p>Comprenez le drawdown et gérez vos pertes pour rester rentable.</p>
+            <a href="https://www.notion.so/Le-Drawdown-et-la-Gestion-des-Pertes-1c21d612a9ca80bfa83cdb7093545c5b?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
+    <!-- Carte 8: La Taille des Positions (Position Sizing) -->
     <div class="card">
         <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
+            <i class="bi bi-rulers icon-sizing"></i>
+            <h3>La Taille des Positions (Position Sizing)</h3>
+            <p>Ajustez la taille de vos positions pour équilibrer risque et gain.</p>
+            <a href="https://www.notion.so/La-Taille-des-Positions-Position-Sizing-1c21d612a9ca80e794e6f9f79c3ad6c2?pvs=21" class="bases">Choisir ce cours</a>
         </div>
     </div>
-  </div>
+
+    <!-- Carte 9: La Psychologie et la Discipline en Trading -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-person-check icon-psychology"></i>
+            <h3>La Psychologie et la Discipline en Trading</h3>
+            <p>Maîtrisez vos émotions et restez discipliné pour réussir en trading.</p>
+            <a href="https://www.notion.so/La-Psychologie-et-la-Discipline-en-Trading-1c21d612a9ca800c97a3e79f36cec12e?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 10: Suivi et Évaluation des Performances en Trading -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-clipboard-data icon-performance"></i>
+            <h3>Suivi et Évaluation des Performances</h3>
+            <p>Analysez vos trades pour améliorer vos stratégies et performances.</p>
+            <a href="https://www.notion.so/Suivi-et-valuation-des-Performances-en-Trading-1c21d612a9ca800689f5d1ea9e6d8459?pvs=21" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+</div>
 
   <script type="text/javascript" src="vanilla-tilt.js"></script>
   <script>

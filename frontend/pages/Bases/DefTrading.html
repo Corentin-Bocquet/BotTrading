@@ -3,19 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
+  <title>Définition du Trading</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap');
     @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
     @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
-      padding-bottom: 70px;
       background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      padding: 2rem;
+      padding-bottom: 70px;
+    }
+
+    .glass-card {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2rem;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      padding: 2rem;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: all 0.3s ease-in-out;
+      margin: 0 auto;
+      margin-top: 4rem;
+    }
+
+    .glass-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: left;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .image-section {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .glass-image {
+  aspect-ratio: 16 / 9;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+    .glass-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+
+    .image-text {
+  flex: 1;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Outfit', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+    .glass-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .glass-content {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Outfit', sans-serif;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .glass-content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .glass-footer {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      text-align: right;
+      font-family: 'Outfit', sans-serif;
     }
 
     .sidebar {
@@ -46,43 +167,43 @@
     .overlay.active { display: block; }
 
     .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      border-top: 1px solid #ddd;
-      border-radius: 20px;
-      display: flex;
-      justify-content: space-around;
-      padding: 0.5rem 0;
-      z-index: 1030;
-    }
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ background-color: white;
+ border-top: 1px solid #ddd;
+ border-radius: 20px;
+ display: flex;
+ justify-content: space-around;
+ padding: 0.5rem 0;
+ z-index: 1030;
+ }
 
     .bottom-nav a {
-  text-decoration: none;
-  color: #6C757D;
-  transition: all 0.3s ease;
-}
+      text-decoration: none;
+      color: #6C757D;
+      transition: all 0.3s ease;
+    }
 
-.bottom-nav a.active {
-  color: #007BFF; /* Couleur vive pour l'élément actif */
-  font-weight: bold; /* Texte en gras */
-}
+    .bottom-nav a.active {
+      color: #007BFF;
+      font-weight: bold;
+    }
 
-.bottom-nav a.active i {
-  font-size: 1.5rem; /* Icône légèrement plus grande */
-  color: #007BFF; /* Couleur vive pour l'icône */
-  filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5)); /* Lueur derrière l'icône */
-}
+    .bottom-nav a.active i {
+      font-size: 1.5rem;
+      color: #007BFF;
+      filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5));
+    }
 
-.bottom-nav a.active small {
-  font-weight: bold; /* Texte "Bot" en gras */
-}
+    .bottom-nav a.active small {
+      font-weight: bold;
+    }
 
-.bottom-nav a:hover {
-  color: #34495E;
-}
+    .bottom-nav a:hover {
+      color: #34495E;
+    }
 
     .bottom-nav i { font-size: 1.3rem; }
 
@@ -91,7 +212,7 @@
       height: 60px;
       object-fit: cover;
       border-radius: 50%;
-      border: 2px solid #007BFF; /* Contour réduit */
+      border: 2px solid #007BFF;
       box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
     }
 
@@ -110,7 +231,6 @@
 
     .close-btn:hover { color: #E74C3C; }
 
-    /* Style pour les boutons non modifiés */
     .btn-modern {
       display: inline-block;
       padding: 8px 16px;
@@ -145,11 +265,11 @@
 
     .btn-modern-primary {
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-      border: 2px solid #000; /* Contour noir pour le bouton Paramètres */
+      border: 2px solid #000;
     }
 
     .btn-modern-primary:hover {
-        border: 2px solid #000;
+      border: 2px solid #000;
       box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
     }
 
@@ -166,7 +286,6 @@
       box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
     }
 
-    /* Nouveau style pour les boutons spécifiés */
     .sidebar-item {
       display: flex;
       align-items: center;
@@ -207,11 +326,11 @@
       background: none;
       border: none;
       font-size: 1.5rem;
-      color: #fff;
+      color: #2C3E50;
       transition: color 0.3s ease;
     }
 
-    .btn-icon-modern:hover { color: #fff; }
+    .btn-icon-modern:hover { color: #34495E; }
 
     .modal {
       display: none;
@@ -416,7 +535,29 @@
       width: clamp(60%, 80vw, 80%);
     }
 
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 100px;
+      height: auto;
+      filter: invert(1);
+    }
+
     @media (max-width: 768px) {
+      .glass-card {
+        padding: 1rem;
+        margin-top: 6rem;
+      }
+
+      .image-section {
+        flex-direction: column;
+      }
+
+      .glass-image, .image-text {
+        width: 100%;
+      }
+
       .sidebar { width: 100%; left: -100%; }
       .modal { width: 95vw; height: 95vh; padding: 15px; }
       .stats-upper { flex-direction: column; height: auto; }
@@ -436,166 +577,9 @@
       .stats-info i { font-size: 0.8rem; }
       .trade-table th, .trade-table td { padding: 8px; }
     }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 100px;
-      height: auto;
-      filter: invert(1);
-    }
-
-    .learn-title {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  color: #fff;
-  font-weight: 700;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.container{
-    margin-top: 26%;
-    margin-left: 9%;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
-  grid-template-rows: 100px auto 100px; 
-}
-
-@media (max-width: 1068px) {
-    .container {
-        margin-top: 50%;
-        grid-template-columns: 1.3fr 1.3fr; 
-    }
-}
-
-.container .card {
-    position: relative;
-    width: 280px;
-    height: 400px;
-    margin: 30px;
-    margin-bottom: 90%;
-    box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(8px);
-}
-
-.container .card .content{
-    padding: 20px;
-    text-align: center;
-    height: 70%;
-    
-}
-
-
-
-.container .card .content img {
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-    left: 15px;
-    font-size: 8em;
-    color: rgba(255, 255, 255, 0.05);
-    pointer-events: none;
-    
-    opacity: 0.8;
-    filter: brightness(0.9);
-}
-
-.container .card:hover .content img {
-    opacity: 0.2;
-    filter: blur(7px);
-}
-
-.container .card .content .SR {
-    filter: invert(1);
-    margin-bottom: 20%;
-    left: 2px;
-}
-
-.container .card .content .chartisme {
-    left: 3%;
-}
-
-.container .card .content .money {
-    top: 33%;
-}
-
-.container .card .content .tendances {
-    width:80%;
-    bottom: 12%;
-    left: 12%;
-}
-
-.container .card .content .fonda {
-    filter: invert(1);
-    left: 5px;
-    bottom: -10px;
-}
-
-.container .card .content .dow {
-    filter: invert(1);
-    left: 5px;
-}
-
-
-
-.container .card .content h3 {
-    font-size: 1.8em;
-    color: #fff;
-    z-index:1;
-    bottom: -200px;
-}
-
-.container .card .content p {
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: 0.5s;
-    margin: 10%;
-}
-
-.container .card:hover p {
-    transform: translateY(0px);
-    opacity: 1;
-}
-
-.container .card .content a{
-    position: relative;
-    display: inline-block;
-    padding: 8px 20px;
-    margin-top: 20%;
-    bottom: 30px;
-    background: #fff;
-    color: #000;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: 500;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    transform: translateY(100px);
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.container .card:hover a {
-    transform: translateY(0px);
-    opacity: 1;
-}
   </style>
 </head>
 <body>
-
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
     <i class="bi bi-list fs-2"></i>
   </button>
@@ -636,6 +620,39 @@
   <div class="overlay" onclick="toggleSidebar()" id="overlay"></div>
 
   <img src="logo.png" alt="BullSter Logo" class="logo">
+
+  <div class="glass-card" data-tilt data-tilt-max="2" data-tilt-speed="400">
+    <div class="glass-title" role="heading" aria-level="1">📖 Définition du Trading</div>
+    <div class="image-section">
+      <div class="glass-image">
+        <img src="https://img.le-dictionnaire.com/definition-dictionnaire.jpg" alt="Chart illustrating trading" loading="lazy" onerror="this.style.display='none';">
+        <div class="image-fallback" style="display: none;">Image not available</div>
+      </div>
+      <div class="image-text">
+        <p>
+          Le <strong>trading</strong> consiste à acheter et vendre des actifs financiers (actions, devises, crypto, matières premières…) pour réaliser un profit grâce aux variations de prix.
+        </p>
+        <br>
+        <p>
+          💡 <strong>Exemple :</strong> Acheter une action à 50€ et la revendre à 60€ = +10€ de gain.
+        </p>
+      </div>
+    </div>
+    <div class="glass-info">
+      <div class="glass-content">
+        <h2>Objectifs du Trading <span aria-hidden="true">🎯</span></h2>
+        <ul>
+          <li>✔️ <strong>Spéculer</strong> : Profiter des variations de prix.</li>
+          <li>✔️ <strong>Investir à court/moyen terme</strong> : Générer des gains rapidement.</li>
+          <li>✔️ <strong>Se protéger</strong> (Hedging) : Réduire les risques liés aux marchés financiers.</li>
+        </ul>
+        <p>💡 <strong>Exemple :</strong> Un trader achète du pétrole avant une crise pour se protéger contre une hausse des prix.</p>
+      </div>
+      <footer class="glass-footer">
+        Écrit par Corentin • Design par Corentin
+      </footer>
+    </div>
+  </div>
 
   <!-- Modal pour Paramètres du profil -->
   <div class="modal" id="profileModal">
@@ -763,7 +780,7 @@
   </div>
 
   <!-- Modal pour À propos -->
-<div class="modal" id="aboutModal">
+  <div class="modal" id="aboutModal">
     <div class="modal-header">
       <h5>À propos</h5>
       <button class="modal-close" onclick="toggleAboutModal()">
@@ -775,63 +792,16 @@
         <strong><i class="bi bi-bar-chart-fill me-2"></i>Bienvenue sur BullSter</strong><br>
         Votre compagnon de confiance pour le trading et la gestion de portefeuille. Conçu pour les investisseurs de tous niveaux, BullSter vous aide à suivre vos performances, analyser vos positions et améliorer vos stratégies avec précision.
       </p>
-  
       <hr>
-      
-  
       <h6><i class="bi bi-lightbulb-fill me-2 text-warning"></i><strong>Notre mission</strong></h6>
       <p>
-        Offrir à chacun, débutant ou professionnel, les outils d’analyse et de gestion les plus puissants dans une interface intuitive et moderne. Plus qu’un outil, BullSter est une plateforme pensée pour vous accompagner à chaque étape de votre parcours d'investissement.
-      </p>
-
-      <hr>
-  
-      <h6><i class="bi bi-tools me-2 text-primary"></i><strong>Fonctionnalités clés</strong></h6>
-      <ul class="list-unstyled ms-3">
-        <li><i class="bi bi-graph-up-arrow me-2 text-success"></i>Suivi en temps réel de vos portefeuilles multi-actifs</li>
-        <li><i class="bi bi-pie-chart-fill me-2 text-info"></i>Visualisation graphique claire et interactive</li>
-        <li><i class="bi bi-bell-fill me-2 text-danger"></i>Alertes personnalisées selon vos critères</li>
-        <li><i class="bi bi-shuffle me-2 text-secondary"></i>Comparaison et ajustement de stratégies</li>
-        <li><i class="bi bi-database-check me-2 text-success"></i>Historique complet de vos transactions</li>
-      </ul>
-
-      <hr>
-  
-      <h6><i class="bi bi-people-fill me-2 text-dark"></i><strong>Qui sommes-nous ?</strong></h6>
-      <p>
-        BullSter est développé par <strong>ISEN</strong>, une équipe passionnée de finance, technologie et design. Nous réunissons des profils variés : ingénieurs, data scientists, UX designers et analystes financiers. Ensemble, nous construisons un outil puissant, centré sur l’utilisateur et pensé pour durer.
-      </p>
-
-      <hr>
-  
-      <h6><i class="bi bi-flag-fill me-2 text-danger"></i><strong>Nos piliers</strong></h6>
-      <ul class="list-unstyled ms-3">
-        <li><i class="bi bi-lightning-fill me-2 text-warning"></i><strong>Innovation continue</strong> — Des mises à jour fréquentes et utiles</li>
-        <li><i class="bi bi-eye-fill me-2 text-primary"></i><strong>Transparence</strong> — Données claires, aucune complexité inutile</li>
-        <li><i class="bi bi-lock-fill me-2 text-secondary"></i><strong>Sécurité</strong> — Vos données protégées avec rigueur</li>
-        <li><i class="bi bi-people-fill me-2 text-success"></i><strong>Accessibilité</strong> — Outils conçus pour tous les profils</li>
-      </ul>
-
-      <hr>
-  
-      <h6><i class="bi bi-binoculars-fill me-2 text-indigo"></i><strong>Notre vision</strong></h6>
-      <p>
-        Nous imaginons un futur où chaque investisseur, quel que soit son niveau, peut gérer ses actifs en toute autonomie, grâce à une technologie intelligente, pédagogique et évolutive. Intégrations API, IA prédictive, trading collaboratif… ce n’est que le début.
-      </p>
-  
-      <hr>
-  
-      <p class="mb-1"><em>Nous ne vous montrons pas que les chiffres — nous vous aidons à en tirer le meilleur.</em></p>
-      <p class="text-muted small">
-        <i class="bi bi-info-circle me-1"></i>Version 1.0 — Mise à jour : Avril 2025<br>
-        <i class="bi bi-c-circle me-1"></i>2025 BullSter — Tous droits réservés
+        Offrir à chacun, débutant ou professionnel, les outils d’analyse et de gestion les plus pu: 1fr;
       </p>
     </div>
   </div>
-  
 
   <!-- Modal pour Sécurité -->
-<div class="modal" id="securityModal">
+  <div class="modal" id="securityModal">
     <div class="modal-header">
       <h5>Sécurité</h5>
       <button class="modal-close" onclick="toggleSecurityModal()">
@@ -841,48 +811,13 @@
     <div class="modal-body" style="color: #34495E;">
       <p class="mb-3">
         <strong><i class="bi bi-shield-lock-fill me-2 text-primary"></i>Votre sécurité est notre priorité</strong><br>
-        Chez <strong>BullSter</strong>, la protection de vos données et de vos actifs est au cœur de nos préoccupations. Nous mettons en œuvre des technologies de pointe pour garantir un environnement fiable et sécurisé.
-      </p>
-  
-      <hr>
-  
-      <h6><strong><i class="bi bi-shield-check me-2 text-success"></i>Nos mesures de sécurité</strong></h6>
-      <ul class="list-unstyled ms-3">
-        <li><i class="bi bi-lock-fill me-2 text-dark"></i><strong>Chiffrement de bout en bout (AES-256)</strong> — Vos données sont cryptées à toutes les étapes de transmission et de stockage.</li>
-        <li><i class="bi bi-fingerprint me-2 text-warning"></i><strong>Authentification à deux facteurs (2FA)</strong> — Une couche de sécurité supplémentaire pour protéger l’accès à votre compte.</li>
-        <li><i class="bi bi-shield-exclamation me-2 text-danger"></i><strong>Surveillance active</strong> — Notre système détecte en temps réel toute tentative d'accès non autorisée ou activité suspecte.</li>
-        <li><i class="bi bi-cloud-check-fill me-2 text-info"></i><strong>Hébergement sécurisé</strong> — Infrastructure hébergée sur des serveurs certifiés et conformes aux normes de sécurité internationales (ISO/IEC 27001).</li>
-      </ul>
-  
-      <hr>
-  
-      <h6><strong><i class="bi bi-lightbulb me-2 text-warning"></i>Bonnes pratiques recommandées</strong></h6>
-      <ul class="list-unstyled ms-3">
-        <li><i class="bi bi-key-fill me-2 text-secondary"></i>Utilisez un mot de passe fort, long et unique.</li>
-        <li><i class="bi bi-person-lock me-2 text-secondary"></i>Ne partagez jamais vos identifiants, même temporairement.</li>
-        <li><i class="bi bi-lock me-2 text-secondary"></i>Activez la double authentification dès la création de votre compte.</li>
-        <li><i class="bi bi-shield-fill-exclamation me-2 text-secondary"></i>Méfiez-vous des tentatives de phishing. <strong>BullSter</strong> ne vous demandera jamais vos identifiants par e-mail.</li>
-      </ul>
-  
-      <hr>
-  
-      <h6><strong><i class="bi bi-envelope-lock me-2"></i>Besoin d'aide ou signalement ?</strong></h6>
-      <p class="mb-1">
-        Contactez notre équipe sécurité à l’adresse suivante :
-        <a href="mailto:corentin.bocquet@student.junia.com">corentin.bocquet@student.junia.com</a>
-      </p>
-  
-      <hr>
-  
-      <p class="text-muted small">
-        <i class="bi bi-shield-check me-1"></i>Dernière mise à jour : Avril 2025 — <strong>BullSter</strong> propulsé par <strong>ISEN</strong>
+        Chez <strong>BullSter</strong>, la protection de vos données et de vos actifs est au cœur de nos préoccupations.
       </p>
     </div>
   </div>
-  
 
   <!-- Modal pour Aide -->
-<div class="modal" id="helpModal">
+  <div class="modal" id="helpModal">
     <div class="modal-header">
       <h5>Aide</h5>
       <button class="modal-close" onclick="toggleHelpModal()">
@@ -894,135 +829,24 @@
         <strong><i class="bi bi-question-circle-fill me-2 text-primary"></i>Centre d’aide BullSter</strong><br>
         Retrouve ici les réponses aux questions fréquentes et les ressources utiles pour bien utiliser la plateforme.
       </p>
-  
-      <hr>
-  
-      <h6><strong><i class="bi bi-lightning-fill me-2 text-warning"></i>FAQ rapide</strong></h6>
-      <ul class="list-unstyled ms-3">
-        <li><i class="bi bi-person-circle me-2 text-info"></i><strong>Comment modifier mon profil ?</strong><br>Accédez à <em>“Paramètres du profil”</em> via la barre latérale.</li>
-        <li><i class="bi bi-clipboard-data me-2 text-success"></i><strong>Où consulter mes trades ?</strong><br>Ouvre <em>“Historique des trades”</em> pour suivre toutes tes opérations passées.</li>
-        <li><i class="bi bi-unlock me-2 text-danger"></i><strong>Problème de connexion ?</strong><br>Vérifie tes identifiants ou réinitialise ton mot de passe depuis l'écran de connexion.</li>
-      </ul>
-  
-      <hr>
-  
-      <h6><strong><i class="bi bi-book me-2 text-secondary"></i>Besoin d’un coup de main ?</strong></h6>
-      <p>
-        Consulte notre <a href="#" style="color: #007BFF;">guide utilisateur complet</a> pour une prise en main détaillée de toutes les fonctionnalités de BullSter.
-      </p>
-  
-      <hr>
-  
-      <h6><strong><i class="bi bi-headset me-2 text-success"></i>Assistance et support</strong></h6>
-      <p class="mb-1">
-        Une question ? Un bug à signaler ? Contactez notre équipe :
-        <ul class="list-unstyled ms-3">
-          <li><i class="bi bi-envelope-at me-2"></i><a href="mailto:support@votre-domaine.com">support@votre-domaine.com</a></li>
-          <li><i class="bi bi-chat-dots me-2"></i>Utilisez le chat en direct intégré à la plateforme</li>
-        </ul>
-      </p>
-  
-      <hr>
-  
-      <p class="text-muted small">
-        <i class="bi bi-info-circle me-1"></i>Dernière mise à jour : Avril 2025 — <strong>BullSter</strong> propulsé par <strong>ISEN</strong>
-      </p>
     </div>
   </div>
-  <h2 class="learn-title">Learn</h2>
-  <div class="container">
-    
-    <div class="card">
-        <div class="content">
-            <img src="bases.png"/>
-            <h3>Les Bases</h3>
-            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
-            <a href="Bases.html" class="bases">Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="SR.png " class="SR"/>
-            <h3>Supports et Résistances</h3>
-            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
-            <a href="SR.html">Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Chartisme.png" class="chartisme"/>
-            <h3>Le Chartisme</h3>
-            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
-            <a href="Chartisme.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Money.png" class="money"/>
-            <h3>Le Money Mangement</h3>
-            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
-            <a href="Money.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Tendances.png" class="tendances"/>
-            <h3>Les Tendances</h3>
-            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
-            <a href="Tendances.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Dow.png" class="dow"/>
-            <h3>La Théorie de Dow</h3>
-            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
-            <a href="Dow.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Fonda.png" class="fonda"/>
-            <h3>Indicateurs Fondamentaux</h3>
-            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
-            <a href="Fonda.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="content">
-            <img src="Technique.png" class="techniques"/>
-            <h3>Indicateurs Techniques</h3>
-            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
-            <a href="Techniques.html" >Choisir cette catégorie</a>
-        </div>
-    </div>
-  </div>
-
-  <script type="text/javascript" src="vanilla-tilt.js"></script>
-  <script>
-    VanillaTilt.init(document.querySelectorAll(".card"), {
-      max: 25,
-      speed: 400,
-      
-    });
-  </script>
 
   <div class="bottom-nav">
-    <a href="learn.html" class="text-dark text-center active"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
-    <a href="trade.html" class="text-dark text-center"><i class="bi bi-graph-up-arrow"></i><br><small>Trade</small></a>
-    <a href="bot.html" class="text-dark text-center"><i class="bi bi-cpu"></i><br><small>Bot</small></a>
-    <a href="wallet.html" class="text-dark text-center"><i class="bi bi-wallet2"></i><br><small>Wallet</small></a>
-    <a href="community.html" class="text-dark text-center"><i class="bi bi-people"></i><br><small>Communauté</small></a>
-  </div>
+    <a href="../learn.html" class="text-dark text-center active"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
+    <a href="../trade.html" class="text-dark text-center"><i class="bi bi-graph-up-arrow"></i><br><small>Trade</small></a>
+    <a href="../bot.html" class="text-dark text-center"><i class="bi bi-cpu"></i><br><small>Bot</small></a>
+    <a href="../wallet.html" class="text-dark text-center"><i class="bi bi-wallet2"></i><br><small>Wallet</small></a>
+    <a href="../community.html" class="text-dark text-center"><i class="bi bi-people"></i><br><small>Communauté</small></a>
+    </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
   <script>
+    VanillaTilt.init(document.querySelectorAll(".glass-card"), {
+      max: 1,
+      speed: 400,
+    });
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
@@ -1032,15 +856,10 @@
 
     const toggleModal = (modalId) => {
       const modal = document.getElementById(modalId);
-      
-      // Si une modale est déjà ouverte et que ce n'est pas celle cliquée, fermer l'ancienne
       if (activeModal && activeModal !== modal) {
         activeModal.classList.remove('active');
       }
-
-      // Basculer l'état de la modale cliquée
       modal.classList.toggle('active');
-      
       if (modal.classList.contains('active')) {
         activeModal = modal;
         if (modalId === 'statsModal') loadStatsCharts();
@@ -1238,19 +1057,18 @@
     updateTradeTable();
     setTimeout(simulateNewTrade, 3000);
 
-
     document.addEventListener('DOMContentLoaded', () => {
-  const currentPage = window.location.pathname.split('/').pop() || 'bot.html'; // Récupère le nom de la page actuelle
-  const navLinks = document.querySelectorAll('.bottom-nav a');
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-});
+      const currentPage = window.location.pathname.split('/').pop() || 'learn.html';
+      const navLinks = document.querySelectorAll('.bottom-nav a');
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
   </script>
 </body>
 </html>

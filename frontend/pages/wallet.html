@@ -53,12 +53,17 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: white;
-      border-top: 1px solid #ddd;
+      background: transparent;
+      
+      border-top: 2px solid #ddd;
       display: flex;
       justify-content: space-around;
       padding: 0.5rem 0;
       z-index: 1030;
+      backdrop-filter: blur(40px);
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
     }
 
     .bottom-nav a {
