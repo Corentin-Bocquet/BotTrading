@@ -6,19 +6,16 @@
   <title>Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+    @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
     body {
       padding-bottom: 70px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #270f0f, #432020, #642c2c);
     }
 
     .sidebar {
@@ -53,17 +50,13 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: transparent;
-      
-      border-top: 2px solid #ddd;
+      background-color: white;
+      border-top: 1px solid #ddd;
+      border-radius: 20px;
       display: flex;
       justify-content: space-around;
       padding: 0.5rem 0;
       z-index: 1030;
-      backdrop-filter: blur(40px);
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
     }
 
     .bottom-nav a {
@@ -214,11 +207,11 @@
       background: none;
       border: none;
       font-size: 1.5rem;
-      color: #2C3E50;
+      color: #fff;
       transition: color 0.3s ease;
     }
 
-    .btn-icon-modern:hover { color: #34495E; }
+    .btn-icon-modern:hover { color: #fff; }
 
     .modal {
       display: none;
@@ -447,414 +440,180 @@
     .logo {
       position: absolute;
       top: 20px;
-      right: 10px;
-      width: 350px;
-      height: auto;
-    }
-
-    .logoBullSter {
-      position: absolute;
-      top: 20px;
       right: 20px;
       width: 100px;
       height: auto;
-
-
-    }.logo {
-      position: absolute;
-      top: 20px;
-      right: 10px;
-      width: 350px;
-      height: auto;
+      filter: invert(1);
     }
 
+    .learn-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    margin-top: 6%;
+    margin-left: 5%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+@media (max-width: 1068px) {
+    .container {
+        margin-top: 20%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+.container .card {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    margin: 30px;
+    margin-bottom: 30%;
+    box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.container .card .content{
+    padding: 20px;
+    text-align: center;
+    height: 70%;
     
-
-    /* Glassmorphism */
-.glassmorphism {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Sections */
-.left-section, .right-section {
-  padding: 0 15px;
-}
-
-.wallet-section, .transaction-section, .currency-payment-section {
-  transition: all 0.3s ease;
-}
-
-.wallet-section h1 {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  color: #2C3E50;
-}
-
-.btn-edit {
-  background: transparent;
-  border: 1px solid #6C757D;
-  color: #2C3E50;
-  transition: all 0.3s ease;
-}
-
-.btn-edit:hover {
-  background: #007BFF;
-  border-color: #007BFF;
-  color: white;
-}
-
-.btn-hide-price {
-  background: #6C757D;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.btn-hide-price:hover {
-  background: #5A6268;
-}
-
-.mini-section {
-  background: rgba(0, 123, 255, 0.05);
-}
-
-/* Transaction History */
-.transaction-section .nav-link {
-  color: #6C757D;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.transaction-section .nav-link.active {
-  color: #007BFF;
-  border-bottom: 2px solid #007BFF;
-}
-
-.search-date input {
-  background: transparent;
-  border: 1px solid #6C757D;
-  color: #2C3E50;
-}
-
-.search-date i {
-  color: #6C757D;
-}
-
-.table th {
-  color: #2C3E50;
-  font-weight: 600;
-}
-
-.table td {
-  vertical-align: middle;
-}
-
-.action-deposit {
-  color: #28A745;
-  font-weight: 500;
-}
-
-.action-withdraw {
-  color: #E74C3C;
-  font-weight: 500;
-}
-
-/* Currency & Payment */
-.currency-payment-section img {
-  max-width: 10%;
-}
-
-.form-control, .form-select {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid #6C757D;
-  color: #2C3E50;
-  transition: all 0.3s ease;
-}
-
-.form-control:focus, .form-select:focus {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: #007BFF;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
-}
-
-.input-group-text {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid #6C757D;
-}
-
-.btn-submit {
-  background: #007BFF;
-  color: white;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-submit:hover {
-  background: #0056b3;
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
-}
-
-/* Modal */
-#editWalletModal .btn-action {
-  font-weight: 500;
-}
-
-#editWalletModal .btn-action:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.btn-submit-action {
-  background: #007BFF;
-  color: white;
-  font-weight: 500;
-}
-
-.btn-submit-action:hover {
-  background: #0056b3;
-}
-
-/* Calendar */
-.flatpickr-calendar {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.flatpickr-day.selected {
-  background: #007BFF;
-  border-color: #007BFF;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .left-section {
-    margin-bottom: 2rem;
-  }
-  .right-section {
-    padding-left: 0;
-  }
-
-  .card {
-    --card-width: 2.5in;
-    --card-height: 1.6in;
-  }
-}
-
-@media (max-width: 576px) {
-  .wallet-section h1 {
-    font-size: 1.5rem;
-  }
-  .btn-edit, .btn-hide-price {
-    font-size: 0.8rem;
-    padding: 6px 12px;
-  }
-  .mini-section {
-    font-size: 0.9rem;
-  }
-  .transaction-section .search-date input {
-    font-size: 0.8rem;
-  }
 }
 
 
 
-/* Card Wrapper */
-.card-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  padding: 0;
-  height: auto;
-  width: 100%;
-  overflow: visible;
+.container .card .content img {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 15px;
+    font-size: 8em;
+    color: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    
+    opacity: 0.8;
+    filter: brightness(0.9);
 }
 
-/* Card */
-.card {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 1rem;
-  width: var(--card-width);
-  height: var(--card-height);
-  border-radius: var(--card-radius);
-  backdrop-filter: blur(82px);
-  -webkit-backdrop-filter: blur(12px);
-  background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-translucide */
-  color: white;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+.container .card:hover .content img {
+    opacity: 0.2;
+    filter: blur(7px);
 }
 
-/* Card Variables */
-:root {
-  --card-height: 1.7in;
-  --card-width: 3.375in;
-  --card-radius: 0.125in;
-  --new-card-height: 2.125in;
+.container .card .content .SR {
+    filter: invert(1);
+    margin-bottom: 20%;
+    left: 2px;
 }
 
-/* Card Details */
-.card-details {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
+.container .card .content .chartisme {
+    left: 3%;
 }
 
-/* Top Section */
-.top {
-  display: flex;
-  flex-flow: column;
-  flex: 1;
-  position: relative;
+.container .card .content .money {
+    top: 33%;
 }
 
-/* Name */
-.name {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 16px;
-  letter-spacing: 1px;
-  margin-top: 3px;
-  width: 50%;
+.container .card .content .tendances {
+    width:80%;
+    bottom: 12%;
+    left: 12%;
 }
 
-.name::first-line {
-  font-size: 22px;
+.container .card .content .fonda {
+    filter: invert(1);
+    left: 5px;
+    bottom: -10px;
 }
 
-/* Title */
-.title {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 0 5px;
+.container .card .content .dow {
+    filter: invert(1);
+    left: 5px;
 }
 
-/* Bottom Section */
-.bottom {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
+
+
+.container .card .content h3 {
+    font-size: 1.8em;
+    color: #fff;
+    z-index:1;
+    bottom: -200px;
 }
 
-/* Type */
-.type {
-  text-align: right;
-  line-height: 25px;
-  position: relative;
-  margin: 0 -5px -25px;
+.container .card .content p {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 0.5s;
+    margin: 10%;
 }
 
-/* Subcategory */
-.subcategory {
-  font-weight: 300;
-  font-family: 'Nunito', sans-serif;
+.container .card:hover p {
+    transform: translateY(0px);
+    opacity: 1;
 }
 
-/* Cardholder */
-.cardholder {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 100%;
-  margin-left: 10px;
+.container .card .content a{
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    margin-top: 20%;
+    bottom: 60px;
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 0.5s;
 }
 
-/* Logo and Chip */
-.logo img {
-  width: 80px;
-  height: auto;
-  right: 0;
-  bottom: 25px;
-  position: absolute;
+.container .card:hover a {
+    transform: translateY(0px);
+    opacity: 1;
 }
 
-.chip img {
-  top: 50px;
-  left: 20px;
-  width: 50px;
-  height: 20px;
-  position: absolute;
+.container .card .content i {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em;
+    color: #FF0000; /* Rouge */
+    pointer-events: none;
+    opacity: 0.5;
+    filter: brightness(0.9);
 }
-
-/* Hexagon (Chase Logo) */
-.hexagon {
-  position: relative;
-  width: 45px;
-}
-
-.trapezoid {
-  position: absolute;
-  border-bottom: 10px solid #fff;
-  border-left: 0px solid transparent;
-  border-right: 10px solid transparent;
-  height: 0;
-  width: 25px;
-}
-
-#t-1 {
-  top: 0;
-  left: 15px;
-}
-
-#t-2 {
-  transform: rotate(90deg);
-  top: 19px;
-  left: 23px;
-}
-
-#t-3 {
-  transform: rotate(180deg);
-  top: 27px;
-  left: 4px;
-}
-
-#t-4 {
-  transform: rotate(-90deg);
-  top: 8px;
-  left: -4px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 576px) {
-  .card {
-    --card-width: 2.5in;
-    --card-height: 1.6in;
-  }
-  .name {
-    font-size: 14px;
-  }
-  .name::first-line {
-    font-size: 16px;
-  }
-  .cardholder {
-    font-size: 12px;
-  }
-  .subcategory {
-    font-size: 10px;
-  }
-  .logo img {
-    width: 60px;
-    bottom: 15px;
-  }
-  .chip img {
-    top: 30px;
-    width: 40px;
-    height: 30px;
-  }
-  .hexagon {
-    width: 30px;
-  }
-  .trapezoid {
-    border-bottom: 7px solid #fff;
-    width: 18px;
-  }
+.container .card:hover .content i {
+    opacity: 0.2;
+    filter: blur(7px);
 }
   </style>
 </head>
 <body>
 
+ 
   <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
+    
     <i class="bi bi-list fs-2"></i>
   </button>
 
@@ -893,7 +652,7 @@
 
   <div class="overlay" onclick="toggleSidebar()" id="overlay"></div>
 
-  <img src="logo.png" alt="BullSter Logo" class="logoBullSter">
+  <img src="logo.png" alt="BullSter Logo" class="logo">
 
   <!-- Modal pour Paramètres du profil -->
   <div class="modal" id="profileModal">
@@ -1187,227 +946,117 @@
       </p>
     </div>
   </div>
+  <h2 class="learn-title">Supports et Résistances</h2>
+  <div class="container">
+    <!-- Carte 1: Support : Définition et Principes -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-arrow-down icon-support"></i>
+            <h3>Support : Définition et Principes</h3>
+            <p>Niveau de prix où la demande stoppe la baisse. Découvrez ses principes clés.</p>
+            <a href="SR/SupportDef.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
 
-  <div class="container mt-4">
-    <div class="row">
-      <!-- Partie gauche (3/4 de la page) -->
-      <div class="col-lg-9 left-section">
-        <!-- Section Wallet -->
-        <div class="wallet-section glassmorphism rounded-4 p-4 mb-4">
-          <!-- Partie haute -->
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-              <h2 class="fw-bold mb-1">Wallet</h2>
-              <p class="text-muted small">Updated: <span id="walletDateTime"></span></p>
-            </div>
-            <button class="btn btn-outline-secondary btn-edit rounded-3" onclick="toggleEditWalletModal()">
-              <i class="bi bi-pencil me-2"></i>Edit
-            </button>
-          </div>
-          <!-- Partie basse -->
-          <div class="row">
-            <!-- Gauche : Wallet Balance -->
-            <div class="col-md-6">
-              <h4 class="fw-bold"><i class="bi bi-wallet2 me-2"></i>Wallet Balance</h4>
-              <div class="d-flex align-items-center">
-                <h1 class="fw-bold me-3" id="walletBalance"></h1>
-                <button class="btn btn-secondary btn-hide-price rounded-3" onclick="toggleHidePrice()">
-                  <span id="hidePriceText">Hide Price</span>
-                  <i class="bi bi-eye-slash ms-2"></i>
-                </button>
-              </div>
-            </div>
-            <!-- Droite : Total Deposited/Withdrawn -->
-            <div class="col-md-6">
-              <div class="mini-section glassmorphism rounded-3 p-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span><i class="bi bi-credit-card me-2"></i>Total Deposited</span>
-                  <span class="text-primary" id="totalDeposit"><i class="bi bi-arrow-down-circle me-1"></i></span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <span><i class="bi bi-clock me-2"></i>Total Withdrawn</span>
-                  <span class="text-primary" id="totalWithdraw"><i class="bi bi-arrow-up-circle me-1"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- Carte 2: Résistance : Concept Clé en Analyse Technique -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-arrow-up icon-resistance"></i>
+            <h3>Résistance : Concept Clé en Analyse Technique</h3>
+            <p>Niveau où l’offre freine la hausse. Maîtrisez ce concept en analyse technique.</p>
+            <a href="SR/Resistances.html" class="bases">Choisir ce cours</a>
         </div>
-  
-        <!-- Section Transaction History -->
-        <div class="transaction-section glassmorphism rounded-4 p-4">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="fw-bold">Transaction History</h2>
-            <div class="search-date position-relative">
-              <i class="bi bi-search position-absolute top-50 translate-middle-y ms-2"></i>
-              <input type="text" class="form-control rounded-3 ps-4" placeholder="Search by Date" id="searchDate" />
-            </div>
-          </div>
-          <!-- Onglets -->
-          <ul class="nav nav-tabs mb-3">
-            <li class="nav-item">
-              <a class="nav-link active" href="#" onclick="switchHistoryTab('wallet')">Wallet History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="switchHistoryTab('coin')">Coin Wallet</a>
-            </li>
-          </ul>
-          <hr class="my-2" />
-          <!-- Tableau -->
-          <div class="table-responsive">
-            <table class="table table-borderless">
-              <thead>
-                <tr>
-                  <th>Action</th>
-                  <th>Amount</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="transactionTableBody">
-                <!-- Les lignes seront ajoutées dynamiquement -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Partie droite (1/4 de la page) -->
-      <div class="col-lg-3 right-section">
-        <!-- Section Select Currency & Payment -->
-        <div class="currency-payment-section glassmorphism rounded-4 p-4">
-            <div class="wrapper card-wrapper mb-3">
-                <div class="card">
-                  <div class="card-details">
-                    <div class="top">
-                      <div class="title">
-                        <div class="hexagon">
-                          <div id="t-1" class="trapezoid"></div>
-                          <div id="t-2" class="trapezoid"></div>
-                          <div id="t-3" class="trapezoid"></div>
-                          <div id="t-4" class="trapezoid"></div>
-                        </div>
-                        <p class="name">SAPPHIRE RESERVE</p>
-                      </div>
-                      <div class="chip">
-                        <img src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png" alt="chip">
-                      </div>
-                    </div>
-                    <div class="bottom">
-                      <h3 class="cardholder">C.BOCQUET</h3>
-                      <div class="type">
-                        <div class="logo">
-                          <img src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/Visa-Logo-PNG-Image.png" alt="Visa">
-                        </div>
-                        <p class="subcategory">Infinite</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          <h3 class="fw-bold mb-3">Select Currency & Payment</h3>
-          <hr />
-          <!-- Select Currency -->
-          <h5 class="fw-bold mb-2">Select Currency</h5>
-          <select class="form-select rounded-3 mb-3" id="currencySelect">
-            <option value="USD">USD ($)</option>
-            <option value="USDT">USDT</option>
-            <option value="EUR">EUR (€)</option>
-          </select>
-          <!-- Amount -->
-          <h5 class="fw-bold mb-2">Amount</h5>
-          <input type="number" class="form-control rounded-3 mb-3" placeholder="Enter amount" id="paymentAmount" />
-          <!-- Choose Payment Method -->
-          <h5 class="fw-bold mb-2">Choose Payment Method</h5>
-          <ul class="list-unstyled mb-3">
-            <li class="d-flex align-items-center mb-2">
-              <input type="radio" name="paymentMethod" id="paypal" value="paypal" class="me-2" />
-              <label for="paypal" class="flex-grow-1">Paypal</label>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLmCw9KwTMuJOlqCjSQ8StSY7qg0gMtohnqA&s" alt="Paypal" class=" ms-2"  style="width: 60px; height: auto;" />
-            </li>
-            <li class="d-flex align-items-center mb-2">
-              <input type="radio" name="paymentMethod" id="applepay" value="applepay" class="me-2" />
-              <label for="applepay" class="flex-grow-1">Apple Pay</label>
-              <img src="data:image/png;base64,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" alt="Apple Pay" class="ms-2" />
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="radio" name="paymentMethod" id="card" value="card" class="me-2" />
-              <label for="card" class="flex-grow-1">Credit & Debit Card</label>
-            </li>
-          </ul>
-          <hr />
-          <!-- Card Number -->
-          <h5 class="fw-bold mb-2">Number</h5>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control rounded-3" placeholder="Card Number" id="cardNumber" />
-            <span class="input-group-text rounded-3"><img src="https://via.placeholder.com/20x15?text=Visa" alt="Visa" /></span>
-          </div>
-          <!-- Valid & CVV -->
-          <div class="row mb-3">
-            <div class="col-6">
-              <h5 class="fw-bold mb-2">Valid</h5>
-              <div class="input-group">
-                <input type="text" class="form-control rounded-3" placeholder="MM/YY" id="cardValid" readonly />
-                <span class="input-group-text rounded-3"><i class="bi bi-calendar-event"></i></span>
-              </div>
-            </div>
-            <div class="col-6">
-              <h5 class="fw-bold mb-2">CVV</h5>
-              <input type="text" class="form-control rounded-3" placeholder="CVV" id="cardCVV" maxlength="3" />
-            </div>
-          </div>
-          <!-- Valid Thru -->
-          <h5 class="fw-bold mb-2">Valid Thru</h5>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control rounded-3" placeholder="MM/YY" id="cardValidThru" readonly />
-            <span class="input-group-text rounded-3"><i class="bi bi-calendar-event"></i></span>
-          </div>
-          <!-- Submit Button -->
-          <button class="btn btn-primary btn-submit rounded-3 w-100">Submit Payment</button>
-        </div>
-      </div>
     </div>
-  
-    <!-- Modal pour Edit Wallet -->
-    <div class="modal" id="editWalletModal">
-      <div class="modal-header">
-        <h5>Manage Wallet</h5>
-        <button class="modal-close" onclick="toggleEditWalletModal()">
-          <i class="bi bi-x"></i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h5 class="fw-bold mb-3">Select Action</h5>
-        <div class="d-flex justify-content-between mb-4">
-          <button class="btn btn-success btn-action rounded-3 flex-fill me-2" onclick="selectWalletAction('deposit')">
-            <i class="bi bi-arrow-down-circle me-2"></i>Deposit
-          </button>
-          <button class="btn btn-danger btn-action rounded-3 flex-fill" onclick="selectWalletAction('withdrawal')">
-            <i class="bi bi-arrow-up-circle me-2"></i>Withdraw
-          </button>
+
+    <!-- Carte 3: Pourquoi les supports et résistances sont importants ? -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-question-circle icon-importance"></i>
+            <h3>Pourquoi les supports et résistances sont importants ?</h3>
+            <p>Comprenez leur rôle clé pour anticiper les mouvements de prix en trading.</p>
+            <a href="SR/SRImportant.html" class="bases">Choisir ce cours</a>
         </div>
-        <h5 class="fw-bold mb-2">Amount</h5>
-        <input type="number" class="form-control rounded-3 mb-3" placeholder="Enter amount" id="walletActionAmount" />
-        <button class="btn btn-primary btn-submit-action rounded-3 w-100" onclick="submitWalletAction()">Confirm</button>
-      </div>
     </div>
-  </div>
+
+    <!-- Carte 4: Comment Identifier un Support ou une Résistance ? -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-search icon-identify"></i>
+            <h3>Comment Identifier un Support ou une Résistance ?</h3>
+            <p>Apprenez à repérer ces niveaux clés sur les graphiques pour mieux trader.</p>
+            <a href="SR/IDSupRes.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 5: Types de Supports et Résistances -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-layers icon-types"></i>
+            <h3>Types de Supports et Résistances</h3>
+            <p>Découvrez les différents types : horizontaux, dynamiques, psychologiques.</p>
+            <a href="SR/TypesSR.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 6: Rôle du Volume dans les Supports et Résistances -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-bar-chart-fill icon-volume"></i>
+            <h3>Rôle du Volume dans les Supports et Résistances</h3>
+            <p>Analysez le volume pour confirmer la force des supports et résistances.</p>
+            <a href="SR/VolSR.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 7: Cassure et Pullback -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-arrow-right-circle icon-breakout"></i>
+            <h3>Cassure et Pullback</h3>
+            <p>Quand un support devient résistance (et inversement) : cassures et pullbacks.</p>
+            <a href="SR/Pullback.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 8: Stratégies de Trading avec Supports et Résistances -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-gear icon-strategies"></i>
+            <h3>Stratégies de Trading avec Supports et Résistances</h3>
+            <p>Utilisez ces niveaux pour créer des stratégies de trading efficaces.</p>
+            <a href="SR/StratSR.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+
+    <!-- Carte 9: Outils pour Repérer les Supports et Résistances -->
+    <div class="card">
+        <div class="content">
+            <i class="bi bi-tools icon-tools"></i>
+            <h3>Outils pour Repérer les Supports et Résistances</h3>
+            <p>Découvrez les outils techniques pour identifier ces niveaux avec précision.</p>
+            <a href="SR/OutilsSR.html" class="bases">Choisir ce cours</a>
+        </div>
+    </div>
+</div>
+
+  <script type="text/javascript" src="vanilla-tilt.js"></script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+      max: 25,
+      speed: 400,
+      
+    });
+  </script>
 
   <div class="bottom-nav">
-    <a href="learn.html" class="text-dark text-center"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
+    <a href="learn.html" class="text-dark text-center active"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
     <a href="trade.html" class="text-dark text-center"><i class="bi bi-graph-up-arrow"></i><br><small>Trade</small></a>
     <a href="bot.html" class="text-dark text-center"><i class="bi bi-cpu"></i><br><small>Bot</small></a>
-    <a href="wallet.html" class="text-dark text-center active"><i class="bi bi-wallet2"></i><br><small>Wallet</small></a>
+    <a href="wallet.html" class="text-dark text-center"><i class="bi bi-wallet2"></i><br><small>Wallet</small></a>
     <a href="community.html" class="text-dark text-center"><i class="bi bi-people"></i><br><small>Communauté</small></a>
   </div>
 
   <script>
-    // On charegement de la page je charge les données utilisateur
-    const userString = sessionStorage.getItem('user');
-    const user = JSON.parse(userString);
-    let userInfo = JSON.parse(user);
-    document.getElementById('walletBalance').textContent = userInfo.wallet.walletBalance;
-
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
@@ -1636,213 +1285,6 @@
     }
   });
 });
-
-document.addEventListener('DOMContentLoaded', () => {
-  const requestOptions = {
-  method: "GET",
-  redirect: "follow"
-};
-
-fetch(`http://217.154.7.154:4000/wallet/${userInfo.wallet.id}`, requestOptions)
-  .then((response) => response.text())
-  .then((result) => {
-    console.log(result);
-    userInfo.wallet = JSON.parse(result);
-    document.getElementById('walletBalance').textContent = userInfo.wallet.walletBalance;
-    document.getElementById('walletDateTime').textContent = new Date(userInfo.wallet.updatedAt).toLocaleString('fr-FR', { timeZone: 'UTC' });
-    const totalDeposit = userInfo.wallet.history.filter(item => item.type === 'deposit').reduce((acc, item) => acc + parseFloat(item.amount), 0);
-    const totalWithdraw = userInfo.wallet.history.filter(item => item.type === 'withdrawal').reduce((acc, item) => acc + parseFloat(item.amount), 0);
-    document.getElementById('totalDeposit').textContent = totalDeposit.toLocaleString('fr-FR', { style: 'currency', currency: 'USD' });
-    document.getElementById('totalWithdraw').textContent = totalWithdraw.toLocaleString('fr-FR', { style: 'currency', currency: 'USD' });
-    updateTransactionTable('wallet');
-})
-  .catch((error) => console.error(error));
-})
-
-
-// Ajout de Flatpickr pour les calendriers
-document.addEventListener('DOMContentLoaded', () => {
-  flatpickr('#cardValid', {
-    dateFormat: 'm/y',
-    disableMobile: true,
-    onChange: (selectedDates, dateStr) => {
-      document.getElementById('cardValid').value = dateStr;
-    }
-  });
-
-  flatpickr('#cardValidThru', {
-    dateFormat: 'm/y',
-    disableMobile: true,
-    onChange: (selectedDates, dateStr) => {
-      document.getElementById('cardValidThru').value = dateStr;
-    }
-  });
-});
-
-// Données des transactions
-
-let transactionData = {
-  wallet: [
-    { action: 'Deposit', amount: '$5,000.00', date: '2025-04-10', time: '14:30', status: 'Completed', icon: 'bi-arrow-down-circle' },
-    { action: 'Withdraw', amount: '$1,200.00', date: '2025-04-11', time: '09:15', status: 'Completed', icon: 'bi-arrow-up-circle' },
-    { action: 'Deposit', amount: '$3,500.00', date: '2025-04-12', time: '16:45', status: 'Pending', icon: 'bi-arrow-down-circle' }
-  ],
-  coin: [
-    { action: 'Deposit', amount: '0.5 BTC', date: '2025-04-09', time: '11:20', status: 'Completed', icon: 'bi-arrow-down-circle' },
-    { action: 'Withdraw', amount: '1.2 ETH', date: '2025-04-10', time: '13:50', status: 'Completed', icon: 'bi-arrow-up-circle' }
-  ]
-};
-
-// Mettre à jour le tableau des transactions
-function updateTransactionTable(type = 'wallet') {
-  const tbody = document.getElementById('transactionTableBody');
-  tbody.innerHTML = '';
-  const data = userInfo.wallet.history
-  data.forEach(item => {
-    // convertir date en format lisible
-    const date = new Date(item.date);
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    const formattedDate = date.toLocaleDateString('fr-FR', options);
-    const formattedTime = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-    const itemDate = formattedDate;
-    const itemTime = formattedTime;
-    const tr = document.createElement('tr');
-    // ajouter icon selon le type d'action
-    const icon = item.type === 'deposit' ? 'bi-arrow-down-circle' : 'bi-arrow-up-circle';
-
-    tr.innerHTML = `
-      <td class="action-${item.type.toLowerCase()}"><i class="bi ${icon} me-2"></i>${item.type}</td>
-      <td>${item.amount}</td>
-      <td>${itemDate}</td>
-      <td>${itemTime}</td>
-      <td>Completed</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-// Changer d'onglet
-function switchHistoryTab(type) {
-  document.querySelectorAll('.transaction-section .nav-link').forEach(link => link.classList.remove('active'));
-  document.querySelector(`.transaction-section .nav-link[onclick="switchHistoryTab('${type}')"]`).classList.add('active');
-  updateTransactionTable(type);
-}
-
-// Cacher/Montrer le prix
-let isPriceHidden = false;
-function toggleHidePrice() {
-  const balanceEl = document.getElementById('walletBalance');
-  const hideTextEl = document.getElementById('hidePriceText');
-  isPriceHidden = !isPriceHidden;
-  if (isPriceHidden) {
-    balanceEl.textContent = '********';
-    hideTextEl.textContent = 'Show Price';
-  } else {
-    balanceEl.textContent = userInfo.wallet.walletBalance;
-    hideTextEl.textContent = 'Hide Price';
-  }
-}
-
-// Modal Edit Wallet
-function toggleEditWalletModal() {
-  toggleModal('editWalletModal');
-}
-
-// Sélectionner l'action du portefeuille
-let selectedAction = null;
-function selectWalletAction(action) {
-  selectedAction = action;
-  document.querySelectorAll('#editWalletModal .btn-action').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`#editWalletModal .btn-action[onclick="selectWalletAction('${action}')"]`).classList.add('active');
-}
-
-// Soumettre l'action du portefeuille
-function submitWalletAction() {
-  const amount = document.getElementById('walletActionAmount').value;
-  if (!selectedAction || !amount || amount <= 0) {
-    alert('Please select an action and enter a valid amount');
-    return;
-  }
-
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  const raw = JSON.stringify({
-    type: selectedAction,
-    amount: parseFloat(amount),
-  });
-
-  const requestOptions = {
-    method: "PUT",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow"
-  };
-
-  fetch(`http://217.154.7.154:4000/wallet/action/${userInfo.wallet.id}`, requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      console.log(result)
-      window.location.reload();
-      updateTransactionTable('wallet');
-      toggleEditWalletModal();
-    })
-    .catch((error) => console.error(error));
-
-  
-}
-
-// Recherche par date
-document.getElementById('searchDate').addEventListener('input', (e) => {
-  const query = e.target.value.toLowerCase();
-  const filteredData = transactionData.wallet.filter(item => item.date.toLowerCase().includes(query));
-  const tbody = document.getElementById('transactionTableBody');
-  tbody.innerHTML = '';
-  filteredData.forEach(item => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td class="action-${item.action.toLowerCase()}"><i class="bi ${item.icon} me-2"></i>${item.action}</td>
-      <td>${item.amount}</td>
-      <td>${item.date}</td>
-      <td>${item.time}</td>
-      <td>${item.status}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-});
-
-// Initialisation
-updateTransactionTable();
-
-
-
-
-
-// Card 3D Transform
-const constrain = 30;
-const mouseOverContainer = document.querySelector(".card-wrapper");
-const cardLayer = document.querySelector(".card");
-
-function transforms(x, y, el) {
-  const box = el.getBoundingClientRect();
-  const calcX = -(y - box.y - (box.height / 2)) / constrain;
-  const calcY = (x - box.x - (box.width / 2)) / constrain;
-  return `perspective(100px) rotateX(${calcX}deg) rotateY(${calcY}deg)`;
-}
-
-function transformElement(el, xyEl) {
-  el.style.transform = transforms.apply(null, xyEl);
-}
-
-if (mouseOverContainer && cardLayer) {
-  mouseOverContainer.onmousemove = function (e) {
-    const xy = [e.clientX, e.clientY];
-    const position = xy.concat([cardLayer]);
-    window.requestAnimationFrame(function () {
-      transformElement(cardLayer, position);
-    });
-  };
-}
   </script>
 </body>
 </html>

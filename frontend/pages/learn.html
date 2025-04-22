@@ -8,9 +8,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+    @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
     body {
       padding-bottom: 70px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
     }
 
     .sidebar {
@@ -47,6 +52,7 @@
       width: 100%;
       background-color: white;
       border-top: 1px solid #ddd;
+      border-radius: 20px;
       display: flex;
       justify-content: space-around;
       padding: 0.5rem 0;
@@ -201,11 +207,11 @@
       background: none;
       border: none;
       font-size: 1.5rem;
-      color: #2C3E50;
+      color: #fff;
       transition: color 0.3s ease;
     }
 
-    .btn-icon-modern:hover { color: #34495E; }
+    .btn-icon-modern:hover { color: #fff; }
 
     .modal {
       display: none;
@@ -437,7 +443,173 @@
       right: 20px;
       width: 100px;
       height: auto;
+      filter: invert(1);
     }
+
+    .learn-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container{
+    margin-top: 26%;
+    margin-left: 9%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes, 1/2/1 ratio */
+  grid-template-rows: 100px auto 100px; 
+}
+
+@media (max-width: 1068px) {
+    .container {
+        margin-top: 50%;
+        grid-template-columns: 1.3fr 1.3fr; 
+    }
+}
+
+.container .card {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    margin: 30px;
+    margin-bottom: 90%;
+    box-shadow: 20px 29px 50px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.container .card .content{
+    padding: 20px;
+    text-align: center;
+    height: 70%;
+    
+}
+
+
+
+.container .card .content img {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 15px;
+    font-size: 8em;
+    color: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    
+    opacity: 1;
+    filter: brightness(0.9);
+}
+
+.container .card:hover .content img {
+    opacity: 0.2;
+    filter: blur(7px);
+}
+
+.container .card .content .bases {
+  width: 80%;
+    margin-bottom: 14%;
+    left: 10%;
+}
+
+.container .card .content .SR {
+  width: 80%;
+    margin-bottom: 14%;
+    left: 10%;
+}
+
+.container .card .content .chartisme {
+  margin-bottom: 12%;
+    left: 2%;
+}
+
+.container .card .content .money {
+  width: 80%;
+    top: 38%;
+    left:12%;
+}
+
+.container .card .content .tendances {
+    width:90%;
+    margin-bottom: 17%;
+    left: 9%;
+}
+
+.container .card .content .fonda {
+  width: 80%;
+    margin-bottom: 14%;
+    left: 10%;
+  /*filter: invert(1);*/
+}
+
+.container .card .content .dow {
+    /*filter: invert(1);*/
+    margin-bottom: 14%;
+    left: 3%;
+}
+
+.container .card .content .techniques {
+    /*filter: invert(1);*/
+    width: 80%;
+    margin-bottom: 12%;
+    left: 11%;
+}
+
+
+
+.container .card .content h3 {
+    font-size: 1.8em;
+    color: #fff;
+    z-index:1;
+    bottom: -200px;
+}
+
+.container .card .content p {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 0.5s;
+    margin: 10%;
+}
+
+.container .card:hover p {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.container .card .content a{
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    margin-top: 20%;
+    bottom: 30px;
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.container .card:hover a {
+    transform: translateY(0px);
+    opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -775,10 +947,90 @@
       </p>
     </div>
   </div>
+  <h2 class="learn-title">Learn</h2>
+  <div class="container">
+    
+    <div class="card">
+        <div class="content">
+            <img src="bases2.png" class="bases"/>
+            <h3>Les Bases</h3>
+            <p>Découvrez les principes essentiels du trading : vocabulaire, fonctionnement des marchés et rôles des différents acteurs</p>
+            <a href="Bases.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
 
-  <div class="container mt-4">
-    <h2>Learn</h2>
+    <div class="card">
+        <div class="content">
+            <img src="SR3.png " class="SR"/>
+            <h3>Supports et Résistances</h3>
+            <p>Apprenez à repérer les zones clés où les prix ont tendance à rebondir ou à bloquer</p>
+            <a href="SR.html">Choisir cette catégorie</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <img src="Chartisme2.png" class="chartisme"/>
+            <h3>Le Chartisme</h3>
+            <p>Comprenez les figures graphiques qui permettent d’anticiper les mouvements futurs des marchés</p>
+            <a href="Chartisme.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <img src="Money2.png" class="money"/>
+            <h3>Le Money Mangement</h3>
+            <p>Gérez vos risques efficacement pour protéger votre capital et trader de manière plus disciplinée</p>
+            <a href="Money.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <img src="Tendances2.png" class="tendances"/>
+            <h3>Les Tendances</h3>
+            <p>Identifiez les mouvements directionnels des marchés pour savoir quand entrer ou sortir d’une position.</p>
+            <a href="Tendances.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <img src="Dow2.png" class="dow"/>
+            <h3>La Théorie de Dow</h3>
+            <p>Explorez les fondations de l’analyse technique à travers une théorie toujours utilisée aujourd’hui</p>
+            <a href="Dow.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <img src="Fonda2.png" class="fonda"/>
+            <h3>Indicateurs Fondamentaux</h3>
+            <p>Découvrez comment les données économiques influencent les prix et aident à évaluer la valeur d’un actif</p>
+            <a href="Fonda.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <img src="Techniques.png" class="techniques"/>
+            <h3>Indicateurs Techniques</h3>
+            <p>Utilisez des outils mathématiques pour analyser les graphiques et affiner vos décisions de trading</p>
+            <a href="Techniques.html" >Choisir cette catégorie</a>
+        </div>
+    </div>
   </div>
+
+  <script type="text/javascript" src="vanilla-tilt.js"></script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+      max: 25,
+      speed: 400,
+      
+    });
+  </script>
 
   <div class="bottom-nav">
     <a href="learn.html" class="text-dark text-center active"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
