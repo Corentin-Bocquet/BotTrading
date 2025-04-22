@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Stratégies de Trading</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <style>
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap');
+ @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+ @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+ * {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ font-family: 'Poppins', sans-serif;
+ }
+
+ body {
+  background: linear-gradient(120deg, #0f2715, #204328, #2c6439);
+ min-height: 100vh;
+ padding: 2rem;
+ padding-bottom: 70px;
+ }
+
+ .glass-card {
+ width: 100%;
+ max-width: 1000px;
+ background: rgba(255, 255, 255, 0.15);
+ border-radius: 2rem;
+ backdrop-filter: blur(30px);
+ -webkit-backdrop-filter: blur(30px);
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+ padding: 2rem;
+ color: #f0f0f0;
+ display: flex;
+ flex-direction: column;
+ gap: 2rem;
+ margin: 0 auto;
+ margin-top: 4rem;
+ }
+
+ .glass-title {
+ font-size: 2.5rem;
+ font-weight: 600;
+ text-align: left;
+ font-family: 'Outfit', sans-serif;
+ }
+
+ .image-section {
+ display: flex;
+ flex-direction: row;
+ gap: 1.5rem;
+ flex-wrap: wrap;
+ }
+
+ .glass-image {
+ aspect-ratio: 16 / 9;
+ width: 60%;
+ background-color: rgba(255, 255, 255, 0.08);
+ border-radius: 1.5rem;
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ flex-shrink: 0;
+ overflow: hidden;
+ padding: 0.5rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .glass-image:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+ }
+
+ .glass-image img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ border-radius: 1rem;
+ }
+
+ .image-text {
+ flex: 1;
+ display: block;
+ font-size: 1rem;
+ line-height: 1.6;
+ background: rgba(255, 255, 255, 0.08);
+ padding: 1rem;
+ border-radius: 1.5rem;
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ font-family: 'Outfit', sans-serif;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .image-text:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+ }
+
+ .glass-info {
+ display: flex;
+ flex-direction: column;
+ gap: 1.5rem;
+ }
+
+ .glass-content {
+ background: rgba(255, 255, 255, 0.15);
+ padding: 1.5rem;
+ border-radius: 1.5rem;
+ font-size: 1rem;
+ line-height: 1.6;
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ font-family: 'Outfit', sans-serif;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .glass-content:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+ }
+
+ .glass-content ul {
+ list-style: none;
+ padding-left: 0;
+ }
+
+ .glass-footer {
+ font-size: 0.9rem;
+ opacity: 0.8;
+ text-align: right;
+ font-family: 'Outfit', sans-serif;
+ }
+
+ .sidebar {
+ position: fixed;
+ top: 0;
+ left: -300px;
+ width: 280px;
+ height: 100%;
+ background-color: #fff;
+ box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+ transition: all 0.3s;
+ z-index: 1050;
+ overflow-y: auto;
+ padding: 1rem;
+ }
+
+ .sidebar.active { left: 0; }
+
+ .overlay {
+ display: none;
+ position: fixed;
+ top: 0; left: 0;
+ width: 100%; height: 100%;
+ background: rgba(0,0,0,0.3);
+ z-index: 1040;
+ }
+
+ .overlay.active { display: block; }
+
+ .bottom-nav {
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ background-color: white;
+ border-top: 1px solid #ddd;
+ border-radius: 20px;
+ display: flex;
+ justify-content: space-around;
+ padding: 0.5rem 0;
+ z-index: 1030;
+ }
+
+ .bottom-nav a {
+ text-decoration: none;
+ color: #6C757D;
+ transition: all 0.3s ease;
+ }
+
+ .bottom-nav a.active {
+ color: #007BFF;
+ font-weight: bold;
+ }
+
+ .bottom-nav a.active i {
+ font-size: 1.5rem;
+ color: #007BFF;
+ filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5));
+ }
+
+ .bottom-nav a.active small {
+ font-weight: bold;
+ }
+
+ .bottom-nav a:hover {
+ color: #34495E;
+ }
+
+ .bottom-nav i { font-size: 1.3rem; }
+
+ .profile-pic {
+ width: 60px;
+ height: 60px;
+ object-fit: cover;
+ border-radius: 50%;
+ border: 2px solid #007BFF;
+ box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+ }
+
+ .close-btn {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ font-size: 2rem;
+ font-weight: bold;
+ border: none;
+ background: none;
+ padding: 0;
+ color: #2C3E50;
+ transition: color 0.3s ease;
+ }
+
+ .close-btn:hover { color: #E74C3C; }
+
+ .btn-modern {
+ display: inline-block;
+ padding: 8px 16px;
+ font-size: 0.85rem;
+ font-weight: 500;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ border: none;
+ border-radius: 8px;
+ background-color: #2C3E50;
+ color: white;
+ box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+ transition: all 0.3s ease;
+ cursor: pointer;
+ text-decoration: none;
+ width: 100%;
+ text-align: center;
+ margin-bottom: 15px;
+ }
+
+ .btn-modern:hover {
+ background-color: #34495E;
+ box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+ transform: translateY(-2px);
+ color: white;
+ }
+
+ .btn-modern:active {
+ transform: translateY(1px);
+ box-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
+ }
+
+ .btn-modern-primary {
+ box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+ border: 2px solid #000;
+ }
+
+ .btn-modern-primary:hover {
+ border: 2px solid #000;
+ box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+ }
+
+ .btn-modern-secondary {
+ background-color: transparent;
+ color: #E74C3C;
+ border: 1px solid #E74C3C;
+ box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+ }
+
+ .btn-modern-secondary:hover {
+ background-color: rgba(231, 76, 60, 0.1);
+ color: #E74C3C;
+ box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+ }
+
+ .sidebar-item {
+ display: flex;
+ align-items: center;
+ padding: 10px 0;
+ color: #6C757D;
+ text-decoration: none;
+ transition: color 0.3s ease;
+ }
+
+ .sidebar-item:hover {
+ color: #2C3E50;
+ }
+
+ .sidebar-item i {
+ font-size: 1.2rem;
+ width: 30px;
+ text-align: center;
+ color: #6C757D;
+ transition: color 0.3s ease;
+ }
+
+ .sidebar-item:hover i {
+ color: #2C3E50;
+ }
+
+ .sidebar-item span {
+ flex-grow: 1;
+ margin-left: 10px;
+ font-size: 0.9rem;
+ }
+
+ .sidebar-item .arrow {
+ font-size: 0.9rem;
+ color: #6C757D;
+ }
+
+ .btn-icon-modern {
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
+
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
+
+ .modal {
+ display: none;
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background-color: #fff;
+ border-radius: 12px;
+ box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+ z-index: 1060;
+ padding: 20px;
+ overflow-y: auto;
+ width: 90vw;
+ max-width: 1100px;
+ height: 90vh;
+ max-height: 700px;
+ }
+
+ .modal.active { display: block; }
+
+ #profileModal { max-width: 500px; max-height: 500px; }
+ #tradeModal { max-width: 700px; max-height: 450px; }
+ #statsModal { max-width: 1100px; max-height: 700px; background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%); }
+ #aboutModal { max-width: 600px; max-height: 500px; }
+ #securityModal { max-width: 600px; max-height: 550px; }
+ #helpModal { max-width: 600px; max-height: 600px; }
+
+ .modal-header {
+ position: relative;
+ text-align: center;
+ margin-bottom: 20px;
+ }
+
+ .modal-header h5 {
+ margin: 0;
+ font-size: clamp(1rem, 2.5vw, 1.5rem);
+ color: #2C3E50;
+ font-weight: 600;
+ }
+
+ .modal-close {
+ position: absolute;
+ top: 0;
+ right: 0;
+ font-size: clamp(1.5rem, 4vw, 2rem);
+ font-weight: bold;
+ border: none;
+ background: none;
+ color: #2C3E50;
+ cursor: pointer;
+ transition: color 0.3s ease;
+ }
+
+ .modal-close:hover { color: #E74C3C; }
+
+ .modal-body {
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
+ width: 100%;
+ height: calc(100% - 60px);
+ }
+
+ .input-container {
+ display: none;
+ margin-bottom: 10px;
+ }
+
+ .input-container input, .input-container select {
+ width: 100%;
+ padding: 8px;
+ border: 1px solid #ddd;
+ border-radius: 4px;
+ font-size: clamp(0.8rem, 2vw, 0.9rem);
+ }
+
+ .drop-zone {
+ display: none;
+ width: 100%;
+ height: 100px;
+ border: 2px dashed #2C3E50;
+ border-radius: 8px;
+ text-align: center;
+ padding: 20px;
+ color: #2C3E50;
+ margin-bottom: 10px;
+ }
+
+ .drop-zone.dragover { background-color: #ECF0F1; }
+
+ .trade-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: clamp(0.8rem, 2vw, 0.9rem);
+ background-color: #fff;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+ border-radius: 8px;
+ overflow: hidden;
+ }
+
+ .trade-table th {
+ background-color: #2C3E50;
+ color: white;
+ padding: 12px;
+ text-align: left;
+ font-weight: 600;
+ }
+
+ .trade-table td {
+ padding: 12px;
+ border-bottom: 1px solid #ddd;
+ }
+
+ .trade-table tr:nth-child(even) { background-color: #F9FAFB; }
+ .trade-table tr:hover { background-color: #ECF0F1; transition: background-color 0.3s ease; }
+ .trade-table .buy { font-weight: bold; color: #28A745; }
+ .trade-table .sell { font-weight: bold; color: #E74C3C; }
+
+ #statsModal .modal-body {
+ display: flex;
+ flex-direction: column;
+ height: calc(100% - 60px);
+ gap: 20px;
+ padding: 0;
+ }
+
+ .stats-upper {
+ display: flex;
+ flex-direction: row;
+ height: 60%;
+ gap: 20px;
+ padding: 15px;
+ }
+
+ .stats-lower {
+ height: 40%;
+ background-color: #fff;
+ border-radius: 10px;
+ padding: 15px;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+
+ .stats-left, .stats-right {
+ flex: 1;
+ padding: 15px;
+ background-color: #fff;
+ border-radius: 10px;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+ overflow: hidden;
+ }
+
+ .stats-left h6 {
+ font-size: clamp(1rem, 2.5vw, 1.2rem);
+ color: #2C3E50;
+ margin-bottom: 15px;
+ }
+
+ .stats-left .gain-value {
+ font-size: clamp(1.2rem, 3vw, 1.5rem);
+ font-weight: bold;
+ color: #28A745;
+ }
+
+ .chart-container {
+ position: relative;
+ height: clamp(80px, 15vw, 100px);
+ width: clamp(80px, 15vw, 100px);
+ margin: 10px auto;
+ }
+
+ .stats-info {
+ margin-top: 10px;
+ max-height: 150px;
+ overflow-y: auto;
+ }
+
+ .stats-info p {
+ display: flex;
+ align-items: center;
+ font-size: clamp(0.75rem, 2vw, 0.85rem);
+ color: #34495E;
+ margin: 6px 0;
+ }
+
+ .stats-info i {
+ margin-right: 8px;
+ font-size: clamp(0.9rem, 2.5vw, 1rem);
+ }
+
+ .stats-right canvas {
+ max-height: clamp(120px, 25vh, 160px);
+ width: 100%;
+ }
+
+ .stats-lower canvas {
+ max-height: 100%;
+ width: clamp(60%, 80vw, 80%);
+ }
+
+ .logo {
+ position: absolute;
+ top: 20px;
+ right: 20px;
+ width: 100px;
+ height: auto;
+ filter: invert(1);
+ }
+
+ @media (max-width: 768px) {
+ .glass-card {
+ padding: 1rem;
+ margin-top: 6rem;
+ }
+
+ .image-section {
+ flex-direction: column;
+ }
+
+ .glass-image, .image-text {
+ width: 100%;
+ }
+
+ .sidebar { width: 100%; left: -100%; }
+ .modal { width: 95vw; height: 95vh; padding: 15px; }
+ .stats-upper { flex-direction: column; height: auto; }
+ .stats-left, .stats-right { width: 100%; }
+ .stats-lower { margin-bottom: 15px; }
+ .chart-container { height: 80px; width: 80px; }
+ .stats-right canvas { max-height: 120px; }
+ .back-btn, .sidebar-btn {
+ font-size: 1.2rem;
+ padding: 0.4rem;
+ }
+ .sidebar-btn {
+ left: 3.5rem;
+ }
+ }
+
+ @media (max-width: 480px) {
+ .modal-header h5 { font-size: 1rem; }
+ .modal-close { font-size: 1.5rem; }
+ .sidebar-item span { font-size: 0.8rem; }
+ .sidebar-item i { font-size: 1rem; }
+ .btn-modern { font-size: 0.75rem; padding: 6px 12px; }
+ .stats-info p { font-size: 0.7rem; }
+ .stats-info i { font-size: 0.8rem; }
+ .trade-table th, .trade-table td { padding: 8px; }
+ .back-btn, .sidebar-btn {
+ font-size: 1rem;
+ padding: 0.3rem;
+ }
+ .sidebar-btn {
+ left: 3rem;
+ }
+ }
+ </style>
+</head>
+<body>
+ <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+ <i class="bi bi-arrow-left fs-2"></i>
+ </button>
+ <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
+ <i class="bi bi-list fs-2"></i>
+ </button>
+
+ <div class="sidebar" id="sidebar">
+ <button class="close-btn" onclick="toggleSidebar()">
+ <i class="bi bi-x"></i>
+ </button>
+ <div class="text-center mb-4">
+ <img src="../assets/images/default-profile.jpg" alt="Profil" class="profile-pic mb-2" id="userImage">
+ <h5 id="userName">Nom d'utilisateur</h5>
+ <p id="userInfo" class="mb-1 small text-muted"></p>
+ <a href="settings.html" class="btn btn-modern-primary btn-sm">Paramètres</a>
+ </div>
+ <hr>
+ <ul class="list-unstyled">
+ <li><a href="#" onclick="toggleTradeModal()" class="sidebar-item"><i class="bi bi-clock-history"></i><span>Historique des trades</span><span class="arrow">></span></a></li>
+ <li><a href="#" onclick="toggleStatsModal()" class="sidebar-item"><i class="bi bi-bar-chart-line"></i><span>Statistiques pertes/gains</span><span class="arrow">></span></a></li>
+ <li><a href="#" onclick="toggleProfileModal()" class="sidebar-item"><i class="bi bi-gear"></i><span>Paramètres du profil</span><span class="arrow">></span></a></li>
+ <li><a href="#" onclick="toggleAboutModal()" class="sidebar-item"><i class="bi bi-info-circle"></i><span>À propos</span><span class="arrow">></span></a></li>
+ <li><a href="https://www.trustpilot.com/review/votre-domaine.com" target="_blank" class="sidebar-item"><i class="bi bi-star"></i><span>Évaluer</span><span class="arrow">></span></a></li>
+ <li><a href="#" onclick="toggleSecurityModal()" class="sidebar-item"><i class="bi bi-lock"></i><span>Sécurité</span><span class="arrow">></span></a></li>
+ <li><a href="#" onclick="toggleHelpModal()" class="sidebar-item"><i class="bi bi-question-circle"></i><span>Aide</span><span class="arrow">></span></a></li>
+ <li><a href="#" onclick="logout()" class="sidebar-item"><i class="bi bi-box-arrow-right"></i><span>Déconnexion</span><span class="arrow">></span></a></li>
+ </ul>
+ <hr>
+ <div class="text-center small text-muted">
+ <p>Suivez-nous :</p>
+ <div>
+ <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
+ <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+ <a href="#"><i class="bi bi-instagram"></i></a>
+ </div>
+ <p class="mt-3">Mentions légales & professionnelles</p>
+ </div>
+ </div>
+
+ <div class="overlay" onclick="toggleSidebar()" id="overlay"></div>
+
+ <img src="logo.png" alt="BullSter Logo" class="logo">
+
+ <style>
+  .table-glass tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+</style>
+<div class="glass-card">
+  <div class="glass-title" role="heading" aria-level="1">💰 Introduction au Money Management</div>
+  <div class="image-section">
+    <div class="glass-image">
+      <img src="https://img.le-dictionnaire.com/definition-dictionnaire.jpg" alt="Illustration of money management in trading" loading="lazy" onerror="this.style.display='none';">
+      <div class="image-fallback" style="display: none;">Image not available</div>
+    </div>
+    <div class="image-text">
+      <p>
+        Le <strong>money management</strong> est la clé pour protéger ton capital et trader durablement.
+      </p>
+      <br>
+      <p>
+        💡 <strong>Astuce :</strong> Tiens un journal de trading pour suivre tes règles de gestion.
+      </p>
+    </div>
+  </div>
+  <div class="glass-info">
+    <div class="glass-content">
+      <h2>Définition et Importance <span aria-hidden="true">📊</span></h2>
+      <p>Le <strong>money management</strong> regroupe les stratégies pour gérer ton capital, limiter les pertes et optimiser les gains.</p>
+      <p><strong>Pourquoi c’est crucial ?</strong></p>
+      <ul>
+        <li>✅ <strong>Protéger le capital :</strong> Évite les pertes fatales pour rester dans le jeu.</li>
+        <li>✅ <strong>Maîtriser les émotions :</strong> Réduit les décisions impulsives (voir <em>Les Risques du Trading</em>).</li>
+        <li>✅ <strong>Maximiser les profits :</strong> Une gestion rigoureuse permet de cumuler les gains.</li>
+      </ul>
+      <p><strong>Exemples :</strong></p>
+      <ul>
+        <li>📈 <strong>Bitcoin :</strong> Risquer 10% par trade peut vider un compte de 5 000 $ en 5 pertes. Avec 1%, tu perds 50 $ par trade, survivant plus longtemps.</li>
+        <li>📈 <strong>Apple :</strong> Un trader appliquant 2% de risque sur 10 000 $ limite ses pertes à 200 $ par trade, protégeant son capital.</li>
+      </ul>
+      <p><strong>Analogie :</strong> Considère le money management comme un siège-auto : il ne garantit pas le succès, mais il te protège en cas d’accident.</p>
+      <p>💡 <strong>Astuce :</strong> Utilise un journal de trading pour noter chaque trade et respecter tes règles.</p>
+    </div>
+    <div class="glass-content">
+      <h2>Préserver le Capital <span aria-hidden="true">🛡️</span></h2>
+      <p>L’objectif numéro un est de <strong>préserver ton capital</strong>, car sans argent, tu ne peux plus trader.</p>
+      <p><strong>Règles clés :</strong></p>
+      <ul>
+        <li>✅ <strong>Risque limité :</strong> Ne risque que 1-2% par trade.</li>
+        <li>✅ <strong>Stop-loss :</strong> Place un stop-loss systématique (voir <em>Les Types d’Ordres</em>).</li>
+        <li>✅ <strong>Diversification :</strong> Répartis tes investissements (voir <em>Les Actifs et Instruments Financiers</em>).</li>
+        <li>✅ <strong>Position sizing :</strong> Ajuste la taille en fonction de la volatilité (voir <em>Les Principaux Marchés</em>).</li>
+      </ul>
+      <p><strong>Exemples :</strong></p>
+      <ul>
+        <li>📈 <strong>EUR/USD :</strong> Avec 10 000 €, risque 100 € (1%) par trade, stop-loss à 20 pips, taille de lot ajustée.</li>
+        <li>📈 <strong>Ethereum :</strong> Sur un compte de 5 000 $, risque 50 $ par trade, diversifie avec actions pour réduire l’exposition crypto.</li>
+      </ul>
+      <p>💡 <strong>Astuce :</strong> Réévalue ton portefeuille mensuellement pour ajuster ton exposition.</p>
+    </div>
+    <div class="glass-content">
+      <h2>Money Management vs. Gestion du Risque <span aria-hidden="true">⚖️</span></h2>
+      <p><strong>Money Management :</strong> Stratégie globale pour gérer tout ton capital, visant la survie à long terme.</p>
+      <p><strong>Gestion du Risque :</strong> Contrôle des pertes sur chaque trade individuel.</p>
+      <p><strong>Exemples :</strong></p>
+      <ul>
+        <li>📈 <strong>Apple :</strong> Bon risque (stop-loss à 5 $ sous 100 $) mais mauvais money management si 10 trades ouverts risquent 50% du capital.</li>
+        <li>📈 <strong>EUR/USD :</strong> Gestion du risque via stop-loss à 20 pips, money management en limitant à 2 trades simultanés.</li>
+      </ul>
+      <p><strong>Interplay :</strong> La gestion du risque soutient le money management en protégeant chaque position, tandis que le money management évite l’overtrading (voir <em>La Diversification et l’Exposition au Marché</em>).</p>
+      <p>💡 <strong>Astuce :</strong> Utilise des plateformes comme MetaTrader pour automatiser stop-loss et tailles de position.</p>
+    </div>
+    <div class="glass-content">
+      <h2>Résumé <span aria-hidden="true">🎯</span></h2>
+      <p>Le money management est la fondation d’un trading durable :</p>
+      <table class="table-glass" role="grid" aria-label="Résumé du money management" style="width: 100%; border-collapse: collapse; background: rgba(255, 255, 255, 0.1); border: 1px solid #555; border-radius: 1rem; overflow: hidden; font-family: 'Outfit', sans-serif; color: #f0f0f0;">
+        <thead>
+          <tr>
+            <th scope="col" style="padding: 0.75rem; border: 1px solid #555; background: rgba(255, 255, 255, 0.15); font-weight: 600;">Aspect</th>
+            <th scope="col" style="padding: 0.75rem; border: 1px solid #555; background: rgba(255, 255, 255, 0.15); font-weight: 600;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid #555;">Objectif</td>
+            <td style="padding: 0.75rem; border: 1px solid #555;">Préserver le capital</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid #555;">Règle clé</td>
+            <td style="padding: 0.75rem; border: 1px solid #555;">1-2% de risque par trade</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid #555;">Outils</td>
+            <td style="padding: 0.75rem; border: 1px solid #555;">Stop-loss, diversification</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>💡 <strong>Astuce :</strong> Pratique en démo pour tester tes règles de money management.</p>
+    </div>
+    <footer class="glass-footer">
+      Écrit par Corentin • Design par Corentin
+    </footer>
+  </div>
+</div>
+
+ <!-- Modal pour Paramètres du profil -->
+ <div class="modal" id="profileModal">
+ <div class="modal-header">
+ <h5>Paramètres du profil</h5>
+ <button class="modal-close" onclick="toggleProfileModal()">
+ <i class="bi bi-x"></i>
+ </button>
+ </div>
+ <div class="modal-body">
+ <div>
+ <div class="input-container" id="nameInputContainer">
+ <input type="text" id="nameInput" placeholder="Entrez votre nom">
+ </div>
+ <button class="btn btn-modern" id="editNameBtn" onclick="toggleEdit('name')">Modifier le nom</button>
+ </div>
+ <div>
+ <div class="input-container" id="firstnameInputContainer">
+ <input type="text" id="firstnameInput" placeholder="Entrez votre prénom">
+ </div>
+ <button class="btn btn-modern" id="editFirstnameBtn" onclick="toggleEdit('firstname')">Modifier le prénom</button>
+ </div>
+ <div>
+ <div class="input-container" id="ageInputContainer">
+ <input type="number" id="ageInput" placeholder="Entrez votre âge" min="0">
+ </div>
+ <button class="btn btn-modern" id="editAgeBtn" onclick="toggleEdit('age')">Modifier l'âge</button>
+ </div>
+ <div>
+ <div class="input-container" id="sexInputContainer">
+ <select id="sexInput">
+ <option value="">Choisissez...</option>
+ <option value="M">M</option>
+ <option value="F">F</option>
+ </select>
+ </div>
+ <button class="btn btn-modern" id="editSexBtn" onclick="toggleEdit('sex')">Modifier le sexe</button>
+ </div>
+ <div>
+ <div class="input-container" id="emailInputContainer">
+ <input type="email" id="emailInput" placeholder="Entrez votre email">
+ </div>
+ <button class="btn btn-modern" id="editEmailBtn" onclick="toggleEdit('email')">Modifier l'adresse mail</button>
+ </div>
+ <div>
+ <div class="input-container" id="phoneInputContainer">
+ <input type="tel" id="phoneInput" placeholder="Entrez votre numéro">
+ </div>
+ <button class="btn btn-modern" id="editPhoneBtn" onclick="toggleEdit('phone')">Modifier le numéro de téléphone</button>
+ </div>
+ <div>
+ <div class="input-container" id="photoInputContainer">
+ <div class="drop-zone" id="photoDropZone">Déposez une image ici ou cliquez pour sélectionner</div>
+ <input type="file" id="photoInput" accept="image/*" style="display: none;">
+ </div>
+ <button class="btn btn-modern" id="editPhotoBtn" onclick="toggleEdit('photo')">Modifier la photo de profil</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Modal pour Historique des trades -->
+ <div class="modal" id="tradeModal">
+ <div class="modal-header">
+ <h5>Historique des trades</h5>
+ <button class="modal-close" onclick="toggleTradeModal()">
+ <i class="bi bi-x"></i>
+ </button>
+ </div>
+ <div class="modal-body">
+ <table class="trade-table">
+ <thead>
+ <tr>
+ <th>Date</th>
+ <th>Symbole</th>
+ <th>Buy / Sell</th>
+ <th>Prix</th>
+ <th>Quantité</th>
+ </tr>
+ </thead>
+ <tbody id="tradeTableBody">
+ <!-- Les lignes seront ajoutées dynamiquement ici -->
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- Modal pour Statistiques Pertes/Gains -->
+ <div class="modal" id="statsModal">
+ <div class="modal-header">
+ <h5>Statistiques Pertes/Gains</h5>
+ <button class="modal-close" onclick="toggleStatsModal()">
+ <i class="bi bi-x"></i>
+ </button>
+ </div>
+ <div class="modal-body">
+ <div class="stats-upper">
+ <div class="stats-left">
+ <h6>Gains : <span class="gain-value">+12 450 €</span></h6>
+ <div style="display: flex; justify-content: space-around;">
+ <div class="chart-container">
+ <canvas id="winPercentageChart"></canvas>
+ </div>
+ <div class="chart-container">
+ <canvas id="gainLossRatioChart"></canvas>
+ </div>
+ </div>
+ <div class="stats-info">
+ <p><i class="bi bi-bar-chart-line"></i> Nombre de positions totales : 50</p>
+ <p><i class="bi bi-check-circle text-success"></i> Positions gagnantes : 30 (60%)</p>
+ <p><i class="bi bi-dash-circle text-muted"></i> Positions neutres : 5 (10%)</p>
+ <p><i class="bi bi-x-circle text-danger"></i> Positions perdantes : 15 (30%)</p>
+ <p><i class="bi bi-graph-up text-success"></i> Gains totaux : 15 750 €</p>
+ <p><i class="bi bi-graph-down text-danger"></i> Pertes totales : -3 300 €</p>
+ </div>
+ </div>
+ <div class="stats-right">
+ <canvas id="bestGainChart"></canvas>
+ <canvas id="worstLossChart"></canvas>
+ </div>
+ </div>
+ <div class="stats-lower">
+ <canvas id="portfolioEvolutionChart"></canvas>
+ </div>
+ </div>
+ </div>
+
+ <!-- Modal pour À propos -->
+ <div class="modal" id="aboutModal">
+ <div class="modal-header">
+ <h5>À propos</h5>
+ <button class="modal-close" onclick="toggleAboutModal()">
+ <i class="bi bi-x"></i>
+ </button>
+ </div>
+ <div class="modal-body" style="color: #34495E;">
+ <p class="mb-3">
+ <strong><i class="bi bi-bar-chart-fill me-2"></i>Bienvenue sur BullSter</strong><br>
+ Votre compagnon de confiance pour le trading et la gestion de portefeuille. Conçu pour les investisseurs de tous niveaux, BullSter vous aide à suivre vos performances, analyser vos positions et améliorer vos stratégies avec précision.
+ </p>
+ <hr>
+ <h6><i class="bi bi-lightbulb-fill me-2 text-warning"></i><strong>Notre mission</strong></h6>
+ <p>
+ Offrir à chacun, débutant ou professionnel, les outils d’analyse et de gestion les plus puissants dans une interface intuitive et moderne.
+ </p>
+ </div>
+ </div>
+
+ <!-- Modal pour Sécurité -->
+ <div class="modal" id="securityModal">
+ <div class="modal-header">
+ <h5>Sécurité</h5>
+ <button class="modal-close" onclick="toggleSecurityModal()">
+ <i class="bi bi-x"></i>
+ </button>
+ </div>
+ <div class="modal-body" style="color: #34495E;">
+ <p class="mb-3">
+ <strong><i class="bi bi-shield-lock-fill me-2 text-primary"></i>Votre sécurité est notre priorité</strong><br>
+ Chez <strong>BullSter</strong>, la protection de vos données et de vos actifs est au cœur de nos préoccupations.
+ </p>
+ </div>
+ </div>
+
+ <!-- Modal pour Aide -->
+ <div class="modal" id="helpModal">
+ <div class="modal-header">
+ <h5>Aide</h5>
+ <button class="modal-close" onclick="toggleHelpModal()">
+ <i class="bi bi-x"></i>
+ </button>
+ </div>
+ <div class="modal-body" style="color: #34495E;">
+ <p class="mb-3">
+ <strong><i class="bi bi-question-circle-fill me-2 text-primary"></i>Centre d’aide BullSter</strong><br>
+ Retrouve ici les réponses aux questions fréquentes et les ressources utiles pour bien utiliser la plateforme.
+ </p>
+ </div>
+ </div>
+
+ <div class="bottom-nav">
+  <a href="../learn.html" class="text-dark text-center active"><i class="bi bi-journal-code"></i><br><small>Learn</small></a>
+  <a href="../trade.html" class="text-dark text-center"><i class="bi bi-graph-up-arrow"></i><br><small>Trade</small></a>
+  <a href="../bot.html" class="text-dark text-center"><i class="bi bi-cpu"></i><br><small>Bot</small></a>
+  <a href="../wallet.html" class="text-dark text-center"><i class="bi bi-wallet2"></i><br><small>Wallet</small></a>
+  <a href="../community.html" class="text-dark text-center"><i class="bi bi-people"></i><br><small>Communauté</small></a>
+  </div>
+
+ <script>
+ const goBack = () => {
+ window.history.back();
+ }
+
+ const toggleSidebar = () => {
+ document.getElementById('sidebar').classList.toggle('active');
+ document.getElementById('overlay').classList.toggle('active');
+ }
+
+ let activeModal = null;
+
+ const toggleModal = (modalId) => {
+ const modal = document.getElementById(modalId);
+ if (activeModal && activeModal !== modal) {
+ activeModal.classList.remove('active');
+ }
+ modal.classList.toggle('active');
+ if (modal.classList.contains('active')) {
+ activeModal = modal;
+ if (modalId === 'statsModal') loadStatsCharts();
+ if (modalId === 'tradeModal') updateTradeTable();
+ } else {
+ activeModal = null;
+ }
+ }
+
+ const toggleProfileModal = () => toggleModal('profileModal');
+ const toggleTradeModal = () => toggleModal('tradeModal');
+ const toggleStatsModal = () => toggleModal('statsModal');
+ const toggleAboutModal = () => toggleModal('aboutModal');
+ const toggleSecurityModal = () => toggleModal('securityModal');
+ const toggleHelpModal = () => toggleModal('helpModal');
+
+ const logout = async () => {
+ await fetch('http://localhost:3000/api/auth/logout', { method: 'POST', credentials: 'include' });
+ window.location.href = 'login.html';
+ }
+
+ const loadUser = async () => {
+ const res = await fetch('http://localhost:3000/api/auth/check', { credentials: 'include' });
+ if (!res.ok) {
+ window.location.href = 'login.html';
+ return;
+ }
+ const data = await res.json();
+ const user = data.user;
+ document.getElementById('userName').textContent = user.username;
+ document.getElementById('userInfo').textContent = `Email : ${user.email}`;
+ }
+
+ const buttonTexts = {
+ name: 'Modifier le nom',
+ firstname: 'Modifier le prénom',
+ age: "Modifier l'âge",
+ sex: 'Modifier le sexe',
+ email: "Modifier l'adresse mail",
+ phone: 'Modifier le numéro de téléphone',
+ photo: 'Modifier la photo de profil'
+ };
+
+ const toggleEdit = (field) => {
+ const btn = document.getElementById(`edit${field.charAt(0).toUpperCase() + field.slice(1)}Btn`);
+ const inputContainer = document.getElementById(`${field}InputContainer`);
+ const input = document.getElementById(`${field}Input`);
+ if (btn.classList.contains('btn-validate')) {
+ if (field === 'photo') {
+ if (input.files.length > 0) console.log('Image uploaded:', input.files[0]);
+ inputContainer.style.display = 'none';
+ btn.textContent = buttonTexts[field];
+ btn
+
+.classList.remove('btn-validate');
+ document.getElementById('photoDropZone').textContent = 'Déposez une image ici ou cliquez pour sélectionner';
+ } else {
+ const value = input.value.trim();
+ if (!value) { alert('Veuillez remplir le champ'); return; }
+ if (field === 'age' && isNaN(value)) { alert('Veuillez entrer un nombre valide'); return; }
+ if (field === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) { alert('Veuillez entrer une adresse email valide'); return; }
+ if (field === 'phone' && !/^\+?\d{9,15}$/.test(value)) { alert('Veuillez entrer un numéro de téléphone valide'); return; }
+ console.log(`${field} updated to: ${value}`);
+ inputContainer.style.display = 'none';
+ btn.textContent = buttonTexts[field];
+ btn.classList.remove('btn-validate');
+ }
+ } else {
+ inputContainer.style.display = 'block';
+ btn.textContent = 'Valider les modifications';
+ btn.classList.add('btn-validate');
+ if (field === 'photo') input.click();
+ }
+ }
+
+ const dropZone = document.getElementById('photoDropZone');
+ const photoInput = document.getElementById('photoInput');
+ dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+ dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+ dropZone.addEventListener('drop', (e) => {
+ e.preventDefault();
+ dropZone.classList.remove('dragover');
+ photoInput.files = e.dataTransfer.files;
+ if (photoInput.files.length > 0) dropZone.textContent = `Image sélectionnée : ${photoInput.files[0].name}`;
+ });
+ dropZone.addEventListener('click', () => photoInput.click());
+ photoInput.addEventListener('change', () => {
+ if (photoInput.files.length > 0) dropZone.textContent = `Image sélectionnée : ${photoInput.files[0].name}`;
+ });
+
+ let tradesData = [
+ { date: '2025-04-01', symbol: 'BTC', type: 'Buy', price: '58,230 $', quantity: '0.5' },
+ { date: '2025-04-02', symbol: 'ETH', type: 'Sell', price: '2,950 $', quantity: '2.0' },
+ { date: '2025-04-03', symbol: 'ADA', type: 'Buy', price: '0.45 $', quantity: '1000' },
+ { date: '2025-04-04', symbol: 'XRP', type: 'Sell', price: '0.62 $', quantity: '500' },
+ { date: '2025-04-05', symbol: 'BNB', type: 'Buy', price: '420 $', quantity: '1.5' }
+ ];
+
+ function updateTradeTable() {
+ const tbody = document.getElementById('tradeTableBody');
+ tbody.innerHTML = '';
+ for (let i = 0; i < tradesData.length; i++) {
+ const trade = tradesData[i];
+ const tr = document.createElement('tr');
+ const tdDate = document.createElement('td'); tdDate.textContent = trade.date;
+ const tdSymbol = document.createElement('td'); tdSymbol.textContent = trade.symbol;
+ const tdType = document.createElement('td'); tdType.textContent = trade.type; tdType.className = trade.type.toLowerCase() === 'buy' ? 'buy' : 'sell';
+ const tdPrice = document.createElement('td'); tdPrice.textContent = trade.price;
+ const tdQuantity = document.createElement('td'); tdQuantity.textContent = trade.quantity;
+ tr.appendChild(tdDate); tr.appendChild(tdSymbol); tr.appendChild(tdType); tr.appendChild(tdPrice); tr.appendChild(tdQuantity);
+ tbody.appendChild(tr);
+ }
+ }
+
+ function addTrade(date, symbol, type, price, quantity) {
+ tradesData.push({ date, symbol, type, price, quantity });
+ updateTradeTable();
+ }
+
+ function simulateNewTrade() {
+ const newTrade = { date: new Date().toISOString().split('T')[0], symbol: 'SOL', type: 'Buy', price: '150 $', quantity: '10' };
+ addTrade(newTrade.date, newTrade.symbol, newTrade.type, newTrade.price, newTrade.quantity);
+ }
+
+ function loadStatsCharts() {
+ const winPercentageCtx = document.getElementById('winPercentageChart').getContext('2d');
+ new Chart(winPercentageCtx, {
+ type: 'doughnut',
+ data: { labels: ['Gagnantes', 'Perdantes/Neutres'], datasets: [{ data: [60, 40], backgroundColor: ['#28A745', '#E74C3C'], borderWidth: 0 }] },
+ options: { cutout: '70%', plugins: { legend: { display: false }, tooltip: { enabled: false }, title: { display: true, text: 'Positions Gagnantes', position: 'bottom', color: '#2C3E50', font: { size: 12 } } }, maintainAspectRatio: false },
+ plugins: [{
+ id: 'centerText',
+ beforeDraw(chart) {
+ const { width, height, ctx, chartArea } = chart;
+ ctx.restore();
+ const fontSize = Math.min(width, height) * 0.15;
+ ctx.font = `bold ${fontSize}px Segoe UI`;
+ ctx.textAlign = 'center';
+ ctx.textBaseline = 'middle';
+ ctx.fillStyle = '#2C3E50';
+ const text = '60%';
+ const textX = chartArea.left + (chartArea.right - chartArea.left) / 2;
+ const textY = chartArea.top + (chartArea.bottom - chartArea.top) / 2;
+ ctx.fillText(text, textX, textY);
+ ctx.save();
+ }
+ }]
+ });
+
+ const gainLossRatioCtx = document.getElementById('gainLossRatioChart').getContext('2d');
+ new Chart(gainLossRatioCtx, {
+ type: 'doughnut',
+ data: { labels: ['Gains', 'Pertes'], datasets: [{ data: [82.6, 17.4], backgroundColor: ['#28A745', '#E74C3C'], borderWidth: 0 }] },
+ options: { cutout: '70%', plugins: { legend: { display: false }, tooltip: { enabled: false }, title: { display: true, text: 'Ratio Gains/Pertes', position: 'bottom', color: '#2C3E50', font: { size: 12 } } }, maintainAspectRatio: false },
+ plugins: [{
+ id: 'centerText',
+ beforeDraw(chart) {
+ const { width, height, ctx, chartArea } = chart;
+ ctx.restore();
+ const fontSize = Math.min(width, height) * 0.15;
+ ctx.font = `bold ${fontSize}px Segoe UI`;
+ ctx.textAlign = 'center';
+ ctx.textBaseline = 'middle';
+ ctx.fillStyle = '#2C3E50';
+ const text = '4.77:1';
+ const textX = chartArea.left + (chartArea.right - chartArea.left) / 2;
+ const textY = chartArea.top + (chartArea.bottom - chartArea.top) / 2;
+ ctx.fillText(text, textX, textY);
+ ctx.save();
+ }
+ }]
+ });
+
+ const bestGainCtx = document.getElementById('bestGainChart').getContext('2d');
+ new Chart(bestGainCtx, {
+ type: 'bar',
+ data: { labels: ['Plus Gros Gain'], datasets: [{ label: 'Gain Maximum', data: [5230], backgroundColor: '#28A745', borderRadius: 5 }, { label: 'Gain Moyen', data: [2490], backgroundColor: 'rgba(40, 167, 69, 0.5)', borderRadius: 5 }] },
+ options: { indexAxis: 'y', scales: { x: { display: false, max: 6000 }, y: { display: true } }, plugins: { legend: { display: false }, title: { display: true, text: 'Meilleur Gain (€)', color: '#2C3E50', font: { size: 14 } } }, maintainAspectRatio: false }
+ });
+
+ const worstLossCtx = document.getElementById('worstLossChart').getContext('2d');
+ new Chart(worstLossCtx, {
+ type: 'bar',
+ data: { labels: ['Plus Grosse Perte'], datasets: [{ label: 'Perte Maximum', data: [1950], backgroundColor: '#E74C3C', borderRadius: 5 }, { label: 'Perte Moyenne', data: [660], backgroundColor: 'rgba(231, 76, 60, 0.5)', borderRadius: 5 }] },
+ options: { indexAxis: 'y', scales: { x: { display: false, max: 2000 }, y: { display: true } }, plugins: { legend: { display: false }, title: { display: true, text: 'Pire Perte (€)', color: '#2C3E50', font: { size: 14 } } }, maintainAspectRatio: false }
+ });
+
+ const CourierPrimeCtx = document.getElementById('portfolioEvolutionChart').getContext('2d');
+ new Chart(portfolioEvolutionCtx, {
+ type: 'line',
+ data: { labels: ['Jan 2025', 'Fév', 'Mar', 'Avr'], datasets: [{ label: 'Valeur du portefeuille (€)', data: [5000, 7500, 11000, 12450], borderColor: '#007BFF', backgroundColor: 'rgba(0, 123, 255, 0.1)', fill: true, tension: 0.4, pointBackgroundColor: '#007BFF', pointBorderColor: '#fff', pointBorderWidth: 2 }] },
+ options: { scales: { y: { beginAtZero: false, title: { display: true, text: 'Valeur (€)', color: '#2C3E50' } }, x: { title: { display: true, text: 'Mois', color: '#2C3E50' } } }, plugins: { legend: { display: false }, title: { display: true, text: 'Évolution du Portefeuille', color: '#2C3E50', font: { size: 16 } } }, maintainAspectRatio: false }
+ });
+ }
+
+ loadUser();
+ updateTradeTable();
+ setTimeout(simulateNewTrade, 3000);
+
+ document.addEventListener('DOMContentLoaded', () => {
+ const currentPage = window.location.pathname.split('/').pop() || 'learn.html';
+ const navLinks = document.querySelectorAll('.bottom-nav a');
+ navLinks.forEach(link => {
+ const href = link.getAttribute('href');
+ if (href === currentPage) {
+ link.classList.add('active');
+ } else {
+ link.classList.remove('active');
+ }
+ });
+ });
+ </script>
+</body>
+</html>

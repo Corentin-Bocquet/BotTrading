@@ -204,14 +204,33 @@
     }
 
     .btn-icon-modern {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
 
-    .btn-icon-modern:hover { color: #fff; }
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
 
     .modal {
       display: none;
@@ -452,6 +471,7 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .container {
@@ -612,10 +632,12 @@
 <body>
 
  
-  <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
-    
-    <i class="bi bi-list fs-2"></i>
-  </button>
+    <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+        <i class="bi bi-arrow-left fs-2"></i>
+        </button>
+        <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
+        <i class="bi bi-list fs-2"></i>
+        </button>
 
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">
@@ -954,7 +976,7 @@
             <i class="bi bi-wallet2 icon-intro"></i>
             <h3>Introduction au Money Management</h3>
             <p>Apprenez à gérer votre capital pour trader efficacement et minimiser les risques.</p>
-            <a href="https://www.notion.so/Le-Capital-de-Trading-Bien-G-rer-Son-Argent-1c21d612a9ca80938d92fb4ae7aaff3c?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/IntroMoney.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -964,7 +986,7 @@
             <i class="bi bi-cash-stack icon-capital"></i>
             <h3>Le Capital de Trading : Bien Gérer Son Argent</h3>
             <p>Protégez et optimisez votre capital avec des stratégies de gestion.</p>
-            <a href="https://www.notion.so/Le-Capital-de-Trading-Bien-G-rer-Son-Argent-1c21d612a9ca80938d92fb4ae7aaff3c?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/Capital.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -974,7 +996,7 @@
             <i class="bi bi-exclamation-triangle icon-risk"></i>
             <h3>Le Risque par Trade : Protégez votre Capital !</h3>
             <p>Limitez les pertes par trade pour préserver votre capital à long terme.</p>
-            <a href="https://www.notion.so/Le-Risque-par-Trade-Prot-gez-votre-Capital-1c21d612a9ca802db835f9db4b722188?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/RisqueTrade.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -984,7 +1006,7 @@
             <i class="bi bi-hr icon-rrr"></i>
             <h3>Le Ratio Risque/Rendement (RRR)</h3>
             <p>Évaluez le rapport risque/rendement pour des trades plus rentables.</p>
-            <a href="https://www.notion.so/Le-Ratio-Risque-Rendement-Risk-Reward-Ratio-RRR-1c21d612a9ca80c39a41d4f5529c73e6?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/RRR.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -994,7 +1016,7 @@
             <i class="bi bi-pie-chart icon-diversification"></i>
             <h3>La Diversification et l’Exposition au Marché</h3>
             <p>Répartissez vos investissements pour réduire les risques de pertes.</p>
-            <a href="https://www.notion.so/La-Diversification-et-l-Exposition-au-March-1c21d612a9ca80349ef0efa3f1ac28de?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/Diversification.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1004,7 +1026,7 @@
             <i class="bi bi-arrows-angle-contract icon-stop"></i>
             <h3>L'Utilisation du Stop-Loss et du Take-Profit</h3>
             <p>Maîtrisez stop-loss et take-profit pour sécuriser vos trades.</p>
-            <a href="https://www.notion.so/L-Utilisation-du-Stop-Loss-et-du-Take-Profit-1c21d612a9ca805891cdca82fe92a0ae?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/SLTP.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1014,7 +1036,7 @@
             <i class="bi bi-graph-down icon-drawdown"></i>
             <h3>Le Drawdown et la Gestion des Pertes</h3>
             <p>Comprenez le drawdown et gérez vos pertes pour rester rentable.</p>
-            <a href="https://www.notion.so/Le-Drawdown-et-la-Gestion-des-Pertes-1c21d612a9ca80bfa83cdb7093545c5b?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/Drawdown.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1024,7 +1046,7 @@
             <i class="bi bi-rulers icon-sizing"></i>
             <h3>La Taille des Positions (Position Sizing)</h3>
             <p>Ajustez la taille de vos positions pour équilibrer risque et gain.</p>
-            <a href="https://www.notion.so/La-Taille-des-Positions-Position-Sizing-1c21d612a9ca80e794e6f9f79c3ad6c2?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/Sizing.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1034,7 +1056,7 @@
             <i class="bi bi-person-check icon-psychology"></i>
             <h3>La Psychologie et la Discipline en Trading</h3>
             <p>Maîtrisez vos émotions et restez discipliné pour réussir en trading.</p>
-            <a href="https://www.notion.so/La-Psychologie-et-la-Discipline-en-Trading-1c21d612a9ca800c97a3e79f36cec12e?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/Psycho.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1044,7 +1066,7 @@
             <i class="bi bi-clipboard-data icon-performance"></i>
             <h3>Suivi et Évaluation des Performances</h3>
             <p>Analysez vos trades pour améliorer vos stratégies et performances.</p>
-            <a href="https://www.notion.so/Suivi-et-valuation-des-Performances-en-Trading-1c21d612a9ca800689f5d1ea9e6d8459?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Money/Suivi.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 </div>
@@ -1067,6 +1089,11 @@
   </div>
 
   <script>
+
+const goBack = () => {
+ window.history.back();
+ }
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');

@@ -204,14 +204,33 @@
     }
 
     .btn-icon-modern {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
 
-    .btn-icon-modern:hover { color: #fff; }
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
 
     .modal {
       display: none;
@@ -452,6 +471,7 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .container {
@@ -612,10 +632,12 @@
 <body>
 
  
-  <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
-    
+  <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+    <i class="bi bi-arrow-left fs-2"></i>
+    </button>
+    <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
     <i class="bi bi-list fs-2"></i>
-  </button>
+    </button>
 
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">
@@ -1057,6 +1079,11 @@
   </div>
 
   <script>
+
+const goBack = () => {
+ window.history.back();
+ }
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');

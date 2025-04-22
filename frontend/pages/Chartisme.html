@@ -204,14 +204,33 @@
     }
 
     .btn-icon-modern {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
 
-    .btn-icon-modern:hover { color: #fff; }
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
 
     .modal {
       display: none;
@@ -452,6 +471,7 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .container {
@@ -614,10 +634,12 @@
 <body>
 
  
-  <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
-    
-    <i class="bi bi-list fs-2"></i>
-  </button>
+    <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+        <i class="bi bi-arrow-left fs-2"></i>
+        </button>
+        <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
+        <i class="bi bi-list fs-2"></i>
+        </button>
 
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">
@@ -956,7 +978,7 @@
             <i class="bi bi-graph-up icon-intro"></i>
             <h3>Introduction aux Figures Chartistes</h3>
             <p>Découvrez les bases du chartisme et comment les figures prédisent les prix.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Drapeau-Flag-1c11d612a9ca80aaa514f92e6dc1e01f?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Intro_Chartisme.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -966,7 +988,7 @@
             <i class="bi bi-flag icon-flag"></i>
             <h3>Figure de Continuation - Drapeau (Flag)</h3>
             <p>Repérez le drapeau, une pause avant la poursuite d’une tendance.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Drapeau-Flag-1c11d612a9ca80aaa514f92e6dc1e01f?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Drapeau.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -976,7 +998,7 @@
             <i class="bi bi-triangle icon-pennant"></i>
             <h3>Figure de Continuation - Fanion (Pennant)</h3>
             <p>Identifiez le fanion, une consolidation avant la reprise d’une tendance.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Fanion-Pennant-1c11d612a9ca80898ec0d11ea53b4a8e?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Fanion.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -986,7 +1008,7 @@
             <i class="bi bi-caret-up icon-asc-triangle"></i>
             <h3>Figure de Continuation - Triangle Ascendant</h3>
             <p>Maîtrisez le triangle ascendant, signe d’une hausse imminente.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Triangle-Ascendant-1c11d612a9ca80f69bf8cb4258e0bde7?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/TriangleAsc.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -996,7 +1018,7 @@
             <i class="bi bi-caret-down icon-desc-triangle"></i>
             <h3>Figure de Continuation - Triangle Descendant</h3>
             <p>Repérez le triangle descendant, indicateur d’une baisse à venir.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Triangle-Descendant-1c11d612a9ca805f8e1bebc4a77606c4?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/TriangleDesc.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1006,7 +1028,7 @@
             <i class="bi bi-caret-right-fill icon-sym-triangle"></i>
             <h3>Figure de Continuation - Triangle Symétrique</h3>
             <p>Analysez le triangle symétrique pour anticiper la direction des prix.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Continuation-Triangle-Sym-trique-1c11d612a9ca80e7977febd9cf090d7f?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/TriangleSym.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1016,7 +1038,7 @@
             <i class="bi bi-graph-down icon-ete"></i>
             <h3>Figures de Retournement - Épaule-Tête-Épaule</h3>
             <p>Identifiez l’ETE et ETE inversée pour prévoir les retournements.</p>
-            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-paule-T-te-paule-ETE-et-ETE-Invers-e-1c11d612a9ca803fb599ef5c66eca14c?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/ETE.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1026,7 +1048,7 @@
             <i class="bi bi-graph-down-arrow icon-double"></i>
             <h3>Figures de Retournement - Double Sommet et Creux</h3>
             <p>Repérez double sommet/creux pour anticiper un changement de tendance.</p>
-            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-Double-Sommet-et-Double-Creux-1c11d612a9ca806b9042fb933227e26f?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Double.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1036,7 +1058,7 @@
             <i class="bi bi-bar-chart-fill icon-triple"></i>
             <h3>Figures de Retournement - Triple Sommet et Creux</h3>
             <p>Maîtrisez triple sommet/creux pour prévoir des renversements majeurs.</p>
-            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-Triple-Sommet-et-Triple-Creux-1c11d612a9ca80bc9dbed0ff24461b7e?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Triple.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1046,7 +1068,7 @@
             <i class="bi bi-circle-half icon-rounding"></i>
             <h3>Figure de Retournement - Rounding Bottom / Top</h3>
             <p>Repérez la soucoupe pour anticiper un retournement progressif.</p>
-            <a href="https://www.notion.so/Chartisme-Figure-de-Retournement-Rounding-Bottom-Top-Soucoupe-1c11d612a9ca80808ae6fc34af271b5d?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Rounding.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1056,7 +1078,7 @@
             <i class="bi bi-caret-left-fill icon-wedge"></i>
             <h3>Figures de Retournement - Biseau Ascendant et Descendant</h3>
             <p>Analysez les biseaux pour prévoir des changements de tendance.</p>
-            <a href="https://www.notion.so/Chartisme-Figures-de-Retournement-Biseau-Ascendant-et-Descendant-1c11d612a9ca8028a954d2e4e59fb01b?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/Biseaux.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1066,7 +1088,7 @@
             <i class="bi bi-book icon-read"></i>
             <h3>Comment Lire une Figure Chartiste ?</h3>
             <p>Apprenez à interpréter les figures chartistes pour mieux trader.</p>
-            <a href="https://www.notion.so/Comment-Lire-une-Figure-Chartiste-1c11d612a9ca80478d89e34db9d2deff?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Chartisme/LireChartisme.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 </div>
@@ -1089,6 +1111,11 @@
   </div>
 
   <script>
+
+const goBack = () => {
+ window.history.back();
+ }
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');

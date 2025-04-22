@@ -204,14 +204,33 @@
     }
 
     .btn-icon-modern {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
 
-    .btn-icon-modern:hover { color: #fff; }
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
 
     .modal {
       display: none;
@@ -452,6 +471,7 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .container {
@@ -612,10 +632,12 @@
 <body>
 
  
-  <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
-    
+  <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+    <i class="bi bi-arrow-left fs-2"></i>
+    </button>
+    <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
     <i class="bi bi-list fs-2"></i>
-  </button>
+    </button>
 
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">
@@ -954,7 +976,7 @@
             <i class="bi bi-graph-up icon-intro"></i>
             <h3>Introduction aux Tendances en Trading</h3>
             <p>Comprenez les tendances en trading pour anticiper les mouvements du marché.</p>
-            <a href="https://www.notion.so/Types-de-Tendances-en-Trading-1c21d612a9ca80a781e8cb0812569261?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/IntroTendances.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -964,7 +986,7 @@
             <i class="bi bi-arrow-up-right icon-types"></i>
             <h3>Types de Tendances en Trading</h3>
             <p>Découvrez les tendances haussières, baissières et latérales en trading.</p>
-            <a href="https://www.notion.so/Types-de-Tendances-en-Trading-1c21d612a9ca80a781e8cb0812569261?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/TypesTendances.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -974,7 +996,7 @@
             <i class="bi bi-search icon-identify"></i>
             <h3>Comment Identifier une Tendance ?</h3>
             <p>Apprenez à repérer les tendances sur les graphiques pour mieux trader.</p>
-            <a href="https://www.notion.so/Comment-Identifier-une-Tendance-1c21d612a9ca80be9af7f4c0e1575d6e?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/IDTendances.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -984,7 +1006,7 @@
             <i class="bi bi-tools icon-tools"></i>
             <h3>Outils et Indicateurs pour Analyser les Tendances</h3>
             <p>Utilisez moyennes mobiles et autres indicateurs pour analyser les tendances.</p>
-            <a href="https://www.notion.so/Outils-et-Indicateurs-pour-Analyser-les-Tendances-1c21d612a9ca807686a5e4d985240cbd?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/OutilsTendances.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -994,7 +1016,7 @@
             <i class="bi bi-book icon-theories"></i>
             <h3>Théories et Approches Populaires en Analyse Technique</h3>
             <p>Explorez Dow, Elliott et autres théories pour comprendre les tendances.</p>
-            <a href="https://www.notion.so/Th-ories-et-Approches-Populaires-en-Analyse-Technique-1c21d612a9ca8028ba08cd1c9724114c?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/Theories.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1004,7 +1026,7 @@
             <i class="bi bi-arrow-repeat icon-cycles"></i>
             <h3>Cycles et Phases du Marché</h3>
             <p>Identifiez accumulation, expansion et autres phases des cycles de marché.</p>
-            <a href="https://www.notion.so/Cycles-et-Phases-du-March-1c21d612a9ca80cd941aed15f2c09575?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/Cycles.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1014,7 +1036,7 @@
             <i class="bi bi-gear icon-strategies"></i>
             <h3>Stratégies de Trading Basées sur les Tendances</h3>
             <p>Développez des stratégies pour trader avec les tendances du marché.</p>
-            <a href="https://www.notion.so/Strat-gies-de-Trading-Bas-es-sur-les-Tendances-1c21d612a9ca80d5bdcffdf0a0a31047?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/Strat.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1024,7 +1046,7 @@
             <i class="bi bi-person-check icon-psychology"></i>
             <h3>Gestion des Risques et Psychologie en Trading</h3>
             <p>Maîtrisez risques et émotions pour trader les tendances avec discipline.</p>
-            <a href="https://www.notion.so/Gestion-des-Risques-et-Psychologie-en-Trading-1c21d612a9ca803cbda3e1a410b569d0?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Tendances/Gestion.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 </div>
@@ -1047,6 +1069,11 @@
   </div>
 
   <script>
+
+const goBack = () => {
+ window.history.back();
+ }
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');

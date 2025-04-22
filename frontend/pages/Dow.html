@@ -204,14 +204,33 @@
     }
 
     .btn-icon-modern {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
 
-    .btn-icon-modern:hover { color: #fff; }
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
 
     .modal {
       display: none;
@@ -452,6 +471,7 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .container {
@@ -612,10 +632,12 @@
 <body>
 
  
-  <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
-    
-    <i class="bi bi-list fs-2"></i>
-  </button>
+    <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+        <i class="bi bi-arrow-left fs-2"></i>
+        </button>
+        <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
+        <i class="bi bi-list fs-2"></i>
+        </button>
 
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">
@@ -954,7 +976,7 @@
             <i class="bi bi-book icon-intro"></i>
             <h3>Introduction à la Théorie de Dow</h3>
             <p>Découvrez les bases de la théorie de Dow pour analyser les marchés.</p>
-            <a href="https://www.notion.so/Les-Six-Principes-Fondamentaux-de-la-Th-orie-de-Dow-1c21d612a9ca8006b6c9cc5696fbaf4a?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Introduction_Theorie_Dow.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -964,7 +986,7 @@
             <i class="bi bi-list-check icon-principles"></i>
             <h3>Les Six Principes Fondamentaux de la Théorie de Dow</h3>
             <p>Maîtrisez les six principes clés qui guident l’analyse technique.</p>
-            <a href="https://www.notion.so/Les-Six-Principes-Fondamentaux-de-la-Th-orie-de-Dow-1c21d612a9ca8006b6c9cc5696fbaf4a?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Six_Principes_Theorie_Dow.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -974,7 +996,7 @@
             <i class="bi bi-arrow-up-right icon-trends"></i>
             <h3>Les Trois Types de Tendances en Analyse Technique</h3>
             <p>Identifiez tendances primaires, secondaires et mineures en trading.</p>
-            <a href="https://www.notion.so/Les-Trois-Types-de-Tendances-en-Analyse-Technique-1c21d612a9ca80fab0bef7739dba34de?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Trois_Types_Tendances_Analyse_Technique.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -984,7 +1006,7 @@
             <i class="bi bi-arrow-repeat icon-cycles"></i>
             <h3>Les Phases du Cycle de Marché</h3>
             <p>Analysez accumulation, expansion et autres phases des marchés.</p>
-            <a href="https://www.notion.so/Les-Phases-du-Cycle-de-March-1c21d612a9ca80fb940ff89641e0d5af?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Cycle_Marche.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -994,7 +1016,7 @@
             <i class="bi bi-check-circle icon-confirmation"></i>
             <h3>Confirmation par les Indices en Analyse Technique</h3>
             <p>Utilisez les indices pour valider les signaux de trading.</p>
-            <a href="https://www.notion.so/Confirmation-par-les-Indices-en-Analyse-Technique-1c21d612a9ca80ef8fc5f930fec9d666?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Confirmation_Indices.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1004,7 +1026,7 @@
             <i class="bi bi-bar-chart-fill icon-volume"></i>
             <h3>Rôle du Volume dans la Théorie de Dow</h3>
             <p>Comprenez comment le volume confirme les tendances dans la théorie.</p>
-            <a href="https://www.notion.so/R-le-du-Volume-dans-la-Th-orie-de-Dow-1c21d612a9ca80beae3ff35df3ec3564?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Volume_Dow.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1014,7 +1036,7 @@
             <i class="bi bi-gear icon-practical"></i>
             <h3>Utilisation Pratique en Trading : Théorie de Dow</h3>
             <p>Appliquez la théorie de Dow pour prendre des décisions de trading.</p>
-            <a href="https://www.notion.so/Utilisation-Pratique-en-Trading-Th-orie-de-Dow-1c21d612a9ca80eda195d51eae839bdf?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Dow/Dow_Trading.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 </div>
@@ -1037,6 +1059,11 @@
   </div>
 
   <script>
+
+const goBack = () => {
+ window.history.back();
+ }
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');

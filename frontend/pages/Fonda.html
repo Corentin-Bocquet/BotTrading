@@ -204,14 +204,33 @@
     }
 
     .btn-icon-modern {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ color: #fff;
+ transition: color 0.3s ease, transform 0.3s ease;
+ padding: 0.5rem;
+ cursor: pointer;
+ }
 
-    .btn-icon-modern:hover { color: #fff; }
+ .btn-icon-modern:hover {
+ color: #fff;
+ transform: scale(1.1);
+ }
+
+ .back-btn {
+ position: fixed;
+ top: 1rem;
+ left: 1rem;
+ z-index: 1020;
+ }
+
+ .sidebar-btn {
+ position: fixed;
+ top: 1rem;
+ left: 4rem;
+ z-index: 1020;
+ }
 
     .modal {
       display: none;
@@ -452,6 +471,7 @@
   font-weight: 700;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .container {
@@ -612,10 +632,12 @@
 <body>
 
  
-  <button class="btn-icon-modern m-3" onclick="toggleSidebar()">
-    
-    <i class="bi bi-list fs-2"></i>
-  </button>
+    <button class="btn-icon-modern m-3 back-btn" onclick="goBack()" aria-label="Retour à la page précédente">
+        <i class="bi bi-arrow-left fs-2"></i>
+        </button>
+        <button class="btn-icon-modern m-3 sidebar-btn" onclick="toggleSidebar()" aria-label="Ouvrir le menu latéral">
+        <i class="bi bi-list fs-2"></i>
+        </button>
 
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">
@@ -954,7 +976,7 @@
             <i class="bi bi-graph-up icon-intro"></i>
             <h3>Introduction aux Indicateurs Fondamentaux</h3>
             <p>Mesurez la santé économique des marchés avec les indicateurs fondamentaux.</p>
-            <a href="https://www.notion.so/Les-Indicateurs-conomiques-1c21d612a9ca808faf2ef4c3e93ad6fc?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Introduction_Indicateurs_Fondamentaux.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -964,7 +986,7 @@
             <i class="bi bi-bar-chart icon-economic"></i>
             <h3>Les Indicateurs Économiques</h3>
             <p>Analysez PIB, inflation et chômage pour comprendre les marchés.</p>
-            <a href="https://www.notion.so/Les-Indicateurs-conomiques-1c21d612a9ca808faf2ef4c3e93ad6fc?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Indicateurs_Economiques.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -974,7 +996,7 @@
             <i class="bi bi-bank icon-monetary"></i>
             <h3>Indicateurs Monétaires et Politiques de Banques Centrales</h3>
             <p>Étudiez taux d’intérêt et politiques monétaires pour anticiper les marchés.</p>
-            <a href="https://www.notion.so/Les-Indicateurs-Mon-taires-et-Politiques-de-Banques-Centrales-1c21d612a9ca8037be76e439a281d65a?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Indicateurs_Monetaires.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -984,7 +1006,7 @@
             <i class="bi bi-person-workspace icon-labor"></i>
             <h3>Le Marché du Travail</h3>
             <p>Analysez chômage et emplois pour évaluer la santé économique.</p>
-            <a href="https://www.notion.so/Le-March-du-Travail-1c21d612a9ca8093866aede9450d4673?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Marche_Travail.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -994,7 +1016,7 @@
             <i class="bi bi-buildings icon-manufacturing"></i>
             <h3>Indicateurs de Secteur Manufacturier et Commercial</h3>
             <p>Étudiez production et ventes pour prévoir les tendances sectorielles.</p>
-            <a href="https://www.notion.so/Les-Indicateurs-de-Secteur-Manufacturier-et-Commercial-1c31d612a9ca807283e1cad39bcb3e60?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Indicateurs_Manufacturier_Commercial.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1004,7 +1026,7 @@
             <i class="bi bi-pie-chart icon-financial"></i>
             <h3>Indicateurs Boursiers et Financiers</h3>
             <p>Analysez ratios financiers et résultats pour évaluer les actions.</p>
-            <a href="https://www.notion.so/Les-Indicateurs-Boursiers-et-Financiers-1c31d612a9ca8090ab5bc99aa5e51d6c?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Indicateurs_Boursiers_Financiers.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1014,7 +1036,7 @@
             <i class="bi bi-globe icon-sentiment"></i>
             <h3>Indicateurs de Sentiment et Géopolitique</h3>
             <p>Évaluez confiance des investisseurs et événements géopolitiques.</p>
-            <a href="https://www.notion.so/Les-Indicateurs-de-Sentiment-et-G-opolitique-1c31d612a9ca80559d78f879f203c932?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Indicateurs_Sentiment_Geopolitique.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1024,7 +1046,7 @@
             <i class="bi bi-search icon-interpret"></i>
             <h3>Comment Interpréter Ces Indicateurs ?</h3>
             <p>Apprenez à lire les indicateurs pour prendre des décisions éclairées.</p>
-            <a href="https://www.notion.so/Comment-Interpr-ter-Ces-Indicateurs-1c31d612a9ca800084acf576a809bb4f?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Interpreter_Indicateurs.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 
@@ -1034,7 +1056,7 @@
             <i class="bi bi-gear icon-strategic"></i>
             <h3>Utilisation Stratégique en Trading</h3>
             <p>Combinez indicateurs fondamentaux et techniques pour optimiser vos trades.</p>
-            <a href="https://www.notion.so/Utilisation-Strat-gique-en-Trading-1c31d612a9ca80d98940f208bf1fc0a8?pvs=21" class="bases">Choisir ce cours</a>
+            <a href="Fonda/Strategie_Trading.html" class="bases">Choisir ce cours</a>
         </div>
     </div>
 </div>
@@ -1057,6 +1079,11 @@
   </div>
 
   <script>
+
+const goBack = () => {
+ window.history.back();
+ }
+
     const toggleSidebar = () => {
       document.getElementById('sidebar').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
