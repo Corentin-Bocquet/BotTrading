@@ -509,7 +509,7 @@
 }
 
 .container .card .content{
-    padding: 20px;
+    padding:  0 20px;
     text-align: center;
     height: 70%;
     
@@ -526,8 +526,15 @@
     color: rgba(255, 255, 255, 0.05);
     pointer-events: none;
     
-    opacity: 0.8;
-    filter: brightness(0.9);
+    opacity: 1;
+    filter: brightness(1);
+}
+
+.container .card .content .cards {
+    /*filter: invert(1);*/
+    width: 80%;
+    margin-bottom: 12%;
+    left: 11%;
 }
 
 .container .card:hover .content img {
@@ -562,14 +569,14 @@
 }
 
 .container .card .content .dow {
-    filter: invert(1);
+    
     left: 5px;
 }
 
 
 
 .container .card .content h3 {
-    font-size: 1.8em;
+    font-size: 1.6em;
     color: #fff;
     z-index:1;
     bottom: -200px;
@@ -973,7 +980,7 @@
     <!-- Carte 1: Objectif et Définition du Trading -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-bullseye"></i>
+          <img src="img/Screenshot_2025-04-23_at_7.42.13_PM-removebg-preview.png" class="cards"/>
             <h3>Objectif et Définition du Trading</h3>
             <p>Comprenez ce qu'est le trading, ses objectifs et comment fonctionnent les marchés financiers.</p>
             <a href="Bases/DefTrading.html" class="bases">Choisir ce cours</a>
@@ -983,7 +990,7 @@
     <!-- Carte 2: Types de Traders -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-people"></i>
+          <img src="img/Screenshot_2025-04-23_at_7.42.03_PM-removebg-preview.png" class="cards"/>
             <h3>Types de Traders</h3>
             <p>Découvrez les profils de traders : scalpeurs, day traders, swing traders et long terme.</p>
             <a href="Bases/TypesTraders.html" class="bases">Choisir ce cours</a>
@@ -993,7 +1000,7 @@
     <!-- Carte 3: Risques du Trading -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-exclamation-triangle"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.19.48_PM-removebg-preview.png" class="cards"/>
             <h3>Risques du Trading</h3>
             <p>Identifiez les risques : volatilité, levier, stress. Apprenez à protéger votre capital.</p>
             <a href="Bases/Risques.html" class="bases">Choisir ce cours</a>
@@ -1005,7 +1012,7 @@
     <!-- Carte 5: Les Principaux Marchés -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-bank"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.20.03_PM-removebg-preview.png" class="cards"/>
             <h3>Les Principaux Marchés</h3>
             <p>Actions, obligations, devises, cryptos : découvrez les grands marchés financiers.</p>
             <a href="Bases/Marches.html" class="bases">Choisir ce cours</a>
@@ -1015,7 +1022,7 @@
     <!-- Carte 6: Comment Investir ? -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-wallet2"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.20.16_PM-removebg-preview.png" class="cards"/>
             <h3>Comment Investir ?</h3>
             <p>Apprenez à choisir un courtier, ouvrir un compte et gérer votre portefeuille.</p>
             <a href="Bases/Investir.html" class="bases">Choisir ce cours</a>
@@ -1025,7 +1032,7 @@
     <!-- Carte 7: Les Actifs et Instruments Financiers -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-cash-stack"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.21.18_PM-removebg-preview.png" class="cards"/>
             <h3>Les Actifs et Instruments Financiers</h3>
             <p>Actions, ETF, obligations, cryptos : comprenez les actifs pour investir.</p>
             <a href="Bases/Actifs.html" class="bases">Choisir ce cours</a>
@@ -1035,7 +1042,7 @@
     <!-- Carte 8: Les Types de Graphiques -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-graph-up"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.22.56_PM-removebg-preview.png" class="cards"/>
             <h3>Les Types de Graphiques</h3>
             <p>Maîtrisez les graphiques en lignes, barres et chandeliers pour analyser les prix.</p>
             <a href="Bases/Graphiques.html" class="bases">Choisir ce cours</a>
@@ -1045,7 +1052,7 @@
     <!-- Carte 9: Les Bougies Japonaises -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-bar-chart"></i>
+            <img src="img/Screenshot_2025-04-23_at_7.42.26_PM-removebg-preview.png" class="cards"/>
             <h3>Les Bougies Japonaises</h3>
             <p>Lisez les chandeliers pour repérer tendances et retournements du marché.</p>
             <a href="Bases/Bougies.html" class="bases">Choisir ce cours</a>
@@ -1055,7 +1062,7 @@
     <!-- Carte 10: Les Unités de Temps en Trading -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-clock"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.20.42_PM-removebg-preview.png" class="cards"/>
             <h3>Les Unités de Temps en Trading</h3>
             <p>Choisissez le bon timeframe pour analyser et trader selon votre style.</p>
             <a href="Bases/Temps.html" class="bases">Choisir ce cours</a>
@@ -1065,7 +1072,7 @@
     <!-- Carte 11: Les Types d’Ordres en Bourse -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-cart-check"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.21.38_PM-removebg-preview.png" class="cards"/>
             <h3>Les Types d’Ordres en Bourse</h3>
             <p>Maîtrisez les ordres au marché, limité et stop pour trader efficacement.</p>
             <a href="Bases/Ordres.html" class="bases">Choisir ce cours</a>
@@ -1075,7 +1082,7 @@
     <!-- Carte 12: Le Spread (Bid et Ask) -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-arrows-angle-expand"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.20.28_PM-removebg-preview.png" class="cards"/>
             <h3>Le Spread (Bid et Ask)</h3>
             <p>Comprenez le spread et son impact sur vos coûts de trading.</p>
             <a href="Bases/Spread.html" class="bases">Choisir ce cours</a>
@@ -1084,7 +1091,7 @@
 
     <div class="card">
       <div class="content">
-          <i class="bi bi-align-center"></i>
+        <img src="img/Screenshot_2025-04-24_at_4.10.22_PM-removebg-preview.png" class="cards"/>
           <h3>Le Slippage</h3>
           <p>Découvrez ce qu'est le Slippage</p>
           <a href="Bases/Slippage.html" class="bases">Choisir ce cours</a>
@@ -1094,7 +1101,7 @@
     <!-- Carte 13: Les Notions de Levier et de Marge -->
     <div class="card">
         <div class="content">
-            <i class="bi bi-speedometer"></i>
+          <img src="img/Screenshot_2025-04-23_at_6.21.54_PM-removebg-preview.png" class="cards"/>
             <h3>Les Notions de Levier et de Marge</h3>
             <p>Utilisez levier et marge avec prudence pour amplifier vos trades.</p>
             <a href="Bases/Levier.html" class="bases">Choisir ce cours</a>
